@@ -24,6 +24,7 @@ allow_licenses:
   - 'IJG'
   - 'Intel'
   - 'ISC'
+  - 'MIT'
   - 'MPL-2.0'
   - 'NCSA'
   - 'OLDAP-2.7'
