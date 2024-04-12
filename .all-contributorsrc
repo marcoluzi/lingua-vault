@@ -1,4 +1,5 @@
 {
   "projectName": "lingua-vault",
-  "projectOwner": "marcoluzi"
+  "projectOwner": "marcoluzi",
+  "files": ["CREDITS.md"]
 }
