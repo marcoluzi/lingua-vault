@@ -8,6 +8,8 @@ allow_licenses:
   - 'Artistic-2.0'
   - 'ClArtistic'
   - 'BSL-1.0'
+  - '0BSD'
+  - 'BSD-2-Clause'
   - 'BSD-3-Clause'
   - 'CC0-1.0'
   - 'CECILL-2.0'

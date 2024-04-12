@@ -1,0 +1,27 @@
+## Contributors
+
+Thank you to all the people who have already contributed to this repository via bug reports, code, design, ideas, project management, translation, testing, etc. ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/marcoluzi"><img src="https://avatars.githubusercontent.com/u/40238681?v=4?s=100" width="100px;" alt="Marco Luzi"/><br /><sub><b>Marco Luzi</b></sub></a><br /><a href="#maintenance-marcoluzi" title="Maintenance">🚧</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+## Libraries
+
+The following software libraries are utilized in this repository.
+
+[Library Name](library link), [Library Name2](library link2), … , [Library NameN](library linkN).
