@@ -1,7 +1,5 @@
 {
-  "files": [
-    "CREDITS.md"
-  ],
+  "files": ["CREDITS.md", "README.md"],
   "imageSize": 100,
   "commit": false,
   "commitType": "docs",
@@ -12,9 +10,7 @@
       "name": "Marco Luzi",
       "avatar_url": "https://avatars.githubusercontent.com/u/40238681?v=4",
       "profile": "https://github.com/marcoluzi",
-      "contributions": [
-        "maintenance"
-      ]
+      "contributions": ["maintenance"]
     }
   ],
   "contributorsPerLine": 7,
@@ -24,3 +20,4 @@
   "projectName": "lingua-vault",
   "projectOwner": "marcoluzi"
 }
+
