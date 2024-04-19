@@ -6,7 +6,8 @@
     "extends": ["config:best-practices"],
     // Configure PR assignees (#4)
     "assignees": ["marcoluzi"],
-    "baseBranches": ["release/v0.1.0"],
+    "baseBranches": ["develop"],
+    "useBaseBranchConfig": "merge"
     "packageRules": [
         // Disable updates for specific dependencies (#3)
         {
