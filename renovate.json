@@ -12,8 +12,7 @@
         {
             "description": "Automatically merge minor and patch-level updates",
             "matchUpdateTypes": ["minor", "patch", "digest"],
-            "automerge": true,
-            "automergeType": "branch"
+            "automerge": true
         }
     ],
     "timezone": "Europe/Zurich",
