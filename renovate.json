@@ -24,6 +24,5 @@
     "platformAutomerge": true,
     "rebaseWhen": "behind-base-branch",
     "rollbackPrs": true,
-    "dependencyDashboard": true,
-    "dependencyDashboardAutoclose": true
+    "dependencyDashboard": true
 }
