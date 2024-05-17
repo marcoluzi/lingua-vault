@@ -1392,9 +1392,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"laravel-vite-plugin@npm:1.0.2":
-  version: 1.0.2
-  resolution: "laravel-vite-plugin@npm:1.0.2"
+"laravel-vite-plugin@npm:1.0.3":
+  version: 1.0.3
+  resolution: "laravel-vite-plugin@npm:1.0.3"
   dependencies:
     picocolors: "npm:^1.0.0"
     vite-plugin-full-reload: "npm:^1.1.0"
@@ -1402,7 +1402,7 @@ __metadata:
     vite: ^5.0.0
   bin:
     clean-orphaned-assets: bin/clean.js
-  checksum: 10c0/0aab7f380653994e6dbee5655474edd091a4b72150dd7fb48071da6a6490dc48ac6987b86df23f1731e908ee3e5e80e73106365364107247c826187ba84c03a2
+  checksum: 10c0/5c2a3d58e32b0128a104c5bf2eff5a88c42421b565a5669f1ce14432d9a71cee962e65dbac8c111d5df57139ea5f0095057e602b05cf1eebb8817d2c2b5ee915
   languageName: node
   linkType: hard
 
@@ -2199,7 +2199,7 @@ __metadata:
     "@tailwindcss/typography": "npm:0.5.13"
     all-contributors-cli: "npm:6.26.1"
     autoprefixer: "npm:10.4.19"
-    laravel-vite-plugin: "npm:1.0.2"
+    laravel-vite-plugin: "npm:1.0.3"
     resolve-url-loader: "npm:5.0.0"
     sass: "npm:1.77.1"
     sass-loader: "npm:14.2.1"
