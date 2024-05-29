@@ -12,7 +12,8 @@
         {
             "description": "Automatically merge minor and patch-level updates",
             "matchUpdateTypes": ["minor", "patch", "digest"],
-            "automerge": true
+            "automerge": true,
+            "automergeType": "branch"
         }
     ],
     "timezone": "Europe/Zurich",
@@ -21,8 +22,7 @@
         "before 5am every weekday",
         "every weekend"
     ],
-    "automerge": true,
-    "automergeType": "branch",
+    "platformAutomerge": true,
     "rebaseWhen": "behind-base-branch",
     "rollbackPrs": true,
     "dependencyDashboard": true
