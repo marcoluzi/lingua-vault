@@ -21,7 +21,8 @@
         "before 5am every weekday",
         "every weekend"
     ],
-    "platformAutomerge": true,
+    "automerge": true,
+    "automergeType": "branch",
     "rebaseWhen": "behind-base-branch",
     "rollbackPrs": true,
     "dependencyDashboard": true
