@@ -2,8 +2,6 @@
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "extends": ["config:best-practices"],
     "assignees": ["marcoluzi"],
-    "baseBranches": ["develop"],
-    "useBaseBranchConfig": "merge",
     "packageRules": [
         {
             "matchPackageNames": [],
@@ -25,5 +23,6 @@
     "platformAutomerge": true,
     "rebaseWhen": "behind-base-branch",
     "rollbackPrs": true,
-    "dependencyDashboard": true
+    "dependencyDashboard": true,
+    "dependencyDashboardAutoclose": false
 }
