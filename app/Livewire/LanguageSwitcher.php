@@ -23,7 +23,7 @@ class LanguageSwitcher extends Component
     {
         $option = Option::where('name', 'selected_language')->first();
         $this->selectedLanguageCode = $option ? $option->value : null;
-        $this->selectedLanguageName = $this->languages->where('code', $this->selectedLanguageCode)->first()->name;
+        $this->selectedLanguageName = $this->languages->where('code', $this->selectedLanguageCode)->first()->name ?? null;
     }
 
     public function chooseLanguage($languageCode)

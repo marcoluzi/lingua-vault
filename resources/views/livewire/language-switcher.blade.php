@@ -58,6 +58,7 @@
             @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()" x-ref="listbox"
             tabindex="-1" role="listbox" aria-labelledby="listbox-label" :aria-activedescendant="activeDescendant">
             @foreach ($languages as $language)
+                {{-- TODO: Hover State  --}}
                 <li class="text-gray-900 relative cursor-default select-none py-2 pl-3 pr-9"
                     id="listbox-option-{{ $language->code }}" role="option" @click="choose('{{ $language->code }}')"
                     @mouseenter="onMouseEnter($event)" @mousemove="onMouseMove($event, '{{ $language->code }}')"
