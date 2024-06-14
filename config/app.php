@@ -185,4 +185,20 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Languages
+    |--------------------------------------------------------------------------
+    |
+    | This array of languages will be used to display the language switcher.
+    |
+    */
+
+    'languages' => [
+        'de' => 'German',
+        'en' => 'English',
+        'fr' => 'French',
+        'it' => 'Italian',
+    ],
+
 ];
