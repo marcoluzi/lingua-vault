@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Option;
+use App\Support\Enums\Languages;
 use Livewire\Component;
 
 class LanguageSwitcher extends Component
@@ -12,16 +13,17 @@ class LanguageSwitcher extends Component
 
     public function mount()
     {
-        $this->languages = config('app.languages');
-        $this->selectedLanguage = Option::where('name', 'selected_language')->get(['value'])->first()->value ?? 'en';
+        $this->languages = array_column(Languages::cases(), 'value');
+        $this->selectedLanguage = Option::where('name', 'selected_language')->get(['value'])->first()->value ?? Languages::EN->value;
     }
 
-    public function setLanguage($code)
+    public function setLanguage($selectedLanguage)
     {
-        $this->selectedLanguage = $code;
+        $this->selectedLanguage = $selectedLanguage;
+
         Option::updateOrCreate(
             ['name' => 'selected_language'],
-            ['value' => $code]
+            ['value' => Languages::from($selectedLanguage)->value]
         );
     }
 

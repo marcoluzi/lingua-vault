@@ -123,11 +123,4 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
-    'languages' => [
-        'de' => 'German',
-        'en' => 'English',
-        'fr' => 'French',
-        'it' => 'Italian',
-    ],
-
 ];
