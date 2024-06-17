@@ -16,7 +16,7 @@
                 aria-labelledby="language-switcher-label"
             >
                 <span class="flex items-center">
-                    <img src="https://via.placeholder.com/20" alt="" class="h-5 w-5 flex-shrink-0 rounded-full">
+                    <img src="{{ asset('flags/' . $selectedLanguage . '.svg') }}" alt="{{ __('Flag for :language', ['language' => $languages[$selectedLanguage]]) }}" class="h-5 w-5 flex-shrink-0 rounded-full">
                     <span class="ml-3 block truncate">{{ $languages[$selectedLanguage] }}</span>
                 </span>
                 <span class="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
@@ -48,7 +48,7 @@
                         @click="$wire.setLanguage('{{ $code }}'); open = false;"
                     >
                         <div class="flex items-center">
-                            <img src="https://via.placeholder.com/20" alt="" class="h-5 w-5 flex-shrink-0 rounded-full">
+                            <img src="{{ asset('flags/' . $code . '.svg') }}" alt="{{ __('Flag for :language', ['language' => $name]) }}" class="h-5 w-5 flex-shrink-0 rounded-full">
                             <span
                                 class="font-normal ml-3 block truncate"
                                 :class="{ 'font-semibold': '{{ $selectedLanguage }}' === '{{ $code }}' }"
