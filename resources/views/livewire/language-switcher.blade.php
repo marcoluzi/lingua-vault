@@ -15,9 +15,10 @@
                 :aria-expanded="open.toString()"
                 aria-labelledby="language-switcher-label"
             >
+
                 <span class="flex items-center">
-                    <img src="{{ asset('flags/' . $selectedLanguage . '.svg') }}" alt="{{ __('Flag for :language', ['language' => $languages[$selectedLanguage]]) }}" class="h-5 w-5 flex-shrink-0 rounded-full">
-                    <span class="ml-3 block truncate">{{ $languages[$selectedLanguage] }}</span>
+                    <img src="{{ asset('flags/' . $selectedLanguage . '.svg') }}" alt="{{ __('Flag for :language', ['language' => App\Support\Enums\Languages::from($selectedLanguage)->getLabel()]) }}" class="h-5 w-5 flex-shrink-0 rounded-full">
+                    <span class="ml-3 block truncate">{{ App\Support\Enums\Languages::from($selectedLanguage)->getLabel() }}</span>
                 </span>
                 <span class="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
                     <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -36,24 +37,24 @@
                 role="listbox"
                 aria-labelledby="language-switcher-label"
             >
-                @foreach ($languages as $code => $name)
+                @foreach ($languages as $language)
                     <li
-                        id="language-switcher-option-{{ $code }}"
+                        id="language-switcher-option-{{ $language }}"
                         class="text-gray-900 relative cursor-default select-none py-2 pl-3 pr-9"
                         :class="{
-                            'bg-indigo-600 text-white': '{{ $selectedLanguage }}' === '{{ $code }}',
-                            'text-gray-900': '{{ $selectedLanguage }}' !== '{{ $code }}'
+                            'bg-indigo-600 text-white': '{{ $selectedLanguage }}' === '{{ $language }}',
+                            'text-gray-900': '{{ $selectedLanguage }}' !== '{{ $language }}'
                         }"
                         role="option"
-                        @click="$wire.setLanguage('{{ $code }}'); open = false;"
+                        @click="$wire.setLanguage('{{ $language }}'); open = false;"
                     >
                         <div class="flex items-center">
-                            <img src="{{ asset('flags/' . $code . '.svg') }}" alt="{{ __('Flag for :language', ['language' => $name]) }}" class="h-5 w-5 flex-shrink-0 rounded-full">
+                            <img src="{{ asset('flags/' . $language . '.svg') }}" alt="{{ __('Flag for :language', ['language' => App\Support\Enums\Languages::from($language)->getLabel()]) }}" class="h-5 w-5 flex-shrink-0 rounded-full">
                             <span
                                 class="font-normal ml-3 block truncate"
-                                :class="{ 'font-semibold': '{{ $selectedLanguage }}' === '{{ $code }}' }"
+                                :class="{ 'font-semibold': '{{ $selectedLanguage }}' === '{{ $language }}' }"
                             >
-                                {{ $name }}
+                                {{ App\Support\Enums\Languages::from($language)->getLabel() }}
                             </span>
                         </div>
                     </li>
