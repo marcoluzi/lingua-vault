@@ -9,6 +9,7 @@ use Livewire\Component;
 class LanguageSwitcher extends Component
 {
     public $languages = [];
+
     public $selectedLanguage = '';
 
     public function mount()
