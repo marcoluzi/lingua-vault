@@ -1,7 +1,5 @@
 <div>
-    <div x-data="{
-        open: false,
-    }">
+    <div x-data="{ open: false }">
         <label id="language-switcher-label" class="block text-sm font-medium leading-6 text-white">
             {{ __('Language') }}
         </label>
@@ -15,7 +13,6 @@
                 :aria-expanded="open.toString()"
                 aria-labelledby="language-switcher-label"
             >
-
                 <span class="flex items-center">
                     <img src="{{ asset('flags/' . $selectedLanguage . '.svg') }}" alt="{{ __('Flag for :language', ['language' => App\Support\Enums\Languages::from($selectedLanguage)->getLabel()]) }}" class="h-5 w-5 flex-shrink-0 rounded-full">
                     <span class="ml-3 block truncate">{{ App\Support\Enums\Languages::from($selectedLanguage)->getLabel() }}</span>
