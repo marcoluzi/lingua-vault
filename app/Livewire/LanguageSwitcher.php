@@ -22,15 +22,15 @@ class LanguageSwitcher extends Component
     /**
      * Set the selected language by updating the selectedLanguage property and saving it to the option table.
      *
-     * @param  string  $selectedLanguage
+     * @param  string  $selectedLanguage  The selected language as a two letter string, that is a case of the Languages enum.
      * @return void
      *
-     * @throws InvalidArgumentException If the provided language is not an instance of the Languages enum
+     * @throws InvalidArgumentException If the provided language is not a valid case of the Languages enum.
      */
     public function setLanguage($selectedLanguage)
     {
         if (! Languages::tryFrom($selectedLanguage)) {
-            throw new InvalidArgumentException("Invalid language: $selectedLanguage");
+            throw new InvalidArgumentException("Privided language is not a valid case of the Languages enum. Given: {$selectedLanguage}");
         }
 
         $this->selectedLanguage = $selectedLanguage;
