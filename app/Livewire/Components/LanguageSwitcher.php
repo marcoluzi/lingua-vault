@@ -10,19 +10,14 @@ use Livewire\Component;
 
 class LanguageSwitcher extends Component
 {
-    public $languages = [];
+    public $languageItems = [];
 
-    public $selectedLanguage = '';
+    public $selectedLanguageItem = [];
 
     public function mount()
     {
-        $this->languages = array_column(Languages::cases(), 'value');
-
-        if (empty($this->languages)) {
-            throw new Exception('No languages found in the Languages enum.');
-        }
-
-        $this->selectedLanguage = Option::where('name', 'selected_language')->value('value') ?? Languages::from($this->languages[0])->value;
+        $this->setLanguageItems();
+        $this->setSelectedLanguageItem();
     }
 
     /**
@@ -39,7 +34,12 @@ class LanguageSwitcher extends Component
             throw new InvalidArgumentException("Provided language is not a valid case of the Languages enum. Given: {$selectedLanguage}");
         }
 
-        $this->selectedLanguage = $selectedLanguage;
+        $this->selectedLanguageItem = [
+            'value' => $selectedLanguage,
+            'label' => Languages::from($selectedLanguage)->getLabel(),
+            'image' => asset('flags/'.$selectedLanguage.'.svg'),
+            'alt' => __('Flag for :language', ['language' => Languages::from($selectedLanguage)->getLabel()]),
+        ];
 
         Option::updateOrCreate(
             ['name' => 'selected_language'],
@@ -50,5 +50,54 @@ class LanguageSwitcher extends Component
     public function render()
     {
         return view('livewire.components.language-switcher');
+    }
+
+    /**
+     * Create the language items array and set it as a property.
+     *
+     * @return void
+     *
+     * @throws Exception If no languages are found in the Languages enum.
+     */
+    private function setLanguageItems()
+    {
+        $languages = Languages::cases();
+
+        if (empty($languages)) {
+            throw new Exception('No languages found in the Languages enum.');
+        }
+
+        $languageItems = [];
+
+        foreach ($languages as $language) {
+            $languageItems[] = [
+                'value' => $language->value,
+                'label' => $language->getLabel(),
+                'image' => asset('flags/'.$language->value.'.svg'),
+                'alt' => __('Flag for :language', ['language' => $language->getLabel()]),
+                'action' => '$wire.setLanguage(\''.$language->value.'\')',
+            ];
+        }
+
+        $this->languageItems = $languageItems;
+    }
+
+    /**
+     * Get the selected language from the option table and set it as a property.
+     *
+     * @return array
+     */
+    private function setSelectedLanguageItem()
+    {
+        $selectedLanguage = Option::where('name', 'selected_language')->value('value') ?? $this->languageItems[0]['value'];
+
+        $selectedLanguageItem = [
+            'value' => $selectedLanguage,
+            'label' => Languages::from($selectedLanguage)->getLabel(),
+            'image' => asset('flags/'.$selectedLanguage.'.svg'),
+            'alt' => __('Flag for :language', ['language' => Languages::from($selectedLanguage)->getLabel()]),
+        ];
+
+        $this->selectedLanguageItem = $selectedLanguageItem;
     }
 }
