@@ -73,7 +73,7 @@
                 </li>
             @endforeach
         </ul>
-        {{ $lessons->links() }}
+        {{ $lessons->links('components.pagination') }}
     @else
         {{-- TODO: No Items --}}
         no items
