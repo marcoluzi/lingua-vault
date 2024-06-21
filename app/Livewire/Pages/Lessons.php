@@ -10,7 +10,7 @@ class Lessons extends Component
 
     public function mount()
     {
-        $this->title = __('Lessons Overview');
+        $this->title = __('Lesson Overview');
     }
 
     public function render()
