@@ -2,14 +2,19 @@
 
 namespace App\Livewire\Pages;
 
-use Livewire\Attributes\Title;
 use Livewire\Component;
 
-#[Title('Lesson Overview')]
 class Lessons extends Component
 {
+    public $title = '';
+
+    public function mount()
+    {
+        $this->title = __('Lessons Overview');
+    }
+
     public function render()
     {
-        return view('livewire.pages.lessons');
+        return view('livewire.pages.lessons')->title($this->title);
     }
 }

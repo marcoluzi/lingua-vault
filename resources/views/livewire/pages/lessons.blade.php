@@ -1,3 +1,3 @@
 <div>
-    Lessons Page
+    <livewire:components.page-header :$title />
 </div>
