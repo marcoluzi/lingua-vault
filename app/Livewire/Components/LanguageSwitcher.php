@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Components;
 
 use App\Models\Option;
 use App\Support\Enums\Languages;
@@ -49,6 +49,6 @@ class LanguageSwitcher extends Component
 
     public function render()
     {
-        return view('livewire.language-switcher');
+        return view('livewire.components.language-switcher');
     }
 }
