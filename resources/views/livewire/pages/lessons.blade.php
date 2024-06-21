@@ -73,6 +73,7 @@
                 </li>
             @endforeach
         </ul>
+        {{ $lessons->links() }}
     @else
         {{-- TODO: No Items --}}
         no items

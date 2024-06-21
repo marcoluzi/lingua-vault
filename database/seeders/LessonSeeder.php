@@ -12,7 +12,7 @@ class LessonSeeder extends Seeder
     public function run(): void
     {
         // Create 10 lessons with random title and random text
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 50; $i++) {
             \App\Models\Lesson::factory()->create();
         }
 
