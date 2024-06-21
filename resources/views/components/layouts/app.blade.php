@@ -1,4 +1,4 @@
-@extends('layouts.base')
+@extends('components.layouts.base')
 
 @section('body')
     <div x-data="{ isOpen: false }" @keydown.window.escape="isOpen = false">

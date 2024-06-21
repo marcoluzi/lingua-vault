@@ -14,3 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'home')->name('home');
+
+// Lessons
+Route::group(['prefix' => 'lessons', 'as' => 'lessons.'], function () {
+    Route::get('/', \App\Livewire\Pages\Lessons::class)->name('index');
+});
