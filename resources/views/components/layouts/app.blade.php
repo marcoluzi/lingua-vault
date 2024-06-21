@@ -7,8 +7,8 @@
         <x-ui.desktop-sidebar />
         <x-ui.mobile-header />
         <main class="py-10 lg:pl-72">
-            <div class="container mx-auto sm:px-6 lg:px-8">
-                @yield('content')
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                {{ $slot }}
             </div>
         </main>
     </div>

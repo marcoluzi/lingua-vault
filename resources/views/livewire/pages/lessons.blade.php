@@ -1,5 +1,3 @@
-@extends('components.layouts.app')
-
-@section('content')
+<div>
     Lessons Page
-@endsection
+</div>
