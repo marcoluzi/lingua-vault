@@ -2,15 +2,19 @@
 
 namespace App\Livewire\Pages;
 
+use App\Models\Lesson;
 use Livewire\Component;
 
 class Lessons extends Component
 {
     public $title = '';
 
+    public $lessons = [];
+
     public function mount()
     {
         $this->title = __('Lesson Overview');
+        $this->lessons = Lesson::all(['title', 'updated_at'])->toArray();
     }
 
     public function render()
