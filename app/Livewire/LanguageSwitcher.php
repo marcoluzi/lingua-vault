@@ -23,8 +23,6 @@ class LanguageSwitcher extends Component
         }
 
         $this->selectedLanguage = Option::where('name', 'selected_language')->value('value') ?? Languages::from($this->languages[0])->value;
-
-        dump($this->selectedLanguage);
     }
 
     /**
