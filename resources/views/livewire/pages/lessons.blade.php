@@ -9,16 +9,19 @@
                     <div class="min-w-0">
                         <div class="flex items-start gap-x-3">
                             <p class="text-sm font-semibold leading-6 text-gray-900">{{ $lesson['title'] }}</p>
-                            {{-- TODO: completion rate --}}
-                            <p
-                                class="mt-0.5 whitespace-nowrap rounded-md bg-green-50 px-1.5 py-0.5 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/20">
-                                {{ __('Not started') }}</p>
-                            <p
-                                class="mt-0.5 whitespace-nowrap rounded-md bg-yellow-50 px-1.5 py-0.5 text-xs font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20">
-                                {{ __(':percent% completed', ['percent' => '25']) }}</p>
-                            <p
-                                class="mt-0.5 whitespace-nowrap rounded-md bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
-                                {{ __('Complete') }}</p>
+                            @if ($lesson['progress'] === 0)
+                                <p
+                                    class="mt-0.5 whitespace-nowrap rounded-md bg-green-50 px-1.5 py-0.5 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/20">
+                                    {{ __('Not started') }}</p>
+                            @elseif ($lesson['progress'] === 100)
+                                <p
+                                    class="mt-0.5 whitespace-nowrap rounded-md bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
+                                    {{ __('Complete') }}</p>
+                            @else
+                                <p
+                                    class="mt-0.5 whitespace-nowrap rounded-md bg-yellow-50 px-1.5 py-0.5 text-xs font-medium text-yellow-800 ring-1 ring-inset ring-yellow-600/20">
+                                    {{ __(':percent% completed', ['percent' => $lesson['progress']]) }}</p>
+                            @endif
                         </div>
                         <div class="mt-1 flex items-center gap-x-2 text-xs leading-5 text-gray-500">
                             <p class="whitespace-nowrap">{{ __('Last practiced:') }} <time

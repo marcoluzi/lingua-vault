@@ -14,7 +14,7 @@ class Lessons extends Component
     public function mount()
     {
         $this->title = __('Lesson Overview');
-        $this->lessons = Lesson::all(['title', 'word_count', 'updated_at'])->toArray();
+        $this->lessons = Lesson::all(['title', 'word_count', 'progress', 'updated_at'])->toArray();
     }
 
     public function render()

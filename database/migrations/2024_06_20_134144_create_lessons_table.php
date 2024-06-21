@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('text'); // 65,535 characters
-            $table->integer('word_count');
+            $table->text('text');
+            $table->unsignedInteger('word_count');
+            $table->unsignedInteger('progress')->default(0);
             $table->timestamps();
         });
     }
