@@ -19,6 +19,7 @@ class LessonFactory extends Factory
         return [
             'title' => $this->faker->sentence,
             'text' => $this->faker->paragraph,
+            'word_count' => $this->faker->numberBetween(100, 1000),
         ];
     }
 }

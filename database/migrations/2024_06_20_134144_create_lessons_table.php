@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('text'); // 65,535 characters
+            $table->integer('word_count');
             $table->timestamps();
         });
     }

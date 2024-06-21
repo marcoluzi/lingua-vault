@@ -27,8 +27,8 @@
                             <svg viewBox="0 0 2 2" class="h-0.5 w-0.5 fill-current">
                                 <circle cx="1" cy="1" r="1" />
                             </svg>
-                            {{-- TODO: total words --}}
-                            <p class="truncate">Total Words: 345</p>
+                            <p class="truncate">
+                                {{ __('Total words: :word_count', ['word_count' => $lesson['word_count']]) }}</p>
                         </div>
                     </div>
                     <div class="flex flex-none items-center gap-x-4">
