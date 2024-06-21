@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->mediumText('text');
+            $table->text('text'); // 65,535 characters
             $table->timestamps();
         });
     }
