@@ -1,9 +1,9 @@
 <div>
     <livewire:components.page-header :$title />
-    <div class="md:max-w-xs mt-8 md:mt-16">
-        <x-select-menu class="max-w-48" :items="$sortItems" :selectedItem="$selectedSortItem" label="{{ __('Sort by') }}" />
-    </div>
-    @if ($lessons)
+    @if ($lessons->total() > 0)
+        <div class="md:max-w-xs mt-8 md:mt-16">
+            <x-select-menu class="max-w-48" :items="$sortItems" :selectedItem="$selectedSortItem" label="{{ __('Sort by') }}" />
+        </div>
         <ul role="list" class="divide-y divide-gray-100 mt-8 md:mt-16">
             @foreach ($lessons as $lesson)
                 <li class="flex items-center justify-between gap-x-6 py-5">
@@ -65,9 +65,9 @@
                                     role="menuitem" tabindex="-1">{{ __('Edit') }}<span
                                         class="sr-only">{{ $lesson['title'] }}</span></a>
                                 {{-- TODO: Delete --}}
-                                <a href="#"
-                                    class="block px-3 py-1 text-sm leading-6 text-gray-900 hover:bg-gray-50"
-                                    role="menuitem" tabindex="-1">{{ __('Delete') }}</a>
+                                <button class="block px-3 py-1 text-sm leading-6 text-gray-900 hover:bg-gray-50"
+                                    role="menuitem" tabindex="-1"
+                                    @click="$wire.deleteLesson({{ $lesson->id }})">{{ __('Delete') }}</button>
                             </div>
                         </div>
                     </div>
@@ -75,8 +75,30 @@
             @endforeach
         </ul>
         {{ $lessons->links('components.pagination') }}
+        <button wire:click="$dispatch('openModal', {component: 'components.modal'})">Show Users</button>
     @else
-        {{-- TODO: No Items --}}
-        no items
+        <div class="flex justify-center items-center mt-8 md:mt-16">
+            <div class="text-center">
+                <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                    aria-hidden="true">
+                    <path vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                </svg>
+                <h3 class="mt-2 text-sm font-semibold text-gray-900">{{ __('No lessons') }}</h3>
+                <p class="mt-1 text-sm text-gray-500">{{ __('Get started by creating a new lesson.') }}</p>
+                <div class="mt-6">
+                    {{-- TODO: create --}}
+                    <button type="button"
+                        class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                        <svg class="-ml-0.5 mr-1.5 h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path
+                                d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
+                        </svg>
+                        {{ __('New lesson') }}
+                    </button>
+                </div>
+            </div>
+        </div>
     @endif
 </div>
