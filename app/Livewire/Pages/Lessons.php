@@ -3,6 +3,7 @@
 namespace App\Livewire\Pages;
 
 use App\Models\Lesson;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -48,6 +49,12 @@ class Lessons extends Component
         $this->selectedSortItem = $this->sortItems[0];
     }
 
+    /**
+     * Sort the lessons by the given value.
+     *
+     * @param  string  $value
+     * @return void
+     */
     public function sortBy($value)
     {
         $sortItem = collect($this->sortItems)->firstWhere('value', $value);
@@ -58,6 +65,17 @@ class Lessons extends Component
             $this->selectedSortItem = $sortItem;
             $this->resetPage();
         }
+    }
+
+    /**
+     * Refresh the lessons list after a lesson has been deleted.
+     *
+     * @return void
+     */
+    #[On('lesson-deleted')]
+    public function refreshLessons()
+    {
+        $this->resetPage();
     }
 
     public function render()
