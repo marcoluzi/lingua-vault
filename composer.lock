@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dda8828700213265c2af00463c8fdcc8",
+    "content-hash": "d43fd641e36117dc267ad32bf2b33e36",
     "packages": [
         {
             "name": "brick/math",
@@ -6003,6 +6003,70 @@
                 "source": "https://github.com/wire-elements/modal/tree/2.0.10"
             },
             "time": "2024-04-12T14:12:26+00:00"
+        },
+        {
+            "name": "wireui/breadcrumbs",
+            "version": "v3.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wireui/breadcrumbs.git",
+                "reference": "8613533cb0052ff4c7eff61c1ff28d9e616fc953"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wireui/breadcrumbs/zipball/8613533cb0052ff4c7eff61c1ff28d9e616fc953",
+                "reference": "8613533cb0052ff4c7eff61c1ff28d9e616fc953",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^10.0|^11.0",
+                "livewire/livewire": "^3.0",
+                "php": "^8.2|^8.3"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.9",
+                "mockery/mockery": "^1.5",
+                "nunomaduro/larastan": "^2.5",
+                "orchestra/testbench": "^8.0|^9.0",
+                "pestphp/pest": "^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "WireUi\\Breadcrumbs\\ServiceProvider"
+                    ],
+                    "aliases": []
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "WireUi\\Breadcrumbs\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pedro Oliveira",
+                    "email": "pedro@wireui.dev"
+                }
+            ],
+            "description": "Breadcrumbs component for Laravel, Livewire, TallStack",
+            "keywords": [
+                "blade components",
+                "laravel components",
+                "livewire components",
+                "livewire-ui",
+                "wireui"
+            ],
+            "support": {
+                "issues": "https://github.com/wireui/breadcrumbs/issues",
+                "source": "https://github.com/wireui/breadcrumbs/tree/v3.1.1"
+            },
+            "time": "2024-05-23T14:50:21+00:00"
         }
     ],
     "packages-dev": [

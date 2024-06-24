@@ -26,6 +26,8 @@ module.exports = {
         './vendor/wire-elements/modal/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+        './vendor/wireui/breadcrumbs/src/Components/**/*.php',
+        './vendor/wireui/breadcrumbs/src/views/**/*.blade.php',
     ],
     safelist: [
         {

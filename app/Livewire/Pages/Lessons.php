@@ -6,6 +6,7 @@ use App\Models\Lesson;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
+use WireUi\Breadcrumbs\Trail;
 
 class Lessons extends Component
 {
@@ -47,6 +48,12 @@ class Lessons extends Component
         ];
 
         $this->selectedSortItem = $this->sortItems[0];
+    }
+
+    public function breadcrumbs(Trail $trail): Trail
+    {
+        return $trail
+            ->push($this->title);
     }
 
     /**
