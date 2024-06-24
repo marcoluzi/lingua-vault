@@ -1,6 +1,6 @@
 <div>
     <livewire:components.page-header :$title />
-    <div class="max-w-xs mt-8 md:mt-16">
+    <div class="md:max-w-xs mt-8 md:mt-16">
         <x-select-menu class="max-w-48" :items="$sortItems" :selectedItem="$selectedSortItem" label="{{ __('Sort by') }}" />
     </div>
     @if ($lessons)
