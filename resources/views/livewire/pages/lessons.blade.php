@@ -75,7 +75,7 @@
             @endforeach
         </ul>
         {{ $lessons->links('components.pagination') }}
-        <button wire:click="$dispatch('openModal', {component: 'components.modal'})">Show Users</button>
+        <button wire:click="$dispatch('openModal', { component: 'components.delete-lesson-modal' })">Edit User</button>
     @else
         <div class="flex justify-center items-center mt-8 md:mt-16">
             <div class="text-center">

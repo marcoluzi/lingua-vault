@@ -22,6 +22,7 @@
 
 <body class="h-full">
     @yield('body')
+    @livewire('wire-elements-modal')
 </body>
 
 </html>
