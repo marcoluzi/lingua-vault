@@ -54,10 +54,16 @@ class Lessons extends Component
      *
      * @param  string  $value
      * @return void
+     *
+     * @throws \Exception If the sort value is not available in the sortItems array.
      */
     public function sortBy($value)
     {
         $sortItem = collect($this->sortItems)->firstWhere('value', $value);
+
+        if (! $sortItem) {
+            throw new \Exception('Invalid sort value.');
+        }
 
         if ($sortItem) {
             $this->sortField = $sortItem['value'];
