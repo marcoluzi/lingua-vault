@@ -1,4 +1,4 @@
-<div x-show="isOpen" class="relative z-9 lg:hidden" role="dialog" aria-modal="true">
+<div x-show="isOpen" class="relative z-50 lg:hidden" role="dialog" aria-modal="true">
     <div x-show="isOpen" x-transition:enter="transition-opacity ease-linear duration-300"
         x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
         x-transition:leave="transition-opacity ease-linear duration-300" x-transition:leave-start="opacity-100"
