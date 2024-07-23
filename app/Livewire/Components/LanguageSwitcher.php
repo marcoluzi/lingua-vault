@@ -85,7 +85,6 @@ class LanguageSwitcher extends Component
      */
     private function setSelectedLanguageItem()
     {
-        /*$selectedLanguage = Option::where('name', 'selected_language')->value('value') ?? $this->languageItems[0]['value'];*/
         $selectedLanguage = \Settings::get('selected_language') ?? $this->languageItems[0]['value'];
 
         $selectedLanguageItem = [
