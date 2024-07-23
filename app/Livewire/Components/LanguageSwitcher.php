@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Components;
 
-use App\Models\Option;
 use App\Support\Enums\Languages;
 use Exception;
 use InvalidArgumentException;
@@ -41,10 +40,7 @@ class LanguageSwitcher extends Component
             'alt' => __('Flag for :language', ['language' => Languages::from($selectedLanguage)->getLabel()]),
         ];
 
-        Option::updateOrCreate(
-            ['name' => 'selected_language'],
-            ['value' => Languages::from($selectedLanguage)->value]
-        );
+        \Settings::set('selected_language', Languages::from($selectedLanguage)->value);
     }
 
     public function render()
@@ -89,7 +85,8 @@ class LanguageSwitcher extends Component
      */
     private function setSelectedLanguageItem()
     {
-        $selectedLanguage = Option::where('name', 'selected_language')->value('value') ?? $this->languageItems[0]['value'];
+        /*$selectedLanguage = Option::where('name', 'selected_language')->value('value') ?? $this->languageItems[0]['value'];*/
+        $selectedLanguage = \Settings::get('selected_language') ?? $this->languageItems[0]['value'];
 
         $selectedLanguageItem = [
             'value' => $selectedLanguage,
