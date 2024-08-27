@@ -13,7 +13,8 @@ class Lesson extends Model
     protected $fillable = [
         'title',
         'text',
-        'language'
+        'language',
+        'word_count',
     ];
 
     protected function casts(): array

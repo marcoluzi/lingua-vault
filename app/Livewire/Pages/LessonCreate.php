@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Pages;
 
+use App\Models\Lesson;
 use App\Support\Enums\Languages;
 use Exception;
 use InvalidArgumentException;
@@ -43,9 +44,14 @@ class LessonCreate extends Component
     {
         $this->validate(); 
 
-        dump($this->selectedLanguageItem);
-        dump($this->lessonTitle);
-        dump($this->lessonText);
+        Lesson::create([
+            'language' => $this->selectedLanguageItem['value'],
+            'title' => $this->lessonTitle,
+            'text' => $this->lessonText,
+            'word_count' => str_word_count($this->lessonText),
+        ]);
+
+        return redirect()->route('lessons.index');
     }
 
     public function render()
