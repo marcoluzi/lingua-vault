@@ -15,6 +15,7 @@ class LessonCreate extends Component
 
     public $languageItems = [];
 
+    #[Validate('required', message: 'The language is required.')]
     public $selectedLanguageItem = [];
 
     #[Validate('required', message: 'The lesson title is required.')]
@@ -42,6 +43,7 @@ class LessonCreate extends Component
     {
         $this->validate(); 
 
+        dump($this->selectedLanguageItem);
         dump($this->lessonTitle);
         dump($this->lessonText);
     }
