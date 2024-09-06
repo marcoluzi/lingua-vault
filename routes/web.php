@@ -19,4 +19,5 @@ Route::get('/', Pages\Home::class)->name('home');
 // Lessons
 Route::group(['prefix' => 'lessons', 'as' => 'lessons.'], function () {
     Route::get('/', Pages\Lessons::class)->name('index');
+    Route::get('create', Pages\LessonCreate::class)->name('create');
 });

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Support\Enums\Languages;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,6 +20,7 @@ class LessonFactory extends Factory
         return [
             'title' => $this->faker->sentence,
             'text' => $this->faker->paragraph,
+            'language' => $this->faker->randomElement(Languages::class),
             'word_count' => $this->faker->numberBetween(100, 1000),
             'progress' => $this->faker->numberBetween(0, 100),
         ];

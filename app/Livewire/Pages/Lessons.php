@@ -24,7 +24,7 @@ class Lessons extends Component
 
     public function mount()
     {
-        $this->title = __('Lesson Overview');
+        $this->title = __('Lessons');
 
         $this->sortItems = [
             [
