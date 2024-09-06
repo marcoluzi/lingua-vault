@@ -9,6 +9,7 @@ use LivewireUI\Modal\ModalComponent;
 class DeleteLessonModal extends ModalComponent
 {
     public int $lessonId;
+    
     protected LessonDeletionService $lessonDeletionService;
 
     public function boot(LessonDeletionService $lessonDeletionService)
