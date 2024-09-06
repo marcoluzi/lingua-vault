@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('text');
+            $table->string('language');
             $table->unsignedInteger('word_count');
             $table->unsignedInteger('progress')->default(0);
             $table->timestamps();
