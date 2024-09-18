@@ -12,7 +12,7 @@
         "autoprefixer": "10.4.20",
         "laravel-vite-plugin": "1.0.5",
         "resolve-url-loader": "5.0.0",
-        "sass": "1.78.0",
+        "sass": "1.79.0",
         "sass-loader": "16.0.1",
         "tailwindcss": "3.4.12",
         "vite": "5.4.6"
