@@ -3194,16 +3194,16 @@
         },
         {
             "name": "rawilk/laravel-settings",
-            "version": "v3.3.1",
+            "version": "v3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rawilk/laravel-settings.git",
-                "reference": "9e46f290f625a8efc9c0192c82efe06a4d4d6311"
+                "reference": "8ac3cb1e318a9ccf61d4c456a0ea4cca453bc5c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rawilk/laravel-settings/zipball/9e46f290f625a8efc9c0192c82efe06a4d4d6311",
-                "reference": "9e46f290f625a8efc9c0192c82efe06a4d4d6311",
+                "url": "https://api.github.com/repos/rawilk/laravel-settings/zipball/8ac3cb1e318a9ccf61d4c456a0ea4cca453bc5c6",
+                "reference": "8ac3cb1e318a9ccf61d4c456a0ea4cca453bc5c6",
                 "shasum": ""
             },
             "require": {
@@ -3263,7 +3263,7 @@
             ],
             "support": {
                 "issues": "https://github.com/rawilk/laravel-settings/issues",
-                "source": "https://github.com/rawilk/laravel-settings/tree/v3.3.1"
+                "source": "https://github.com/rawilk/laravel-settings/tree/v3.4.0"
             },
             "funding": [
                 {
@@ -3271,7 +3271,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-10T22:33:27+00:00"
+            "time": "2024-10-16T15:51:22+00:00"
         },
         {
             "name": "spatie/laravel-package-tools",
