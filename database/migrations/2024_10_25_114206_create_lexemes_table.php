@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('text');
             $table->string('meaning');
             $table->string('language');
-            $table->unsignedTinyInteger('e_factor')->default(2.5);
+            $table->float('e_factor')->default(2.5);
             $table->timestamps();
         });
     }
