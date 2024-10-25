@@ -19,7 +19,6 @@ class LessonRead extends Component
     }
 
     // TODO: breadcrumbs break after component update
-    // TODO: Trait erstellen
     public function breadcrumbs(Trail $trail): Trail
     {
         return $trail
