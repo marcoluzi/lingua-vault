@@ -37,8 +37,7 @@
                         </div>
                     </div>
                     <div class="flex flex-none items-center gap-x-4">
-                        {{-- TODO: Open lesson --}}
-                        <a href="#" class="hidden rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:block">
+                        <a href="{{ route('lessons.view', ['id' => $lesson['id']]) }}" class="hidden rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:block">
                             {{ __('Open lesson') }}
                         </a>
                         <div x-data="{ open: false }" class="relative flex-none">
@@ -85,7 +84,6 @@
                                     {{ __('Edit') }}
                                     <span class="sr-only">{{ $lesson['title'] }}</span>
                                 </a>
-                                {{-- TODO: Delete --}}
                                 <button
                                     class="block px-3 py-1 text-sm leading-6 text-gray-900 hover:bg-gray-50 w-full text-left"
                                     role="menuitem"
