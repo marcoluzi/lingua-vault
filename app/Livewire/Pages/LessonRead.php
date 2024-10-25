@@ -10,12 +10,12 @@ class LessonRead extends Component
 {
     public $title = '';
 
-    public Lesson $post;
+    public Lesson $lesson;
 
     public function mount($id)
     {
-        $this->post = Lesson::findOrFail($id);
-        $this->title = $this->post->title;
+        $this->lesson = Lesson::findOrFail($id);
+        $this->title = $this->lesson->title;
     }
 
     // TODO: breadcrumbs break after component update
