@@ -6,7 +6,7 @@ use App\Models\Lesson;
 use Livewire\Component;
 use WireUi\Breadcrumbs\Trail;
 
-class LessonView extends Component
+class LessonRead extends Component
 {
     public $title = '';
 
@@ -29,6 +29,6 @@ class LessonView extends Component
 
     public function render()
     {
-        return view('livewire.pages.lesson-view')->title($this->title);
+        return view('livewire.pages.lesson-read')->title($this->title);
     }
 }
