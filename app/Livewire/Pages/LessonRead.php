@@ -12,9 +12,9 @@ class LessonRead extends Component
 
     public Lesson $lesson;
 
-    public function mount($id)
+    public function mount($lessonId)
     {
-        $this->lesson = Lesson::findOrFail($id);
+        $this->lesson = Lesson::findOrFail($lessonId);
         $this->title = $this->lesson->title;
     }
 
