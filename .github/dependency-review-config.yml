@@ -25,6 +25,7 @@ allow_licenses:
   - FSFULLRWD
   - GPL-1.0-or-later
   - GPL-2.0-or-later
+  - GPL-3.0-only
   - GPL-3.0-or-later
   - HPND
   - IBM-pibs
