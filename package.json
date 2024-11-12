@@ -10,7 +10,7 @@
         "@tailwindcss/typography": "0.5.15",
         "all-contributors-cli": "6.26.1",
         "autoprefixer": "10.4.20",
-        "laravel-vite-plugin": "1.0.5",
+        "laravel-vite-plugin": "1.0.6",
         "resolve-url-loader": "5.0.0",
         "sass": "1.80.6",
         "sass-loader": "16.0.3",
