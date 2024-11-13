@@ -50,7 +50,7 @@ services:
             retries: 3
             timeout: 5s
     phpmyadmin:
-        image: 'phpmyadmin:latest@sha256:8371fd24453588af4593f9964759c91619e857c5f3ed48fe0e6d1619321af757'
+        image: 'phpmyadmin:latest@sha256:49f9db172aaec98bee23b8d9ab4e66f76b5b9f2e87cb53c79aa33e5e7b2b9f06'
         ports:
             - '${FORWARD_PHPMYADMIN_PORT:-8080}:80'
         networks:
