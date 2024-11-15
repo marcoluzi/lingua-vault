@@ -2,14 +2,14 @@
 
 namespace App\Livewire\Components;
 
-use App\Services\LessonDeletionService;
 use App\Livewire\Pages\Lessons;
+use App\Services\LessonDeletionService;
 use LivewireUI\Modal\ModalComponent;
 
 class DeleteLessonModal extends ModalComponent
 {
     public int $lessonId;
-    
+
     protected LessonDeletionService $lessonDeletionService;
 
     public function boot(LessonDeletionService $lessonDeletionService)
