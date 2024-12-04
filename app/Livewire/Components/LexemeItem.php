@@ -11,8 +11,6 @@ class LexemeItem extends Component
 
     public string $word;
 
-    public bool $isKnown = false;
-
     public string $backgroundColor = 'blue';
 
     public function mount()
@@ -22,8 +20,6 @@ class LexemeItem extends Component
             ->first();
 
         if ($lexeme) {
-            $this->isKnown = true;
-
             $this->backgroundColor = $this->getBackgroundColor($lexeme->e_factor);
         }
     }
