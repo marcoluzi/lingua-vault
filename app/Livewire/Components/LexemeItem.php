@@ -28,7 +28,6 @@ class LexemeItem extends Component
         }
     }
 
-    // TODO: Move to Model?
     private function getBackgroundColor(float $eFactor): string
     {
         return match (true) {
@@ -41,8 +40,6 @@ class LexemeItem extends Component
 
     public function render()
     {
-        return view('livewire.components.lexeme-item', [
-            'backgroundColor' => $this->backgroundColor,
-        ]);
+        return view('livewire.components.lexeme-item');
     }
 }
