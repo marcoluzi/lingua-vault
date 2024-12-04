@@ -8,6 +8,7 @@ use Livewire\Component;
 class LanguageSwitcher extends Component
 {
     public $languageItems = [];
+
     public $selectedLanguageItem = [];
 
     protected LanguageService $languageService;

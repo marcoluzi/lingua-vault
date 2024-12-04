@@ -34,7 +34,7 @@ class LanguageService
 
     public function setLanguage(string $selectedLanguage): void
     {
-        if (!Languages::tryFrom($selectedLanguage)) {
+        if (! Languages::tryFrom($selectedLanguage)) {
             throw new InvalidArgumentException("Invalid language: {$selectedLanguage}");
         }
 

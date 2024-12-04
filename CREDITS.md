@@ -8,7 +8,7 @@ Thank you to all the people who have already contributed to this repository via 
 <table>
   <tbody>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/marcoluzi"><img src="https://avatars.githubusercontent.com/u/40238681?v=4?s=100" width="100px;" alt="Marco Luzi"/><br /><sub><b>Marco Luzi</b></sub></a><br /><a href="#maintenance-marcoluzi" title="Maintenance">🚧</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/marcoluzi"><img src="https://avatars.githubusercontent.com/u/40238681?v=4?s=100" width="100px;" alt="Marco Luzi"/><br /><sub><b>Marco Luzi</b></sub></a><br /><a href="#maintenance-marcoluzi" title="Maintenance">🚧</a> <a href="https://github.com/marcoluzi/lingua-vault/commits?author=marcoluzi" title="Code">💻</a> <a href="#ideas-marcoluzi" title="Ideas, Planning, & Feedback">🤔</a> <a href="#projectManagement-marcoluzi" title="Project Management">📆</a> <a href="https://github.com/marcoluzi/lingua-vault/pulls?q=is%3Apr+reviewed-by%3Amarcoluzi" title="Reviewed Pull Requests">👀</a></td>
     </tr>
   </tbody>
 </table>

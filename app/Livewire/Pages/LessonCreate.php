@@ -42,7 +42,7 @@ class LessonCreate extends Component
 
     public function save()
     {
-        $this->validate(); 
+        $this->validate();
 
         Lesson::create([
             'language' => $this->selectedLanguageItem['value'],
