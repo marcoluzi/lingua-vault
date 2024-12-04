@@ -30,16 +30,7 @@
     "commitMessageTopic": "{{depName}}",
     "lockFileMaintenance": {
         "enabled": true,
-        "recreateWhen": "always",
-        "rebaseStalePrs": true,
-        "branchTopic": "lock-file-maintenance",
-        "commitMessageAction": "Lock file maintenance",
-        "commitMessageTopic": null,
-        "commitMessageExtra": null,
-        "schedule": [
-            "before 4am on monday"
-        ],
-        "groupName": null,
+        "commitMessageAction": ":recycle: Lock file maintenance",
         "prBodyDefinitions": {
             "Change": "All locks refreshed"
         }
