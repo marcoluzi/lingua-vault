@@ -33,7 +33,12 @@ module.exports = {
         {
             pattern: /max-w-(sm|md|lg|xl|2xl|3xl|4xl|5xl|6xl|7xl)/,
             variants: ['sm', 'md', 'lg', 'xl', '2xl']
-        }
+        },
+        'bg-blue-300',
+        'bg-red-300',
+        'bg-orange-300',
+        'bg-green-300',
+        'bg-gray-300',
     ],
     plugins: [
         require('@tailwindcss/forms'),

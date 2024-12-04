@@ -8,14 +8,19 @@ use WireUi\Breadcrumbs\Trail;
 
 class LessonRead extends Component
 {
-    public $title = '';
-
-    public Lesson $lesson;
+    public string $lessonLanguage;
+    public string $title;
+    public string $text;
 
     public function mount($lessonId)
     {
-        $this->lesson = Lesson::findOrFail($lessonId);
-        $this->title = $this->lesson->title;
+        $lesson = Lesson::findOrFail($lessonId);
+
+        // TODO: Switch Current Language if different from lesson language
+
+        $this->lessonLanguage = $lesson->language->value;
+        $this->title = $lesson->title;
+        $this->text = $lesson->text;
     }
 
     // TODO: breadcrumbs break after component update
