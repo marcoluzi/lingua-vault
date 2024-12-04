@@ -1,6 +1,6 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": ["config:best-practices"],
+    "extends": ["config:best-practices", ":rebaseStalePrs"],
     "assignees": ["marcoluzi"],
     "packageRules": [
         {
@@ -11,8 +11,7 @@
             "description": "Automatically merge minor and patch-level updates",
             "matchUpdateTypes": ["minor", "patch", "digest"],
             "automerge": true,
-            "automergeType": "branch",
-            "ignoreTests": true
+            "automergeType": "branch"
         }
     ],
     "timezone": "Europe/Zurich",
@@ -22,8 +21,27 @@
         "every weekend"
     ],
     "platformAutomerge": true,
-    "rebaseWhen": "behind-base-branch",
+    "rebaseWhen": "conflicted",
     "rollbackPrs": true,
     "dependencyDashboard": true,
-    "dependencyDashboardAutoclose": false
+    "dependencyDashboardAutoclose": false,
+    "addLabels": ["type:dependency"],
+    "commitMessageAction": "⬆️ Update",
+    "commitMessageTopic": "{{depName}}",
+    "lockFileMaintenance": {
+        "enabled": true,
+        "recreateWhen": "always",
+        "rebaseStalePrs": true,
+        "branchTopic": "lock-file-maintenance",
+        "commitMessageAction": "Lock file maintenance",
+        "commitMessageTopic": null,
+        "commitMessageExtra": null,
+        "schedule": [
+            "before 4am on monday"
+        ],
+        "groupName": null,
+        "prBodyDefinitions": {
+            "Change": "All locks refreshed"
+        }
+    }
 }
