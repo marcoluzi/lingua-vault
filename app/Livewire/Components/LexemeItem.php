@@ -8,15 +8,18 @@ use Livewire\Component;
 class LexemeItem extends Component
 {
     public string $lessonLanguage;
+
     public string $word;
+
     public bool $isKnown = false;
+
     public string $backgroundColor = 'blue'; // Default for new words
 
     public function mount()
     {
         $lexeme = Lexeme::where('text', strtolower($this->word))
-                        ->where('language', $this->lessonLanguage)
-                        ->first();
+            ->where('language', $this->lessonLanguage)
+            ->first();
 
         if ($lexeme) {
             $this->isKnown = true;
@@ -25,6 +28,7 @@ class LexemeItem extends Component
         }
     }
 
+    // TODO: Move to Model?
     private function getBackgroundColor(float $eFactor): string
     {
         return match (true) {
@@ -38,7 +42,7 @@ class LexemeItem extends Component
     public function render()
     {
         return view('livewire.components.lexeme-item', [
-            'backgroundColor' => $this->backgroundColor
+            'backgroundColor' => $this->backgroundColor,
         ]);
     }
 }

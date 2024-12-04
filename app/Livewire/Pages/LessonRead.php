@@ -9,7 +9,9 @@ use WireUi\Breadcrumbs\Trail;
 class LessonRead extends Component
 {
     public string $lessonLanguage;
+
     public string $title;
+
     public string $text;
 
     public function mount($lessonId)
