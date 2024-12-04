@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class LexemeSeeder extends Seeder
@@ -12,6 +11,8 @@ class LexemeSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        for ($i = 0; $i < 100; $i++) {
+            \App\Models\Lexeme::factory()->create();
+        }
     }
 }

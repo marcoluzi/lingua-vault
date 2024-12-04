@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('text');
             $table->string('meaning');
             $table->string('language');
-            $table->float('e_factor')->default(2.5);
+            $table->unsignedInteger('repetitions')->default(1);
+            $table->float('e_factor')->range(1.3, 2.5)->default(2.5);
             $table->timestamps();
         });
     }
