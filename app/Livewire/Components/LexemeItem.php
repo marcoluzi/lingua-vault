@@ -13,7 +13,7 @@ class LexemeItem extends Component
 
     public bool $isKnown = false;
 
-    public string $backgroundColor = 'blue'; // Default for new words
+    public string $backgroundColor = 'blue';
 
     public function mount()
     {
@@ -28,6 +28,18 @@ class LexemeItem extends Component
         }
     }
 
+    /**
+     * Determine the background color based on the given e-factor.
+     *
+     * Colors are set as follows:
+     * - Red: 1.3 <= eFactor <= 1.6
+     * - Orange: 1.7 <= eFactor <= 2.1
+     * - Green: 2.2 <= eFactor <= 2.5
+     * - Gray: All other cases
+     *
+     * @param float $eFactor
+     * @return string
+     */
     private function getBackgroundColor(float $eFactor): string
     {
         return match (true) {
