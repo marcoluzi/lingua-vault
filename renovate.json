@@ -1,7 +1,12 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": ["config:best-practices", ":rebaseStalePrs"],
-    "assignees": ["marcoluzi"],
+    "extends": [
+        "config:best-practices",
+        ":rebaseStalePrs"
+    ],
+    "assignees": [
+        "marcoluzi"
+    ],
     "packageRules": [
         {
             "matchPackageNames": [],
@@ -9,7 +14,11 @@
         },
         {
             "description": "Automatically merge minor and patch-level updates",
-            "matchUpdateTypes": ["minor", "patch", "digest"],
+            "matchUpdateTypes": [
+                "minor",
+                "patch",
+                "digest"
+            ],
             "automerge": true,
             "automergeType": "branch"
         }
@@ -25,13 +34,15 @@
     "rollbackPrs": true,
     "dependencyDashboard": true,
     "dependencyDashboardAutoclose": false,
-    "addLabels": ["type:dependency"],
+    "addLabels": [
+        "type:dependency"
+    ],
     "commitMessageAction": "⬆️ Update",
     "commitMessageTopic": "{{depName}}",
     "lockFileMaintenance": {
         "enabled": true,
         "recreateWhen": "always",
-        "rebaseStalePrs": true,
+        "rebaseWhen": "behind-base-branch",
         "branchTopic": "lock-file-maintenance",
         "commitMessageAction": "Lock file maintenance",
         "commitMessageTopic": null,
