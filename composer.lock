@@ -6080,29 +6080,29 @@
         },
         {
             "name": "wireui/breadcrumbs",
-            "version": "v3.1.1",
+            "version": "v3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wireui/breadcrumbs.git",
-                "reference": "8613533cb0052ff4c7eff61c1ff28d9e616fc953"
+                "reference": "9b927a17678f987b38b0fe7b7e03832ed3377f99"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wireui/breadcrumbs/zipball/8613533cb0052ff4c7eff61c1ff28d9e616fc953",
-                "reference": "8613533cb0052ff4c7eff61c1ff28d9e616fc953",
+                "url": "https://api.github.com/repos/wireui/breadcrumbs/zipball/9b927a17678f987b38b0fe7b7e03832ed3377f99",
+                "reference": "9b927a17678f987b38b0fe7b7e03832ed3377f99",
                 "shasum": ""
             },
             "require": {
                 "laravel/framework": "^10.0|^11.0",
                 "livewire/livewire": "^3.0",
-                "php": "^8.2|^8.3"
+                "php": "^8.2|^8.3|^8.4"
             },
             "require-dev": {
+                "larastan/larastan": "^3.0",
                 "laravel/pint": "^1.9",
                 "mockery/mockery": "^1.5",
-                "nunomaduro/larastan": "^2.5",
                 "orchestra/testbench": "^8.0|^9.0",
-                "pestphp/pest": "^2.0"
+                "pestphp/pest": "^3.0"
             },
             "type": "library",
             "extra": {
@@ -6138,9 +6138,9 @@
             ],
             "support": {
                 "issues": "https://github.com/wireui/breadcrumbs/issues",
-                "source": "https://github.com/wireui/breadcrumbs/tree/v3.1.1"
+                "source": "https://github.com/wireui/breadcrumbs/tree/v3.2.0"
             },
-            "time": "2024-05-23T14:50:21+00:00"
+            "time": "2025-01-05T01:43:28+00:00"
         }
     ],
     "packages-dev": [
