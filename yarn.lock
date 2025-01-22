@@ -952,10 +952,10 @@ json5@^2.1.2:
   resolved "https://registry.yarnpkg.com/json5/-/json5-2.2.3.tgz#78cd6f1a19bdc12b73db5ad0c61efd66c1e29283"
   integrity sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==
 
-laravel-vite-plugin@1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/laravel-vite-plugin/-/laravel-vite-plugin-1.1.1.tgz#e909a2df7cad7275dca3f7717f5e3075891045d4"
-  integrity sha512-HMZXpoSs1OR+7Lw1+g4Iy/s3HF3Ldl8KxxYT2Ot8pEB4XB/QRuZeWgDYJdu552UN03YRSRNK84CLC9NzYRtncA==
+laravel-vite-plugin@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/laravel-vite-plugin/-/laravel-vite-plugin-1.2.0.tgz#7a82e850fba9ca2359fa64f70e0647478ea5fde3"
+  integrity sha512-R0pJ+IcTVeqEMoKz/B2Ij57QVq3sFTABiFmb06gAwFdivbOgsUtuhX6N2MGLEArajrS3U5JbberzwOe7uXHMHQ==
   dependencies:
     picocolors "^1.0.0"
     vite-plugin-full-reload "^1.1.0"
