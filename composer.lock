@@ -1271,16 +1271,16 @@
         },
         {
             "name": "laravel/prompts",
-            "version": "v0.3.3",
+            "version": "v0.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/prompts.git",
-                "reference": "749395fcd5f8f7530fe1f00dfa84eb22c83d94ea"
+                "reference": "abeaa2ba4294247d5409490d1ca1bc6248087011"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/prompts/zipball/749395fcd5f8f7530fe1f00dfa84eb22c83d94ea",
-                "reference": "749395fcd5f8f7530fe1f00dfa84eb22c83d94ea",
+                "url": "https://api.github.com/repos/laravel/prompts/zipball/abeaa2ba4294247d5409490d1ca1bc6248087011",
+                "reference": "abeaa2ba4294247d5409490d1ca1bc6248087011",
                 "shasum": ""
             },
             "require": {
@@ -1294,7 +1294,7 @@
                 "laravel/framework": ">=10.17.0 <10.25.0"
             },
             "require-dev": {
-                "illuminate/collections": "^10.0|^11.0",
+                "illuminate/collections": "^10.0|^11.0|^12.0",
                 "mockery/mockery": "^1.5",
                 "pestphp/pest": "^2.3|^3.4",
                 "phpstan/phpstan": "^1.11",
@@ -1324,9 +1324,9 @@
             "description": "Add beautiful and user-friendly forms to your command-line applications.",
             "support": {
                 "issues": "https://github.com/laravel/prompts/issues",
-                "source": "https://github.com/laravel/prompts/tree/v0.3.3"
+                "source": "https://github.com/laravel/prompts/tree/v0.3.4"
             },
-            "time": "2024-12-30T15:53:31+00:00"
+            "time": "2025-01-24T15:41:01+00:00"
         },
         {
             "name": "laravel/serializable-closure",
@@ -2008,16 +2008,16 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v3.5.18",
+            "version": "v3.5.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "62f0fa6b340a467c25baa590a567d9a134b357da"
+                "reference": "3f1b2c134cde537bb7666e490ea21a8ffc8bbf14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/62f0fa6b340a467c25baa590a567d9a134b357da",
-                "reference": "62f0fa6b340a467c25baa590a567d9a134b357da",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/3f1b2c134cde537bb7666e490ea21a8ffc8bbf14",
+                "reference": "3f1b2c134cde537bb7666e490ea21a8ffc8bbf14",
                 "shasum": ""
             },
             "require": {
@@ -2072,7 +2072,7 @@
             "description": "A front-end framework for Laravel.",
             "support": {
                 "issues": "https://github.com/livewire/livewire/issues",
-                "source": "https://github.com/livewire/livewire/tree/v3.5.18"
+                "source": "https://github.com/livewire/livewire/tree/v3.5.19"
             },
             "funding": [
                 {
@@ -2080,7 +2080,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-12-23T15:05:02+00:00"
+            "time": "2025-01-28T21:39:51+00:00"
         },
         {
             "name": "monolog/monolog",
