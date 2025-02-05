@@ -1,52 +1,29 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": ["config:best-practices", ":rebaseStalePrs"],
+    "extends": ["config:best-practices"],
+    "assignees": ["marcoluzi"],
     "packageRules": [
-      {
-        "matchPackageNames": [],
-        "enabled": false
-      },
-      {
-        "description": "Automatically merge minor and patch-level updates",
-        "matchUpdateTypes": ["minor", "patch", "digest"],
-        "automerge": true,
-        "automergeType": "pr"
-      },
-      {
-        "description": "Assigning PRs of non-trivial updates",
-        "matchUpdateTypes": [
-          "major",
-          "pin",
-          "pinDigest",
-          "lockFileMaintenance",
-          "rollback",
-          "bump",
-          "replacement"
-        ],
-        "reviewers": ["marcoluzi"],
-        "automerge": false
-      }
+        {
+            "matchPackageNames": [],
+            "enabled": false
+        },
+        {
+            "description": "Automatically merge minor and patch-level updates",
+            "matchUpdateTypes": ["minor", "patch", "digest"],
+            "automerge": true,
+            "automergeType": "branch",
+            "ignoreTests": true
+        }
     ],
     "timezone": "Europe/Zurich",
     "schedule": [
-      "after 10pm every weekday",
-      "before 5am every weekday",
-      "every weekend"
+        "after 10pm every weekday",
+        "before 5am every weekday",
+        "every weekend"
     ],
     "platformAutomerge": true,
-    "rebaseWhen": "conflicted",
+    "rebaseWhen": "behind-base-branch",
     "rollbackPrs": true,
     "dependencyDashboard": true,
-    "dependencyDashboardAutoclose": false,
-    "addLabels": ["type:dependency"],
-    "commitMessageAction": "⬆️ Update",
-    "commitMessageTopic": "{{depName}}",
-    "lockFileMaintenance": {
-      "enabled": true,
-      "commitMessageAction": ":recycle: Lock file maintenance",
-      "prBodyDefinitions": {
-        "Change": "All locks refreshed"
-      }
-    },
-    "ignoreTests": true
-  }
+    "dependencyDashboardAutoclose": false
+}
