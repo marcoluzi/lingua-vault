@@ -1,29 +1,52 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": ["config:best-practices"],
-    "assignees": ["marcoluzi"],
+    "extends": ["config:best-practices", ":rebaseStalePrs"],
     "packageRules": [
-        {
-            "matchPackageNames": [],
-            "enabled": false
-        },
-        {
-            "description": "Automatically merge minor and patch-level updates",
-            "matchUpdateTypes": ["minor", "patch", "digest"],
-            "automerge": true,
-            "automergeType": "branch",
-            "ignoreTests": true
-        }
+      {
+        "matchPackageNames": [],
+        "enabled": false
+      },
+      {
+        "description": "Automatically merge minor and patch-level updates",
+        "matchUpdateTypes": ["minor", "patch", "digest"],
+        "automerge": true,
+        "automergeType": "pr"
+      },
+      {
+        "description": "Assigning PRs of non-trivial updates",
+        "matchUpdateTypes": [
+          "major",
+          "pin",
+          "pinDigest",
+          "lockFileMaintenance",
+          "rollback",
+          "bump",
+          "replacement"
+        ],
+        "reviewers": ["marcoluzi"],
+        "automerge": false
+      }
     ],
     "timezone": "Europe/Zurich",
     "schedule": [
-        "after 10pm every weekday",
-        "before 5am every weekday",
-        "every weekend"
+      "after 10pm every weekday",
+      "before 5am every weekday",
+      "every weekend"
     ],
     "platformAutomerge": true,
-    "rebaseWhen": "behind-base-branch",
+    "rebaseWhen": "conflicted",
     "rollbackPrs": true,
     "dependencyDashboard": true,
-    "dependencyDashboardAutoclose": false
-}
+    "dependencyDashboardAutoclose": false,
+    "addLabels": ["type:dependency"],
+    "commitMessageAction": "⬆️ Update",
+    "commitMessageTopic": "{{depName}}",
+    "lockFileMaintenance": {
+      "enabled": true,
+      "commitMessageAction": ":recycle: Lock file maintenance",
+      "prBodyDefinitions": {
+        "Change": "All locks refreshed"
+      }
+    },
+    "ignoreTests": true
+  }
