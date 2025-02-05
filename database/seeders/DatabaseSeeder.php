@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Create lessons
-        $lessons = Lesson::factory()->count(10)->create();
+        $lessons = Lesson::factory()->count(20)->create();
 
         // Create lexemes and associate them with lessons
         $lessons->each(function ($lesson) {
