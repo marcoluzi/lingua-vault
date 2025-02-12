@@ -26,7 +26,7 @@ services:
             - mariadb
             - phpmyadmin
     mariadb:
-        image: 'mariadb:11@sha256:a9547599cd87d7242435aea6fda22a9d83e2c06d16c658ef70d2868b3d3f6a80'
+        image: 'mariadb:11@sha256:bfb1298c06cd15f446f1c59600b3a856dae861705d1a2bd2a00edbd6c74ba748'
         ports:
             - '${FORWARD_DB_PORT:-3306}:3306'
         environment:
@@ -50,7 +50,7 @@ services:
             retries: 3
             timeout: 5s
     phpmyadmin:
-        image: 'phpmyadmin:latest@sha256:3483eea0cdfe5a4a67cd1030f8e5f1cce291fcade2a8eb18fbec7f91c54d6bf1'
+        image: 'phpmyadmin:latest@sha256:b8e9de0186fe7e12e3a9565432c9faf6e8f0ec0f78f07bc3625910fd130afb99'
         ports:
             - '${FORWARD_PHPMYADMIN_PORT:-8080}:80'
         networks:
