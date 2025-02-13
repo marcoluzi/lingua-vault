@@ -6,6 +6,8 @@
             $words = preg_split('/[\s,.;:?!]+/u', $text, -1, PREG_SPLIT_NO_EMPTY);
         @endphp
 
+        {{-- TODO: Punctuation should stay in but not be counted as a word --}}
+
         @foreach ($words as $word)
             <livewire:components.lexeme-item
                 :$word
