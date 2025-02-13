@@ -35,19 +35,12 @@ class LexemeItem extends Component
      */
     private function getColorForEfactor($e_factor): string
     {
-        if ($e_factor <= 1.4) {
-            return 'red';
-        } elseif ($e_factor <= 1.6) {
-            return 'orange';
-        } elseif ($e_factor <= 1.8) {
-            return 'yellow';
-        } elseif ($e_factor <= 2.0) {
-            return 'green';
-        } elseif ($e_factor <= 2.2) {
-            return 'teal';
-        } else {
-            return 'purple';
-        }
+        return match (true) {
+            $e_factor >= 1.3 && $e_factor <= 1.6 => 'red',
+            $e_factor >= 1.7 && $e_factor <= 2.1 => 'orange',
+            $e_factor >= 2.2 && $e_factor <= 2.5 => 'green',
+            default => 'white',
+        };
     }
 
     public function render()
