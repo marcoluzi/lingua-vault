@@ -10,7 +10,7 @@ class LexemeItem extends Component
     public string $word;
     public string $lessonLanguage;
     public int $lessonId;
-    public $lexemeId = 'null';
+    public $lexemeId = null;
     public string $backgroundColor = 'blue';
 
     public function mount($word, $lessonLanguage, $lessonId)

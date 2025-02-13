@@ -3,7 +3,7 @@
         wire:click="$dispatch('openModal', {
             component: 'components.edit-lexeme-modal',
             arguments: {
-                lexemeId: {{ $lexemeId }},
+                lexemeId: {{ $lexemeId ? $lexemeId : 'null' }},
                 word: '{{ $word }}',
                 lessonLanguage: '{{ $lessonLanguage }}',
                 lessonId: {{ $lessonId }}
