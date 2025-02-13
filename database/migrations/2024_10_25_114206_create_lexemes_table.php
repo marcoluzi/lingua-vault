@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('language');
             $table->unsignedInteger('repetitions')->default(1);
             $table->float('e_factor')->range(1.3, 2.5)->default(2.5);
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }
