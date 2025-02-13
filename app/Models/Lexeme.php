@@ -13,6 +13,7 @@ class Lexeme extends Model
     protected $fillable = [
         'text',
         'meaning',
+        'romanized',
         'language',
         'e_factor',
     ];

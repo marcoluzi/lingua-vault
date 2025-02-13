@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('text');
             $table->string('meaning');
+            $table->string('romanized')->nullable();
             $table->string('language');
             $table->unsignedInteger('repetitions')->default(1);
             $table->float('e_factor')->range(1.3, 2.5)->default(2.5);

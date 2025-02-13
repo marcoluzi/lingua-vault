@@ -7,34 +7,47 @@ use Livewire\Component;
 
 class LexemeItem extends Component
 {
-    public $lessonLanguage = '';
+    public string $word;
+    public string $lessonLanguage;
+    public int $lessonId;
+    public $lexemeId = 'null';
+    public string $backgroundColor = 'blue';
 
-    public $word = '';
-
-    public $backgroundColor = 'blue';
-
-    public int $lexemeId = 0;
-
-    public function mount()
+    public function mount($word, $lessonLanguage, $lessonId)
     {
-        $lexeme = Lexeme::where('text', strtolower($this->word))
+        $this->word           = $word;
+        $this->lessonLanguage = $lessonLanguage;
+        $this->lessonId       = $lessonId;
+
+        // Check for an existing lexeme (matching text and language)
+        $existing = Lexeme::where('text', $this->word)
             ->where('language', $this->lessonLanguage)
             ->first();
 
-        if ($lexeme) {
-            $this->lexemeId = $lexeme->id;
-            $this->backgroundColor = $this->getBackgroundColor($lexeme->e_factor);
+        if ($existing) {
+            $this->lexemeId = $existing->id;
+            $this->backgroundColor = $this->getColorForEfactor($existing->e_factor);
         }
     }
 
-    private function getBackgroundColor(float $eFactor): string
+    /**
+     * Maps the e_factor to a color string.
+     */
+    private function getColorForEfactor($e_factor): string
     {
-        return match (true) {
-            $eFactor >= 1.3 && $eFactor <= 1.6 => 'red',
-            $eFactor >= 1.7 && $eFactor <= 2.1 => 'orange',
-            $eFactor >= 2.2 && $eFactor <= 2.5 => 'green',
-            default => 'gray',
-        };
+        if ($e_factor <= 1.4) {
+            return 'red';
+        } elseif ($e_factor <= 1.6) {
+            return 'orange';
+        } elseif ($e_factor <= 1.8) {
+            return 'yellow';
+        } elseif ($e_factor <= 2.0) {
+            return 'green';
+        } elseif ($e_factor <= 2.2) {
+            return 'teal';
+        } else {
+            return 'purple';
+        }
     }
 
     public function render()
