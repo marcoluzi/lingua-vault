@@ -1,5 +1,5 @@
 <div>
-    <button class="p-1 rounded-sm bg-{{ $backgroundColor }}-200 border border-{{ $backgroundColor }}-400"
+    <button class="p-1 rounded {{ $backgroundColor }}"
         wire:click="$dispatch('openModal', {
             component: 'components.edit-lexeme-modal',
             arguments: {
