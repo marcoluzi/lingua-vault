@@ -6,6 +6,7 @@ use App\Models\Lesson;
 use App\Services\LanguageService;
 use Livewire\Component;
 use WireUi\Breadcrumbs\Trail;
+use Illuminate\View\View;
 
 class LessonRead extends Component
 {
@@ -19,12 +20,12 @@ class LessonRead extends Component
 
     protected LanguageService $languageService;
 
-    public function boot(LanguageService $languageService)
+    public function boot(LanguageService $languageService): void
     {
         $this->languageService = $languageService;
     }
 
-    public function mount($lessonId)
+    public function mount(int $lessonId): void
     {
         $lesson = Lesson::findOrFail($lessonId);
         $this->lessonId = $lesson->id;
@@ -35,7 +36,7 @@ class LessonRead extends Component
         if ($this->lessonLanguage !== $this->languageService->getCurrentLanguage()) {
             $this->languageService->setLanguage($this->lessonLanguage);
 
-            return redirect()->route('lessons.read', ['lessonId' => $lesson->id]);
+            $this->redirectRoute('lessons.read', ['lessonId' => $lesson->id]);
         }
     }
 
@@ -46,7 +47,7 @@ class LessonRead extends Component
             ->push($this->title);
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.pages.lesson-read')->title($this->title);
     }

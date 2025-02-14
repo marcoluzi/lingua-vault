@@ -5,6 +5,7 @@ namespace App\Livewire\Components;
 use App\Livewire\Pages\Lessons;
 use App\Services\LessonDeletionService;
 use LivewireUI\Modal\ModalComponent;
+use Illuminate\View\View;
 
 class DeleteLessonModal extends ModalComponent
 {
@@ -12,7 +13,7 @@ class DeleteLessonModal extends ModalComponent
 
     protected LessonDeletionService $lessonDeletionService;
 
-    public function boot(LessonDeletionService $lessonDeletionService)
+    public function boot(LessonDeletionService $lessonDeletionService): void
     {
         $this->lessonDeletionService = $lessonDeletionService;
     }
@@ -22,7 +23,7 @@ class DeleteLessonModal extends ModalComponent
      *
      * @return void
      */
-    public function deleteLesson()
+    public function deleteLesson(): void
     {
         try {
             $this->lessonDeletionService->deleteLesson($this->lessonId);
@@ -33,7 +34,7 @@ class DeleteLessonModal extends ModalComponent
         }
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.components.delete-lesson-modal');
     }
