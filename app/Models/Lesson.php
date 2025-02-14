@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Support\Enums\Languages;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Lesson extends Model
 {
@@ -22,5 +23,10 @@ class Lesson extends Model
         return [
             'language' => Languages::class,
         ];
+    }
+
+    public function lexemes(): BelongsToMany
+    {
+        return $this->belongsToMany(Lexeme::class);
     }
 }
