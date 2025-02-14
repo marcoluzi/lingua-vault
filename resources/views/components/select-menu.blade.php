@@ -5,10 +5,10 @@
         </label>
     @endif
     <div class="relative mt-2">
-        <button type="button" class="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6" x-ref="button" @click="open = !open" aria-haspopup="listbox" :aria-expanded="open.toString()">
+        <button type="button" class="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-xs ring-1 ring-inset ring-gray-300 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6" x-ref="button" @click="open = !open" aria-haspopup="listbox" :aria-expanded="open.toString()">
             <span class="flex items-center">
                 @if (isset($selectedItem['image']))
-                    <img src="{{ $selectedItem['image'] }}" alt="{{ $selectedItem['alt'] }}" class="h-5 w-5 flex-shrink-0 rounded-full">
+                    <img src="{{ $selectedItem['image'] }}" alt="{{ $selectedItem['alt'] }}" class="h-5 w-5 shrink-0 rounded-full">
                 @endif
                 <span class="block truncate" :class="{ 'ml-3': '{{ isset($selectedItem['image']) }}' }">{{ $selectedItem['label'] }}</span>
             </span>
@@ -18,7 +18,7 @@
                 </svg>
             </span>
         </button>
-        <ul class="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm" x-show="open" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" @click.away="open = false" tabindex="-1" role="listbox">
+        <ul class="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm" x-show="open" x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" @click.away="open = false" tabindex="-1" role="listbox">
             @foreach ($items as $item)
                 <li class="text-gray-900 relative cursor-default select-none py-2 pl-3 pr-9 hover:bg-indigo-600 hover:text-white transition" :class="{ 'bg-indigo-600 text-white': '{{ $selectedItem['value'] }}' === '{{ $item['value'] }}', 'text-gray-900': '{{ $selectedItem['value'] }}' !== '{{ $item['value'] }}' }" role="option"
                     @click="
@@ -27,7 +27,7 @@
                     ">
                     <div class="flex items-center">
                         @if (isset($item['image']))
-                            <img src="{{ $item['image'] }}" alt="{{ $item['alt'] }}" class="h-5 w-5 flex-shrink-0 rounded-full" />
+                            <img src="{{ $item['image'] }}" alt="{{ $item['alt'] }}" class="h-5 w-5 shrink-0 rounded-full" />
                         @endif
                         <span class="font-normal block truncate" :class="{ 'font-semibold': '{{ $selectedItem['value'] }}' === '{{ $item['value'] }}', 'ml-3': '{{ isset($item['image']) }}' }">
                             {{ $item['label'] }}

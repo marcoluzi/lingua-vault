@@ -19,20 +19,29 @@ class LexemeService
     }
 
     /**
-     * Determine the background color for a lexeme based on its e_factor and status.
+     * Determine the full Tailwind CSS class string for a lexeme's background and border.
+     * All possible classes are explicitly returned.
      */
     public function determineBackgroundColor(Lexeme $lexeme): string
     {
         if ($lexeme->status === Statuses::WELL_KNOWN || $lexeme->status === Statuses::IGNORED) {
-            return 'white';
+            return 'bg-white border border-gray-300';
         }
 
-        return match (true) {
-            $lexeme->e_factor >= 1.3 && $lexeme->e_factor <= 1.6 => 'red',
-            $lexeme->e_factor >= 1.7 && $lexeme->e_factor <= 2.1 => 'orange',
-            $lexeme->e_factor >= 2.2 && $lexeme->e_factor <= 2.5 => 'green',
-            default => 'white',
-        };
+        if ($lexeme->e_factor >= 1.3 && $lexeme->e_factor <= 1.6) {
+            return 'bg-red-200 border border-red-400';
+        }
+
+        if ($lexeme->e_factor >= 1.7 && $lexeme->e_factor <= 2.1) {
+            return 'bg-orange-200 border border-orange-400';
+        }
+
+        if ($lexeme->e_factor >= 2.2 && $lexeme->e_factor <= 2.5) {
+            return 'bg-green-200 border border-green-400';
+        }
+
+        // Default case
+        return 'bg-white border border-gray-300';
     }
 
     /**

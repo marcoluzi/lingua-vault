@@ -16,7 +16,8 @@ class LexemeItem extends Component
 
     public ?int $lexemeId = null;
 
-    public string $backgroundColor = 'blue';
+    // Updated default to a full class string for Tailwind
+    public string $backgroundColor = 'bg-blue-200 border border-blue-400';
 
     public function mount(LexemeService $lexemeService, $word, $lessonLanguage, $lessonId)
     {

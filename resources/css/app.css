@@ -1,0 +1,10 @@
+@config "../../tailwind.config.js";
+@import "tailwindcss";
+
+input:invalid, textarea:invalid, select:invalid {
+    box-shadow: none;
+}
+
+[x-cloak] {
+    display: none;
+}
