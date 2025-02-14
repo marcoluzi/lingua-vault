@@ -58,6 +58,7 @@ class EditLexemeModal extends ModalComponent
             'status' => $this->status,
         ];
 
+        // TODO: Only dispatch to parent
         if ($this->lexemeId) {
             $lexeme = $lexemeService->findById($this->lexemeId);
             if ($lexeme) {

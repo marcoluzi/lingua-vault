@@ -9,6 +9,7 @@
         <div class="mb-4">
             <label class="block text-sm font-medium text-gray-700">{{ __('Meaning') }}</label>
             <input type="text" wire:model.defer="meaning" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+            {{-- TODO: Fixing error messages. Currently only displaying keys --}}
             @error('meaning')
                 <span class="text-sm text-red-500">{{ $message }}</span>
             @enderror
@@ -17,6 +18,7 @@
         <div class="mb-4">
             <label class="block text-sm font-medium text-gray-700">{{ __('Romanized') }}</label>
             <input type="text" wire:model.defer="romanized" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+            {{-- TODO: Fixing error messages. Currently only displaying keys --}}
             @error('romanized')
                 <span class="text-sm text-red-500">{{ $message }}</span>
             @enderror
