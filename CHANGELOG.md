@@ -1,6 +1,13 @@
 # Release Notes
 
-## [Unreleased](https://github.com/marcoluzi/lingua-vault/compare/v0.1.0-alpha...develop)
+## [Unreleased](https://github.com/marcoluzi/lingua-vault/compare/v0.2.0-alpha...develop)
+
+## [v0.2.0-alpha](https://github.com/marcoluzi/lingua-vault/commits/v0.2.0-alpha) - 2025-02-14
+
+-   Several dependency updates
+-   Creating simple lesson create component
+-   Creating reading page
+-   Adding type hints to methods and parameters
 
 ## [v0.1.0-alpha](https://github.com/marcoluzi/lingua-vault/commits/v0.1.0-alpha) - 2024-08-27
 
