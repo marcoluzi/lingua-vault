@@ -12,7 +12,7 @@ use WireUi\Breadcrumbs\Trail;
 
 class LessonCreate extends Component
 {
-    //TODO: Check https://livewire.laravel.com/docs/forms
+    // TODO: Check https://livewire.laravel.com/docs/forms
 
     public $title = '';
 
