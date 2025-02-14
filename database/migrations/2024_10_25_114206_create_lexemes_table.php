@@ -11,13 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('lessons', function (Blueprint $table) {
+        Schema::create('lexemes', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('text');
+            $table->string('text');
+            $table->string('meaning');
+            $table->string('romanized')->nullable();
             $table->string('language');
-            $table->unsignedInteger('word_count');
-            $table->unsignedInteger('progress')->default(0);
+            $table->unsignedInteger('repetitions')->default(1);
+            $table->float('e_factor')->range(1.3, 2.5)->default(2.5);
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('lessons');
+        Schema::dropIfExists('lexemes');
     }
 };

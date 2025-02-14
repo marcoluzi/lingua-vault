@@ -1,46 +1,72 @@
-fail_on_severity: 'critical'
+# https://www.osadl.org/fileadmin/checklists/jsonlicenses/GPL-3.0-only.json
 allow_licenses:
-  - GPL-3.0-or-later
-  - GPL-3.0-only
-  - GPL-2.0-or-later
-  - LGPL-3.0-or-later
-  - LGPL-2.1-or-later
+  - 0BSD
   - Apache-2.0
   - Artistic-2.0
-  - ClArtistic
-  - BSL-1.0
+  - blessing
+  - BlueOak-1.0.0
+  - BSD-1-Clause
+  - BSD-2-Clause
+  - BSD-2-Clause-Patent
   - BSD-3-Clause
+  - BSD-3-Clause-Open-MPI
+  - BSD-Source-Code
+  - BSL-1.0
+  - bzip2-1.0.5
+  - bzip2-1.0.6
   - CC0-1.0
-  - CECILL-2.0
-  - BSD-3-Clause-Clear
-  - eCos-2.0
+  - curl
   - ECL-2.0
   - EFL-2.0
-  - EUDatagrid
-  - BSD-2-Clause-FreeBSD
-  - FTL
+  - EUPL-1.2
+  - FSFAP
+  - FSFUL
+  - FSFULLR
+  - FSFULLRWD
+  - GPL-1.0-or-later
+  - GPL-2.0-or-later
+  - GPL-3.0-only
+  - GPL-3.0-or-later
   - HPND
-  - iMatix
-  - Imlib2
-  - IJG
-  - Intel
+  - IBM-pibs
+  - ICU
   - ISC
+  - JasPer-2.0
+  - LGPL-2.0-only
+  - LGPL-2.0-or-later
+  - LGPL-2.1-only
+  - LGPL-2.1-or-later
+  - LGPL-3.0-only
+  - LGPL-3.0-or-later
+  - Libpng
+  - libpng-2.0
+  - libtiff
+  - LicenseRef-scancode-info-zip-2003-05
+  - LicenseRef-scancode-ppp
+  - MirOS
   - MIT
+  - MIT-CMU
   - MPL-2.0
   - NCSA
-  - OLDAP-2.7
-  - Python-2.0.1
-  - Ruby
+  - NTP
+  - OGC-1.0
+  - OLDAP-2.8
+  - PostgreSQL
+  - Saxpath
   - SGI-B-2.0
   - SMLNJ
-  - Unicode-3.0
-  - UPL-1.0
+  - Spencer-86
+  - SSH-OpenSSH
+  - SSH-short
+  - SunPro
+  - Unicode-DFS-2016
   - Unlicense
-  - Vim
+  - UPL-1.0
   - W3C
+  - W3C-19980720
+  - W3C-20150513
   - WTFPL
   - X11
   - XFree86-1.1
   - Zlib
   - ZPL-2.0
-  - ZPL-2.1

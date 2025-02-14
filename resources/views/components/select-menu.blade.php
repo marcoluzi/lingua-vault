@@ -22,13 +22,8 @@
             @foreach ($items as $item)
                 <li class="text-gray-900 relative cursor-default select-none py-2 pl-3 pr-9 hover:bg-indigo-600 hover:text-white transition" :class="{ 'bg-indigo-600 text-white': '{{ $selectedItem['value'] }}' === '{{ $item['value'] }}', 'text-gray-900': '{{ $selectedItem['value'] }}' !== '{{ $item['value'] }}' }" role="option"
                     @click="
-                        @if (isset($item['action']))
-                            {{ $item['action'] }}
-                        @elseif(isset($item['link']))
-                            window.location.href = '{{ $item['link'] }}'
-                        @endif
-                        
                         open = false;
+                        {{ $item['action'] }}
                     ">
                     <div class="flex items-center">
                         @if (isset($item['image']))

@@ -7,24 +7,25 @@ use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
 use WireUi\Breadcrumbs\Trail;
+use Illuminate\View\View;
 
 class Lessons extends Component
 {
     use WithPagination;
 
-    public $title = '';
+    public string $title = '';
 
-    public $sortItems = [];
+    public array $sortItems = [];
 
-    public $selectedSortItem = [];
+    public array $selectedSortItem = [];
 
-    public $sortField = 'updated_at';
+    public string $sortField = 'updated_at';
 
-    public $sortDirection = 'desc';
+    public string $sortDirection = 'desc';
 
-    public function mount()
+    public function mount(): void
     {
-        $this->title = __('Lesson Overview');
+        $this->title = __('Lessons');
 
         $this->sortItems = [
             [
@@ -59,12 +60,9 @@ class Lessons extends Component
     /**
      * Sort the lessons by the given value.
      *
-     * @param  string  $value
-     * @return void
-     *
      * @throws \Exception If the sort value is not available in the sortItems array.
      */
-    public function sortBy($value)
+    public function sortBy(string $value): void
     {
         $sortItem = collect($this->sortItems)->firstWhere('value', $value);
 
@@ -86,12 +84,12 @@ class Lessons extends Component
      * @return void
      */
     #[On('lesson-deleted')]
-    public function refreshLessons()
+    public function refreshLessons(): void
     {
         $this->resetPage();
     }
 
-    public function render()
+    public function render(): View
     {
         $lessons = Lesson::orderBy($this->sortField, $this->sortDirection)->paginate(10);
 

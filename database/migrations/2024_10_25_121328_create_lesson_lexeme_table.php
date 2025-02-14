@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('lessons', function (Blueprint $table) {
+        Schema::create('lesson_lexeme', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('text');
-            $table->string('language');
-            $table->unsignedInteger('word_count');
-            $table->unsignedInteger('progress')->default(0);
-            $table->timestamps();
+            $table->foreignIdFor(\App\Models\Lesson::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(\App\Models\Lexeme::class)->constrained()->cascadeOnDelete();
         });
     }
 
@@ -27,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('lessons');
+        Schema::dropIfExists('lesson_lexeme');
     }
 };

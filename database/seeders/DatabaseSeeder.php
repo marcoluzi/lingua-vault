@@ -2,22 +2,23 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Lesson;
+use App\Models\Lexeme;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Create lessons
+        $lessons = Lesson::factory()->count(20)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // Create lexemes and associate them with lessons
+        $lessons->each(function ($lesson) {
+            $lexemes = Lexeme::factory()->count(rand(5, 15))->create();
+
+            // Attach lexemes to the lesson via the pivot table
+            $lesson->lexemes()->attach($lexemes->pluck('id')->toArray());
+        });
     }
 }

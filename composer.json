@@ -6,13 +6,13 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "laravel-frontend-presets/tall": "^8.0",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.5",
         "rawilk/laravel-settings": "^3.3",
         "wire-elements/modal": "^2.0",
-        "wireui/breadcrumbs": "^3.1"
+        "wireui/breadcrumbs": "^3.1",
+        "wiwofone/memorize": "^1.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
