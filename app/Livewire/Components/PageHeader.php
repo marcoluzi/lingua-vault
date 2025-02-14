@@ -3,12 +3,13 @@
 namespace App\Livewire\Components;
 
 use Livewire\Component;
+use Illuminate\View\View;
 
 class PageHeader extends Component
 {
-    public $title;
+    public string $title;
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.components.page-header');
     }

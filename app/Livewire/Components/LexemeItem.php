@@ -5,6 +5,7 @@ namespace App\Livewire\Components;
 use App\Services\LexemeService;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use Illuminate\View\View;
 
 class LexemeItem extends Component
 {
@@ -18,7 +19,7 @@ class LexemeItem extends Component
 
     public string $backgroundColor = 'blue';
 
-    public function mount(LexemeService $lexemeService, $word, $lessonLanguage, $lessonId)
+    public function mount(LexemeService $lexemeService, string $word, string $lessonLanguage, int $lessonId): void
     {
         $this->word = $word;
         $this->lessonLanguage = $lessonLanguage;
@@ -32,7 +33,7 @@ class LexemeItem extends Component
     }
 
     #[On('lexeme-updated')]
-    public function updateLexeme(LexemeService $lexemeService)
+    public function updateLexeme(LexemeService $lexemeService): void
     {
         $existing = $lexemeService->findByTextAndLanguage($this->word, $this->lessonLanguage);
         if ($existing) {
@@ -41,7 +42,7 @@ class LexemeItem extends Component
         }
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.components.lexeme-item');
     }

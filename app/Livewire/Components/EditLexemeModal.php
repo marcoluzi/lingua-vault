@@ -5,6 +5,7 @@ namespace App\Livewire\Components;
 use App\Services\LexemeService;
 use App\Support\Enums\Statuses;
 use LivewireUI\Modal\ModalComponent;
+use Illuminate\View\View;
 
 class EditLexemeModal extends ModalComponent
 {
@@ -29,7 +30,7 @@ class EditLexemeModal extends ModalComponent
         'romanized' => 'nullable|string',
     ];
 
-    public function mount(LexemeService $lexemeService, $lexemeId, $word, $lessonLanguage, $lessonId)
+    public function mount(LexemeService $lexemeService, ?int $lexemeId, string $word, string $lessonLanguage, int $lessonId): void
     {
         $this->lexemeId = $lexemeId;
         $this->word = $word;
@@ -46,7 +47,7 @@ class EditLexemeModal extends ModalComponent
         }
     }
 
-    public function save(LexemeService $lexemeService)
+    public function save(LexemeService $lexemeService): void
     {
         $this->validate();
 
@@ -76,28 +77,28 @@ class EditLexemeModal extends ModalComponent
         }
     }
 
-    public function toggleWellKnown()
+    public function toggleWellKnown(): void
     {
         $this->setStatus(Statuses::WELL_KNOWN);
     }
 
-    public function toggleIgnore()
+    public function toggleIgnore(): void
     {
         $this->setStatus(Statuses::IGNORED);
     }
 
-    private function setStatus(Statuses $status)
+    private function setStatus(Statuses $status): void
     {
         $this->status = ($this->status === $status) ? null : $status;
     }
 
-    public function saveAndClose(LexemeService $lexemeService)
+    public function saveAndClose(LexemeService $lexemeService): void
     {
         $this->save($lexemeService);
         $this->closeModal();
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.components.edit-lexeme-modal');
     }

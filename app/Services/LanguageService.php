@@ -9,7 +9,7 @@ class LanguageService
 {
     public function getAvailableLanguages(): array
     {
-        return array_map(function ($language) {
+        return array_map(function (Languages $language) {
             return [
                 'value' => $language->value,
                 'label' => $language->getLabel(),
