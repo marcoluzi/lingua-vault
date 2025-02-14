@@ -22,7 +22,7 @@ class LanguageService
 
     public function getSelectedLanguage(): array
     {
-        $selectedLanguage = \Settings::get('selected_language') ?? Languages::cases()[0]->value;
+        $selectedLanguage = $this->getCurrentLanguage();
 
         return [
             'value' => $selectedLanguage,
@@ -30,6 +30,11 @@ class LanguageService
             'image' => asset('flags/'.$selectedLanguage.'.svg'),
             'alt' => __('Flag for :language', ['language' => Languages::from($selectedLanguage)->getLabel()]),
         ];
+    }
+
+    public function getCurrentLanguage(): string
+    {
+        return \Settings::get('selected_language') ?? Languages::cases()[0]->value;
     }
 
     public function setLanguage(string $selectedLanguage): void
