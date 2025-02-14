@@ -22,19 +22,15 @@ class EditLexemeModal extends ModalComponent
 
     public ?Statuses $status = null;
 
-    protected LexemeService $lexemeService;
-
-    public function mount($lexemeId, $word, $lessonLanguage, $lessonId)
+    public function mount(LexemeService $lexemeService, $lexemeId, $word, $lessonLanguage, $lessonId)
     {
         $this->lexemeId = $lexemeId;
         $this->word = $word;
         $this->lessonLanguage = $lessonLanguage;
         $this->lessonId = $lessonId;
 
-        $this->lexemeService = app(LexemeService::class);
-
         if ($this->lexemeId) {
-            $lexeme = $this->lexemeService->findById($this->lexemeId);
+            $lexeme = $lexemeService->findById($this->lexemeId);
             if ($lexeme) {
                 $this->meaning = $lexeme->meaning;
                 $this->romanized = $lexeme->romanized;
@@ -43,7 +39,7 @@ class EditLexemeModal extends ModalComponent
         }
     }
 
-    public function save()
+    public function save(LexemeService $lexemeService)
     {
         $data = [
             'text' => $this->word,
@@ -54,16 +50,16 @@ class EditLexemeModal extends ModalComponent
         ];
 
         if ($this->lexemeId) {
-            $lexeme = $this->lexemeService->findById($this->lexemeId);
+            $lexeme = $lexemeService->findById($this->lexemeId);
             if ($lexeme) {
-                $this->lexemeService->updateLexeme($lexeme, $data);
+                $lexemeService->updateLexeme($lexeme, $data);
                 $this->dispatch('lexeme-updated')->to(LexemeItem::class);
             }
         } else {
             if ($this->meaning || $this->status) {
-                $lexeme = $this->lexemeService->createLexeme($data);
+                $lexeme = $lexemeService->createLexeme($data);
                 $this->lexemeId = $lexeme->id;
-                if ($this->lexemeService->attachToLesson($lexeme, $this->lessonId)) {
+                if ($lexemeService->attachToLesson($lexeme, $this->lessonId)) {
                     $this->dispatch('lexeme-updated')->to(LexemeItem::class);
                 }
             }
@@ -82,16 +78,12 @@ class EditLexemeModal extends ModalComponent
 
     private function setStatus(Statuses $status)
     {
-        if ($this->status === $status) {
-            $this->status = null;
-        } else {
-            $this->status = $status;
-        }
+        $this->status = ($this->status === $status) ? null : $status;
     }
 
-    public function saveAndClose()
+    public function saveAndClose(LexemeService $lexemeService)
     {
-        $this->save();
+        $this->save($lexemeService);
         $this->closeModal();
     }
 

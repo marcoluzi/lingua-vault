@@ -18,31 +18,26 @@ class LexemeItem extends Component
 
     public string $backgroundColor = 'blue';
 
-    protected LexemeService $lexemeService;
-
-    public function mount($word, $lessonLanguage, $lessonId)
+    public function mount(LexemeService $lexemeService, $word, $lessonLanguage, $lessonId)
     {
         $this->word = $word;
         $this->lessonLanguage = $lessonLanguage;
         $this->lessonId = $lessonId;
 
-        // Retrieve the LexemeService instance from the container.
-        $this->lexemeService = app(LexemeService::class);
-
-        $existing = $this->lexemeService->findByTextAndLanguage($this->word, $this->lessonLanguage);
+        $existing = $lexemeService->findByTextAndLanguage($this->word, $this->lessonLanguage);
         if ($existing) {
             $this->lexemeId = $existing->id;
-            $this->backgroundColor = $this->lexemeService->determineBackgroundColor($existing);
+            $this->backgroundColor = $lexemeService->determineBackgroundColor($existing);
         }
     }
 
     #[On('lexeme-updated')]
-    public function updateLexeme()
+    public function updateLexeme(LexemeService $lexemeService)
     {
-        $existing = $this->lexemeService->findByTextAndLanguage($this->word, $this->lessonLanguage);
+        $existing = $lexemeService->findByTextAndLanguage($this->word, $this->lessonLanguage);
         if ($existing) {
             $this->lexemeId = $existing->id;
-            $this->backgroundColor = $this->lexemeService->determineBackgroundColor($existing);
+            $this->backgroundColor = $lexemeService->determineBackgroundColor($existing);
         }
     }
 
