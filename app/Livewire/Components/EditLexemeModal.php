@@ -22,6 +22,13 @@ class EditLexemeModal extends ModalComponent
 
     public ?Statuses $status = null;
 
+    protected array $rules = [
+        'word' => 'required|string',
+        'lessonLanguage' => 'required|string',
+        'meaning' => 'nullable|string',
+        'romanized' => 'nullable|string',
+    ];
+
     public function mount(LexemeService $lexemeService, $lexemeId, $word, $lessonLanguage, $lessonId)
     {
         $this->lexemeId = $lexemeId;
@@ -41,6 +48,8 @@ class EditLexemeModal extends ModalComponent
 
     public function save(LexemeService $lexemeService)
     {
+        $this->validate();
+
         $data = [
             'text' => $this->word,
             'meaning' => $this->meaning,
