@@ -2,45 +2,48 @@
 
 namespace App\Livewire\Components;
 
-use App\Models\Lexeme;
+use App\Services\LexemeService;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class LexemeItem extends Component
 {
     public string $word;
+
     public string $lessonLanguage;
+
     public int $lessonId;
-    public $lexemeId = null;
+
+    public ?int $lexemeId = null;
+
     public string $backgroundColor = 'blue';
+
+    protected LexemeService $lexemeService;
 
     public function mount($word, $lessonLanguage, $lessonId)
     {
-        $this->word           = $word;
+        $this->word = $word;
         $this->lessonLanguage = $lessonLanguage;
-        $this->lessonId       = $lessonId;
+        $this->lessonId = $lessonId;
 
-        // Check for an existing lexeme (matching text and language)
-        $existing = Lexeme::where('text', $this->word)
-            ->where('language', $this->lessonLanguage)
-            ->first();
+        // Retrieve the LexemeService instance from the container.
+        $this->lexemeService = app(LexemeService::class);
 
+        $existing = $this->lexemeService->findByTextAndLanguage($this->word, $this->lessonLanguage);
         if ($existing) {
             $this->lexemeId = $existing->id;
-            $this->backgroundColor = $this->getColorForEfactor($existing->e_factor);
+            $this->backgroundColor = $this->lexemeService->determineBackgroundColor($existing);
         }
     }
 
-    /**
-     * Maps the e_factor to a color string.
-     */
-    private function getColorForEfactor($e_factor): string
+    #[On('lexeme-updated')]
+    public function updateLexeme()
     {
-        return match (true) {
-            $e_factor >= 1.3 && $e_factor <= 1.6 => 'red',
-            $e_factor >= 1.7 && $e_factor <= 2.1 => 'orange',
-            $e_factor >= 2.2 && $e_factor <= 2.5 => 'green',
-            default => 'white',
-        };
+        $existing = $this->lexemeService->findByTextAndLanguage($this->word, $this->lessonLanguage);
+        if ($existing) {
+            $this->lexemeId = $existing->id;
+            $this->backgroundColor = $this->lexemeService->determineBackgroundColor($existing);
+        }
     }
 
     public function render()

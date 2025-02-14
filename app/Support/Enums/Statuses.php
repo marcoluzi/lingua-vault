@@ -5,7 +5,7 @@ namespace App\Support\Enums;
 use App\Support\Interfaces\Translatable;
 use App\Support\Traits\HasTranslatableLabels;
 
-enum Languages: string implements Translatable
+enum Statuses: string implements Translatable
 {
     use HasTranslatableLabels;
 

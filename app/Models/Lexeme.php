@@ -20,11 +20,8 @@ class Lexeme extends Model
         'status',
     ];
 
-    protected function casts(): array
-    {
-        return [
-            'language' => Languages::class,
-            'status' => Statuses::class,
-        ];
-    }
+    protected $casts = [
+        'language' => Languages::class,
+        'status' => Statuses::class,
+    ];
 }
