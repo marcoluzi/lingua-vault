@@ -1,5 +1,5 @@
 <div align="center">
-    <h3 align="center">Lingua Vault</h3>
+    <h1 align="center">Lingua Vault</h1>
     <p align="center">Master Your Language, One Word at a Time</p>
 </div>
 
