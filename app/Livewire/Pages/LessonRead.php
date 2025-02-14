@@ -3,6 +3,7 @@
 namespace App\Livewire\Pages;
 
 use App\Models\Lesson;
+use App\Services\LanguageService;
 use Livewire\Component;
 use WireUi\Breadcrumbs\Trail;
 
@@ -16,17 +17,28 @@ class LessonRead extends Component
 
     public string $text;
 
+    protected LanguageService $languageService;
+
+    public function boot(LanguageService $languageService)
+    {
+        $this->languageService = $languageService;
+    }
+
     public function mount($lessonId)
     {
         $lesson = Lesson::findOrFail($lessonId);
         $this->lessonId = $lesson->id;
-        // TODO: Switch Current Language if different from lesson language
         $this->lessonLanguage = $lesson->language->value;
         $this->title = $lesson->title;
         $this->text = $lesson->text;
+
+        if ($this->lessonLanguage !== $this->languageService->getCurrentLanguage()) {
+            $this->languageService->setLanguage($this->lessonLanguage);
+
+            return redirect()->route('lessons.read', ['lessonId' => $lesson->id]);
+        }
     }
 
-    // TODO: breadcrumbs break after component update
     public function breadcrumbs(Trail $trail): Trail
     {
         return $trail
