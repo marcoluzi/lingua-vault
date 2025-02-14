@@ -6,7 +6,7 @@
 ])
 
 @php
-    $baseClasses = 'font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 transition';
+    $baseClasses = 'font-semibold shadow-xs focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 transition';
     $sizes = [
         'xs' => 'px-2 py-1 text-xs',
         'sm' => 'px-2.5 py-1.5 text-sm',
