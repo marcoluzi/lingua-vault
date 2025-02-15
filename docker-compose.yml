@@ -25,7 +25,7 @@ services:
         depends_on:
             - mariadb
     mariadb:
-        image: 'mariadb:11@sha256:3944dd24218a6612521765bcc4c681e633e2399ad90c21b1ce42528014cdd01a'
+        image: 'mariadb:11@sha256:b81aac5a4c39467f85675eeefcf2e58d1f04219233f3525f04178d28092cb10b'
         ports:
             - '${FORWARD_DB_PORT:-3306}:3306'
         environment:
