@@ -43,7 +43,7 @@ class LexemeItem extends Component
     #[On('lexeme-updated')]
     public function updateLexeme(array $payload, LexemeService $lexemeService): void
     {
-        if (!isset($payload['lexemeId'])) {
+        if (! isset($payload['lexemeId'])) {
             return;
         }
 
