@@ -53,7 +53,7 @@ class EditLexemeModal extends ModalComponent
      * If a lexeme ID is present, the lexeme is retrieved and updated with the provided data.
      * Otherwise, a new lexeme is created if there is a meaning or status, and it is attached
      * to the current lesson. After updating or creating, a 'lexeme-updated' event is dispatched
-     * to update the parent component.
+     * with the lexeme id as payload to update the corresponding LexemeItem(s).
      */
     public function save(LexemeService $lexemeService): void
     {
@@ -67,19 +67,18 @@ class EditLexemeModal extends ModalComponent
             'status' => $this->status,
         ];
 
-        // TODO: Only dispatch to parent
         if ($this->lexemeId) {
             $lexeme = $lexemeService->findById($this->lexemeId);
             if ($lexeme) {
                 $lexemeService->updateLexeme($lexeme, $data);
-                $this->dispatch('lexeme-updated')->to(LexemeItem::class);
+                $this->dispatch('lexeme-updated', ['lexemeId' => $lexeme->id])->to(LexemeItem::class);
             }
         } else {
             if ($this->meaning || $this->status) {
                 $lexeme = $lexemeService->createLexeme($data);
                 $this->lexemeId = $lexeme->id;
                 if ($lexemeService->attachToLesson($lexeme, $this->lessonId)) {
-                    $this->dispatch('lexeme-updated')->to(LexemeItem::class);
+                    $this->dispatch('lexeme-updated', ['lexemeId' => $lexeme->id])->to(LexemeItem::class);
                 }
             }
         }
