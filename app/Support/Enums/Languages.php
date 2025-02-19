@@ -14,6 +14,13 @@ enum Languages: string implements Translatable
     case FR = 'fr';
     case IT = 'it';
 
+    /**
+     * Retrieves an array of language options.
+     *
+     * The array maps language values to their translated labels.
+     *
+     * @return array<string, string> An associative array where the keys are language codes and the values are the translated language names.
+     */
     public static function options(): array
     {
         return [

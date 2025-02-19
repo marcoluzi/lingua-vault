@@ -58,9 +58,9 @@ class Lessons extends Component
     }
 
     /**
-     * Sort the lessons by the given value.
+     * Set the sort field and direction.
      *
-     * @throws \Exception If the sort value is not available in the sortItems array.
+     * @throws \Exception If the sort value is invalid.
      */
     public function sortBy(string $value): void
     {
@@ -79,9 +79,9 @@ class Lessons extends Component
     }
 
     /**
-     * Refresh the lessons list after a lesson has been deleted.
+     * Refreshes the lessons list by resetting the pagination.
      *
-     * @return void
+     * This method is triggered by the 'lesson-deleted' event.
      */
     #[On('lesson-deleted')]
     public function refreshLessons(): void

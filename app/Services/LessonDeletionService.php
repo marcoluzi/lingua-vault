@@ -7,10 +7,9 @@ use App\Models\Lesson;
 class LessonDeletionService
 {
     /**
-     * Deleting the lesson by the given id.
+     * Deletes a lesson by its ID.
      *
-     *
-     * @throws \Exception If the lesson is not found.
+     * @throws \Exception If the lesson with the given ID is not found.
      */
     public function deleteLesson(int $lessonId): void
     {
