@@ -7,6 +7,7 @@
 -   Adding "Create new lesson" button to lessons page
 -   Updating credits
 -   Removing wiwofone/memorize
+-   Adjusting updateLexeme dispatch event to only run on necessary items
 
 ## [v0.2.0-alpha](https://github.com/marcoluzi/lingua-vault/commits/v0.2.0-alpha) - 2025-02-14
 
