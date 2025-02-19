@@ -2,6 +2,9 @@
 
 ## [Unreleased](https://github.com/marcoluzi/lingua-vault/compare/v0.2.0-alpha...develop)
 
+-   Adding StyleCI
+-   Updating PHPDoc blocks
+
 ## [v0.2.0-alpha](https://github.com/marcoluzi/lingua-vault/commits/v0.2.0-alpha) - 2025-02-14
 
 -   Several dependency updates
