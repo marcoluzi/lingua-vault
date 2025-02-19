@@ -2,8 +2,8 @@
 
 namespace App\Livewire\Components;
 
-use Livewire\Component;
 use Illuminate\View\View;
+use Livewire\Component;
 
 class PageHeader extends Component
 {
