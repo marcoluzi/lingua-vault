@@ -24,26 +24,26 @@ class EditLexemeModal extends ModalComponent
     public ?Statuses $status = null;
 
     protected array $rules = [
-        'word'           => 'required|string',
+        'word' => 'required|string',
         'lessonLanguage' => 'required|string',
-        'meaning'        => 'nullable|string',
-        'romanized'      => 'nullable|string',
+        'meaning' => 'nullable|string',
+        'romanized' => 'nullable|string',
     ];
 
     public function mount(LexemeService $lexemeService, ?int $lexemeId, string $word, string $lessonLanguage, int $lessonId): void
     {
-        $this->lexemeId       = $lexemeId;
-        $this->word           = $word;
+        $this->lexemeId = $lexemeId;
+        $this->word = $word;
         $this->lessonLanguage = $lessonLanguage;
-        $this->lessonId       = $lessonId;
+        $this->lessonId = $lessonId;
 
         if ($this->lexemeId) {
             $lexeme = $lexemeService->findById($this->lexemeId);
 
             if ($lexeme) {
-                $this->meaning   = $lexeme->meaning;
+                $this->meaning = $lexeme->meaning;
                 $this->romanized = $lexeme->romanized;
-                $this->status    = $lexeme->status;
+                $this->status = $lexeme->status;
             }
         }
     }
@@ -61,11 +61,11 @@ class EditLexemeModal extends ModalComponent
         $this->validate();
 
         $data = [
-            'text'      => $this->word,
-            'meaning'   => $this->meaning,
+            'text' => $this->word,
+            'meaning' => $this->meaning,
             'romanized' => $this->romanized,
-            'language'  => $this->lessonLanguage,
-            'status'    => $this->status,
+            'language' => $this->lessonLanguage,
+            'status' => $this->status,
         ];
 
         if ($this->lexemeId) {

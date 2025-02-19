@@ -17,11 +17,11 @@ class Lexeme extends Model
         'romanized',
         'language',
         'e_factor',
-        'status'
+        'status',
     ];
 
     protected $casts = [
         'language' => Languages::class,
-        'status' => Statuses::class
+        'status' => Statuses::class,
     ];
 }

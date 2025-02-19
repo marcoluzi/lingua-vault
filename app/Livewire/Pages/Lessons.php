@@ -29,21 +29,21 @@ class Lessons extends Component
 
         $this->sortItems = [
             [
-                'value'     => 'updated_at',
-                'label'     => __('Recently practiced'),
-                'action'    => '$wire.sortBy("updated_at")',
+                'value' => 'updated_at',
+                'label' => __('Recently practiced'),
+                'action' => '$wire.sortBy("updated_at")',
                 'direction' => 'desc',
             ],
             [
-                'value'     => 'title',
-                'label'     => __('Alphabetical (A-Z)'),
-                'action'    => '$wire.sortBy("title")',
+                'value' => 'title',
+                'label' => __('Alphabetical (A-Z)'),
+                'action' => '$wire.sortBy("title")',
                 'direction' => 'asc',
             ],
             [
-                'value'     => 'progress',
-                'label'     => __('Progress'),
-                'action'    => '$wire.sortBy("progress")',
+                'value' => 'progress',
+                'label' => __('Progress'),
+                'action' => '$wire.sortBy("progress")',
                 'direction' => 'asc',
             ],
         ];

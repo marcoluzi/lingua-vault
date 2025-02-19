@@ -53,9 +53,9 @@ class LessonCreate extends Component
         $this->validate();
 
         Lesson::create([
-            'language'   => $this->selectedLanguageItem['value'],
-            'title'      => $this->lessonTitle,
-            'text'       => $this->lessonText,
+            'language' => $this->selectedLanguageItem['value'],
+            'title' => $this->lessonTitle,
+            'text' => $this->lessonText,
             'word_count' => str_word_count($this->lessonText),
         ]);
 
@@ -82,7 +82,7 @@ class LessonCreate extends Component
             'value' => $selectedLanguage,
             'label' => $language->getLabel(),
             'image' => asset('flags/'.$selectedLanguage.'.svg'),
-            'alt'   => __('Flag for :language', ['language' => $language->getLabel()]),
+            'alt' => __('Flag for :language', ['language' => $language->getLabel()]),
         ];
     }
 
@@ -107,10 +107,10 @@ class LessonCreate extends Component
 
         foreach ($languages as $language) {
             $languageItems[] = [
-                'value'  => $language->value,
-                'label'  => $language->getLabel(),
-                'image'  => asset('flags/'.$language->value.'.svg'),
-                'alt'    => __('Flag for :language', ['language' => $language->getLabel()]),
+                'value' => $language->value,
+                'label' => $language->getLabel(),
+                'image' => asset('flags/'.$language->value.'.svg'),
+                'alt' => __('Flag for :language', ['language' => $language->getLabel()]),
                 'action' => '$wire.setLanguage(\''.$language->value.'\')',
             ];
         }
@@ -133,7 +133,7 @@ class LessonCreate extends Component
             'value' => $selectedLanguage,
             'label' => $language->getLabel(),
             'image' => asset('flags/'.$selectedLanguage.'.svg'),
-            'alt'   => __('Flag for :language', ['language' => $language->getLabel()]),
+            'alt' => __('Flag for :language', ['language' => $language->getLabel()]),
         ];
     }
 
