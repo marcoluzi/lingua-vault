@@ -4,8 +4,8 @@ namespace App\Livewire\Components;
 
 use App\Livewire\Pages\Lessons;
 use App\Services\LessonDeletionService;
-use LivewireUI\Modal\ModalComponent;
 use Illuminate\View\View;
+use LivewireUI\Modal\ModalComponent;
 
 class DeleteLessonModal extends ModalComponent
 {

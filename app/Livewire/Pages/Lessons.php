@@ -3,11 +3,11 @@
 namespace App\Livewire\Pages;
 
 use App\Models\Lesson;
+use Illuminate\View\View;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
 use WireUi\Breadcrumbs\Trail;
-use Illuminate\View\View;
 
 class Lessons extends Component
 {

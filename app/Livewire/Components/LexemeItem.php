@@ -3,9 +3,9 @@
 namespace App\Livewire\Components;
 
 use App\Services\LexemeService;
+use Illuminate\View\View;
 use Livewire\Attributes\On;
 use Livewire\Component;
-use Illuminate\View\View;
 
 class LexemeItem extends Component
 {

@@ -4,8 +4,8 @@ namespace App\Livewire\Components;
 
 use App\Services\LexemeService;
 use App\Support\Enums\Statuses;
-use LivewireUI\Modal\ModalComponent;
 use Illuminate\View\View;
+use LivewireUI\Modal\ModalComponent;
 
 class EditLexemeModal extends ModalComponent
 {

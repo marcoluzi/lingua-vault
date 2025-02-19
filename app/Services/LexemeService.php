@@ -54,7 +54,7 @@ class LexemeService
     /**
      * Creates a new lexeme.
      *
-     * @param array{text:string, meaning:string, romanized:string|null, language:string, repetitions:int|null, e_factor:float|null, status:string|null}  $data
+     * @param  array{text:string, meaning:string, romanized:string|null, language:string, repetitions:int|null, e_factor:float|null, status:string|null}  $data
      */
     public function createLexeme(array $data): Lexeme
     {
@@ -64,7 +64,7 @@ class LexemeService
     /**
      * Updates a lexeme.
      *
-     * @param array{text:string|null, meaning:string|null, romanized:string|null, language:string|null, repetitions:int|null, e_factor:float|null, status:string|null} $data
+     * @param  array{text:string|null, meaning:string|null, romanized:string|null, language:string|null, repetitions:int|null, e_factor:float|null, status:string|null}  $data
      */
     public function updateLexeme(Lexeme $lexeme, array $data): bool
     {
