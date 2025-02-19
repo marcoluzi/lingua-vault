@@ -1,8 +1,11 @@
 <div>
     <livewire:components.page-header :$title />
     @if ($lessons->total() > 0)
-        <div class="md:max-w-xs mt-8 md:mt-16">
-            <x-select-menu class="max-w-48" :items="$sortItems" :selectedItem="$selectedSortItem" label="{{ __('Sort by') }}" />
+        <div class="flex md:items-center justify-between flex-col-reverse md:flex-row gap-4 mt-8 md:mt-16">
+            <div class="md:max-w-xs w-full">
+                <x-select-menu class="max-w-48" :items="$sortItems" :selectedItem="$selectedSortItem" label="{{ __('Sort by') }}" />
+            </div>
+            <a href="{{ route('lessons.create') }}" class="transition rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">{{ __('Create new lesson') }}</a>
         </div>
         <ul role="list" class="divide-y divide-gray-100 mt-8 md:mt-16">
             @foreach ($lessons as $lesson)
@@ -37,7 +40,7 @@
                         </div>
                     </div>
                     <div class="flex flex-none items-center gap-x-4">
-                        <a href="{{ route('lessons.read', ['lessonId' => $lesson['id']]) }}" class="hidden rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:block">
+                        <a href="{{ route('lessons.read', ['lessonId' => $lesson['id']]) }}" class="transition hidden rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:block">
                             {{ __('Open lesson') }}
                         </a>
                         <div x-data="{ open: false }" class="relative flex-none">
