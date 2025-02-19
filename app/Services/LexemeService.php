@@ -13,9 +13,7 @@ class LexemeService
      */
     public function findByTextAndLanguage(string $text, string $language): ?Lexeme
     {
-        return Lexeme::where('text', $text)
-            ->where('language', $language)
-            ->first();
+        return Lexeme::where('text', $text)->where('language', $language)->first();
     }
 
     /**

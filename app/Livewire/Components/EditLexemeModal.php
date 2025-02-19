@@ -39,6 +39,7 @@ class EditLexemeModal extends ModalComponent
 
         if ($this->lexemeId) {
             $lexeme = $lexemeService->findById($this->lexemeId);
+
             if ($lexeme) {
                 $this->meaning = $lexeme->meaning;
                 $this->romanized = $lexeme->romanized;
@@ -69,14 +70,18 @@ class EditLexemeModal extends ModalComponent
 
         if ($this->lexemeId) {
             $lexeme = $lexemeService->findById($this->lexemeId);
+
             if ($lexeme) {
                 $lexemeService->updateLexeme($lexeme, $data);
+
                 $this->dispatch('lexeme-updated', ['lexemeId' => $lexeme->id])->to(LexemeItem::class);
             }
         } else {
             if ($this->meaning || $this->status) {
                 $lexeme = $lexemeService->createLexeme($data);
+
                 $this->lexemeId = $lexeme->id;
+
                 if ($lexemeService->attachToLesson($lexeme, $this->lessonId)) {
                     $this->dispatch('lexeme-updated', ['lexemeId' => $lexeme->id])->to(LexemeItem::class);
                 }
@@ -121,6 +126,7 @@ class EditLexemeModal extends ModalComponent
     public function saveAndClose(LexemeService $lexemeService): void
     {
         $this->save($lexemeService);
+
         $this->closeModal();
     }
 

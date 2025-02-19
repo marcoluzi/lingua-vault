@@ -53,8 +53,7 @@ class Lessons extends Component
 
     public function breadcrumbs(Trail $trail): Trail
     {
-        return $trail
-            ->push($this->title);
+        return $trail->push($this->title);
     }
 
     /**
@@ -74,6 +73,7 @@ class Lessons extends Component
             $this->sortField = $sortItem['value'];
             $this->sortDirection = $sortItem['direction'];
             $this->selectedSortItem = $sortItem;
+
             $this->resetPage();
         }
     }
@@ -93,8 +93,6 @@ class Lessons extends Component
     {
         $lessons = Lesson::orderBy($this->sortField, $this->sortDirection)->paginate(10);
 
-        return view('livewire.pages.lessons', [
-            'lessons' => $lessons,
-        ])->title($this->title);
+        return view('livewire.pages.lessons', ['lessons' => $lessons])->title($this->title);
     }
 }

@@ -29,16 +29,16 @@ class LessonCreate extends Component
     public function mount(): void
     {
         $this->title = __('Create Lesson');
+
         $this->setLanguageItems();
+
         $this->setSelectedLanguageItem();
     }
 
     // TODO: breadcrumbs break after component update
     public function breadcrumbs(Trail $trail): Trail
     {
-        return $trail
-            ->push(__('Lessons'), route('lessons.index'))
-            ->push($this->title);
+        return $trail->push(__('Lessons'), route('lessons.index'))->push($this->title);
     }
 
     /**
@@ -73,6 +73,7 @@ class LessonCreate extends Component
     public function setLanguage(string $selectedLanguage): void
     {
         $language = Languages::tryFrom($selectedLanguage);
+
         if ($language === null) {
             throw new InvalidArgumentException("Provided language is not a valid case of the Languages enum. Given: {$selectedLanguage}");
         }
@@ -97,11 +98,13 @@ class LessonCreate extends Component
     private function setLanguageItems(): void
     {
         $languages = Languages::cases();
+
         if (empty($languages)) {
             throw new Exception('No languages found in the Languages enum.');
         }
 
         $languageItems = [];
+
         foreach ($languages as $language) {
             $languageItems[] = [
                 'value' => $language->value,
@@ -111,6 +114,7 @@ class LessonCreate extends Component
                 'action' => '$wire.setLanguage(\''.$language->value.'\')',
             ];
         }
+
         $this->languageItems = $languageItems;
     }
 

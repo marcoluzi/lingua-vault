@@ -30,7 +30,9 @@ class DeleteLessonModal extends ModalComponent
     {
         try {
             $this->lessonDeletionService->deleteLesson($this->lessonId);
+
             $this->dispatch('lesson-deleted')->to(Lessons::class);
+
             $this->closeModal();
         } catch (\Exception $e) {
             throw $e;
