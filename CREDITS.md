@@ -24,4 +24,10 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 The following software libraries are utilized in this repository.
 
-[Library Name](library link), [Library Name2](library link2), … , [Library NameN](library linkN).
+- [Laravel](https://github.com/laravel/laravel/)
+- [Livewire](https://github.com/livewire/livewire/)
+- [Settings for Laravel](https://github.com/rawilk/laravel-settings/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Tailwind UI](https://tailwindui.com/)
+- [Wire Elements Modal](https://github.com/wire-elements/modal/)
+- [WireUI Breadcrumbs](https://github.com/wireui/breadcrumbs/)
