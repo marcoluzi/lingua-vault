@@ -28,6 +28,7 @@ class LessonRead extends Component
     public function mount(int $lessonId): void
     {
         $lesson = Lesson::findOrFail($lessonId);
+
         $this->lessonId = $lesson->id;
         $this->lessonLanguage = $lesson->language->value;
         $this->title = $lesson->title;
@@ -42,9 +43,7 @@ class LessonRead extends Component
 
     public function breadcrumbs(Trail $trail): Trail
     {
-        return $trail
-            ->push(__('Lessons'), route('lessons.index'))
-            ->push($this->title);
+        return $trail->push(__('Lessons'), route('lessons.index'))->push($this->title);
     }
 
     public function render(): View

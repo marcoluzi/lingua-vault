@@ -23,7 +23,7 @@ enum Statuses: string implements Translatable
     {
         return [
             self::WELL_KNOWN->value => __('Well known'),
-            self::IGNORED->value => __('Ignored'),
+            self::IGNORED->value    => __('Ignored'),
         ];
     }
 }

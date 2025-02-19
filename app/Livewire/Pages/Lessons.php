@@ -29,21 +29,21 @@ class Lessons extends Component
 
         $this->sortItems = [
             [
-                'value' => 'updated_at',
-                'label' => __('Recently practiced'),
-                'action' => '$wire.sortBy("updated_at")',
+                'value'     => 'updated_at',
+                'label'     => __('Recently practiced'),
+                'action'    => '$wire.sortBy("updated_at")',
                 'direction' => 'desc',
             ],
             [
-                'value' => 'title',
-                'label' => __('Alphabetical (A-Z)'),
-                'action' => '$wire.sortBy("title")',
+                'value'     => 'title',
+                'label'     => __('Alphabetical (A-Z)'),
+                'action'    => '$wire.sortBy("title")',
                 'direction' => 'asc',
             ],
             [
-                'value' => 'progress',
-                'label' => __('Progress'),
-                'action' => '$wire.sortBy("progress")',
+                'value'     => 'progress',
+                'label'     => __('Progress'),
+                'action'    => '$wire.sortBy("progress")',
                 'direction' => 'asc',
             ],
         ];
@@ -53,8 +53,7 @@ class Lessons extends Component
 
     public function breadcrumbs(Trail $trail): Trail
     {
-        return $trail
-            ->push($this->title);
+        return $trail->push($this->title);
     }
 
     /**
@@ -74,6 +73,7 @@ class Lessons extends Component
             $this->sortField = $sortItem['value'];
             $this->sortDirection = $sortItem['direction'];
             $this->selectedSortItem = $sortItem;
+
             $this->resetPage();
         }
     }
@@ -93,8 +93,6 @@ class Lessons extends Component
     {
         $lessons = Lesson::orderBy($this->sortField, $this->sortDirection)->paginate(10);
 
-        return view('livewire.pages.lessons', [
-            'lessons' => $lessons,
-        ])->title($this->title);
+        return view('livewire.pages.lessons', ['lessons' => $lessons])->title($this->title);
     }
 }

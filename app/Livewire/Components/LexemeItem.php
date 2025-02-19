@@ -26,6 +26,7 @@ class LexemeItem extends Component
         $this->lessonId = $lessonId;
 
         $existing = $lexemeService->findByTextAndLanguage($this->word, $this->lessonLanguage);
+
         if ($existing) {
             $this->lexemeId = $existing->id;
             $this->backgroundColor = $lexemeService->determineBackgroundColor($existing);
@@ -54,6 +55,7 @@ class LexemeItem extends Component
         }
 
         $existing = $lexemeService->findByTextAndLanguage($this->word, $this->lessonLanguage);
+
         if ($existing && $existing->id === $updatedLexemeId) {
             $this->lexemeId = $existing->id;
             $this->backgroundColor = $lexemeService->determineBackgroundColor($existing);

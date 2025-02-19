@@ -20,10 +20,10 @@ class LanguageService
     {
         return array_map(function (Languages $language) {
             return [
-                'value' => $language->value,
-                'label' => $language->getLabel(),
-                'image' => asset('flags/'.$language->value.'.svg'),
-                'alt' => __('Flag for :language', ['language' => $language->getLabel()]),
+                'value'  => $language->value,
+                'label'  => $language->getLabel(),
+                'image'  => asset('flags/'.$language->value.'.svg'),
+                'alt'    => __('Flag for :language', ['language' => $language->getLabel()]),
                 'action' => '$wire.setLanguage(\''.$language->value.'\')',
             ];
         }, Languages::cases());
@@ -46,7 +46,7 @@ class LanguageService
             'value' => $selectedLanguage,
             'label' => Languages::from($selectedLanguage)->getLabel(),
             'image' => asset('flags/'.$selectedLanguage.'.svg'),
-            'alt' => __('Flag for :language', ['language' => Languages::from($selectedLanguage)->getLabel()]),
+            'alt'   => __('Flag for :language', ['language' => Languages::from($selectedLanguage)->getLabel()]),
         ];
     }
 

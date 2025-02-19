@@ -15,13 +15,13 @@ class Lesson extends Model
         'title',
         'text',
         'language',
-        'word_count',
+        'word_count'
     ];
 
     protected function casts(): array
     {
         return [
-            'language' => Languages::class,
+            'language' => Languages::class
         ];
     }
 
