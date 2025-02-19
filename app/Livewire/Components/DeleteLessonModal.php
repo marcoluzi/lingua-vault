@@ -19,9 +19,12 @@ class DeleteLessonModal extends ModalComponent
     }
 
     /**
-     * Deleting the lesson of the current modal.
+     * Deletes the current lesson using the lessonDeletionService.
      *
-     * @return void
+     * Dispatches a 'lesson-deleted' event to the Lessons component
+     * and closes the modal upon successful deletion.
+     *
+     * @throws \Exception If an error occurs during deletion.
      */
     public function deleteLesson(): void
     {

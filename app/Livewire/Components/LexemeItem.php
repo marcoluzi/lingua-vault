@@ -32,6 +32,12 @@ class LexemeItem extends Component
         }
     }
 
+    /**
+     * Updates the lexeme information and background color upon receiving a 'lexeme-updated' event.
+     *
+     * This method retrieves an existing lexeme using the word and lesson language.
+     * If the lexeme exists, it updates the lexeme ID and background color based on the lexeme's data.
+     */
     #[On('lexeme-updated')]
     public function updateLexeme(LexemeService $lexemeService): void
     {

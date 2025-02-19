@@ -47,6 +47,14 @@ class EditLexemeModal extends ModalComponent
         }
     }
 
+    /**
+     * Validates the input data and either updates an existing lexeme or creates a new one.
+     *
+     * If a lexeme ID is present, the lexeme is retrieved and updated with the provided data.
+     * Otherwise, a new lexeme is created if there is a meaning or status, and it is attached
+     * to the current lesson. After updating or creating, a 'lexeme-updated' event is dispatched
+     * to update the parent component.
+     */
     public function save(LexemeService $lexemeService): void
     {
         $this->validate();
@@ -77,21 +85,40 @@ class EditLexemeModal extends ModalComponent
         }
     }
 
+    /**
+     * Toggles the lexeme status to well-known.
+     */
     public function toggleWellKnown(): void
     {
         $this->setStatus(Statuses::WELL_KNOWN);
     }
 
+    /**
+     * Toggles the lexeme status to ignored.
+     */
     public function toggleIgnore(): void
     {
         $this->setStatus(Statuses::IGNORED);
     }
 
+    /**
+     * Toggles the lexeme status to the given status.
+     *
+     * If the lexeme status is already the given status, it will be set to null.
+     * Otherwise, the status will be set to the given status.
+     */
     private function setStatus(Statuses $status): void
     {
         $this->status = ($this->status === $status) ? null : $status;
     }
 
+    /**
+     * Saves the lexeme data and closes the modal.
+     *
+     * This function first calls the save method to validate and save or update
+     * the lexeme data using the provided LexemeService. After saving, it closes
+     * the modal dialog.
+     */
     public function saveAndClose(LexemeService $lexemeService): void
     {
         $this->save($lexemeService);

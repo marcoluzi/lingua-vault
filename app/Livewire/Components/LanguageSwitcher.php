@@ -25,6 +25,9 @@ class LanguageSwitcher extends Component
         $this->selectedLanguageItem = $this->languageService->getSelectedLanguage();
     }
 
+    /**
+     * Set the selected language by updating the selectedLanguage property.
+     */
     public function setLanguage(string $selectedLanguage): void
     {
         $this->languageService->setLanguage($selectedLanguage);

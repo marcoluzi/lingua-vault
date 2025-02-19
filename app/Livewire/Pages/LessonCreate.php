@@ -41,6 +41,13 @@ class LessonCreate extends Component
             ->push($this->title);
     }
 
+    /**
+     * Validates the component data and creates a new lesson.
+     *
+     * It validates the language, title, and text input and then creates a new
+     * lesson with the validated data. After the lesson is created, it redirects
+     * the user to the lessons index page.
+     */
     public function save(): void
     {
         $this->validate();
@@ -56,10 +63,12 @@ class LessonCreate extends Component
     }
 
     /**
-     * Set the selected language by updating the selectedLanguage property.
+     * Sets the selected language property.
      *
+     * It takes a string of the language value and sets the selected language property
+     * to an array containing the language value, label, image path and alt text.
      *
-     * @throws InvalidArgumentException
+     * @throws InvalidArgumentException If the provided language is not a valid case of the Languages enum.
      */
     public function setLanguage(string $selectedLanguage): void
     {
@@ -77,10 +86,13 @@ class LessonCreate extends Component
     }
 
     /**
-     * Create the language items array and set it as a property.
+     * Sets the language items for the language select menu.
      *
+     * It uses the Languages enum to generate an array of language items.
+     * Each language item contains the language value, label, image path, alt text and an action.
+     * The action is a string that calls the setLanguage method with the language value as an argument.
      *
-     * @throws Exception
+     * @throws Exception If no languages are found in the Languages enum.
      */
     private function setLanguageItems(): void
     {
@@ -103,7 +115,10 @@ class LessonCreate extends Component
     }
 
     /**
-     * Get the selected language from the settings and set it as a property.
+     * Sets the selected language item based on the current language setting.
+     *
+     * Retrieves the selected language from settings or defaults to the first language item.
+     * It then updates the selectedLanguageItem property with the language's value, label, image path, and alt text.
      */
     private function setSelectedLanguageItem(): void
     {

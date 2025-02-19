@@ -12,6 +12,13 @@ enum Statuses: string implements Translatable
     case WELL_KNOWN = 'well-known';
     case IGNORED = 'ignored';
 
+    /**
+     * Retrieves an array of statuses.
+     *
+     * The array maps status values to their translated labels.
+     *
+     * @return array<string, string> An associative array where the keys are the status values and the values are the translated status names.
+     */
     public static function options(): array
     {
         return [

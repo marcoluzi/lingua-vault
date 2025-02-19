@@ -9,7 +9,7 @@ use App\Support\Enums\Statuses;
 class LexemeService
 {
     /**
-     * Retrieve a lexeme by its text and language.
+     * Find a lexeme by text and language.
      */
     public function findByTextAndLanguage(string $text, string $language): ?Lexeme
     {
@@ -19,7 +19,15 @@ class LexemeService
     }
 
     /**
-     * Determine the background color for a lexeme based on its e_factor and status.
+     * Determines the background color for a given lexeme based on its status and e-factor.
+     *
+     * If the lexeme's status is WELL_KNOWN or IGNORED, returns 'white'.
+     * Otherwise, it returns a color based on the e-factor range:
+     * - 'red' for e-factor between 1.3 and 1.6
+     * - 'orange' for e-factor between 1.7 and 2.1
+     * - 'green' for e-factor between 2.2 and 2.5
+     *
+     * If none of the conditions are met, it defaults to 'white'.
      */
     public function determineBackgroundColor(Lexeme $lexeme): string
     {
@@ -36,7 +44,7 @@ class LexemeService
     }
 
     /**
-     * Retrieve a lexeme by its id.
+     * Finds a lexeme by its ID.
      */
     public function findById(int $id): ?Lexeme
     {
@@ -44,7 +52,9 @@ class LexemeService
     }
 
     /**
-     * Create a new lexeme record.
+     * Creates a new lexeme.
+     *
+     * @param array{text:string, meaning:string, romanized:string|null, language:string, repetitions:int|null, e_factor:float|null, status:string|null}  $data
      */
     public function createLexeme(array $data): Lexeme
     {
@@ -52,7 +62,9 @@ class LexemeService
     }
 
     /**
-     * Update an existing lexeme record.
+     * Updates a lexeme.
+     *
+     * @param array{text:string|null, meaning:string|null, romanized:string|null, language:string|null, repetitions:int|null, e_factor:float|null, status:string|null} $data
      */
     public function updateLexeme(Lexeme $lexeme, array $data): bool
     {
@@ -60,7 +72,7 @@ class LexemeService
     }
 
     /**
-     * Attach a lexeme to a lesson.
+     * Attaches a lexeme to a lesson.
      */
     public function attachToLesson(Lexeme $lexeme, int $lessonId): bool
     {
