@@ -4,9 +4,9 @@ namespace App\Livewire\Pages;
 
 use App\Models\Lesson;
 use App\Services\LanguageService;
+use Illuminate\View\View;
 use Livewire\Component;
 use WireUi\Breadcrumbs\Trail;
-use Illuminate\View\View;
 
 class LessonRead extends Component
 {

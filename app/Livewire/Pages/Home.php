@@ -2,9 +2,9 @@
 
 namespace App\Livewire\Pages;
 
+use Illuminate\View\View;
 use Livewire\Attributes\Title;
 use Livewire\Component;
-use Illuminate\View\View;
 
 #[Title('Home')]
 class Home extends Component

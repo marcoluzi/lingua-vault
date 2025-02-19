@@ -14,6 +14,5 @@ class LessonSeeder extends Seeder
         for ($i = 0; $i < 50; $i++) {
             \App\Models\Lesson::factory()->create();
         }
-
     }
 }
