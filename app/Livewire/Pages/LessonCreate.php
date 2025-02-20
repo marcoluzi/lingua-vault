@@ -142,4 +142,3 @@ class LessonCreate extends Component
         return view('livewire.pages.lesson-create')->title($this->pageTitle);
     }
 }
-

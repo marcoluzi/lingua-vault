@@ -31,7 +31,7 @@ class LessonRead extends Component
 
         $this->lessonId = $lesson->id;
         $this->language = $lesson->language->value;
-        $this->pageTitle  = $lesson->title;
+        $this->pageTitle = $lesson->title;
         $this->text = $lesson->text;
 
         if ($this->language !== $this->languageService->getCurrentLanguage()) {

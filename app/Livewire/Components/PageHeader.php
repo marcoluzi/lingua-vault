@@ -14,4 +14,3 @@ class PageHeader extends Component
         return view('livewire.components.page-header');
     }
 }
-
