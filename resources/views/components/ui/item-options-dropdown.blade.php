@@ -13,6 +13,7 @@
         x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100"
         x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100"
         x-transition:leave-end="transform opacity-0 scale-95" @click.away="open = false">
+        {{-- TODO: Creating Edit in Model. --}}
         <a href="#" class="block px-3 py-1 text-sm leading-6 text-gray-900 hover:bg-gray-50" role="menuitem"
             tabindex="-1">
             {{ __('Edit') }}
@@ -22,6 +23,6 @@
             role="menuitem" tabindex="-1"
             wire:click="$dispatch('openModal', { component: '{{ $modalComponent }}', arguments: { '{{ $idKey }}': {{ $itemId }} }})">
             {{ __('Delete') }}
-            {{-- </button> --}}
+        </button>
     </div>
 </div>
