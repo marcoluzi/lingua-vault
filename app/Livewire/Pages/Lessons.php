@@ -39,19 +39,19 @@ class Lessons extends Component
             [
                 'value' => 'updated_at',
                 'label' => __('Recently practiced'),
-                'action' => '$wire.sortBy("updated_at")',
+                'action' => '$wire.sortBy("updated_at");',
                 'direction' => 'desc',
             ],
             [
                 'value' => 'title',
                 'label' => __('Alphabetical (A-Z)'),
-                'action' => '$wire.sortBy("title")',
+                'action' => '$wire.sortBy("title");',
                 'direction' => 'asc',
             ],
             [
                 'value' => 'progress',
                 'label' => __('Progress'),
-                'action' => '$wire.sortBy("progress")',
+                'action' => '$wire.sortBy("progress");',
                 'direction' => 'asc',
             ],
         ];
