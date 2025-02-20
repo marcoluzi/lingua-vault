@@ -4,29 +4,29 @@ namespace App\Livewire\Components;
 
 use App\Livewire\Pages\Lessons;
 use App\Livewire\Traits\WithDeletionModal;
-use App\Services\LessonDeletionService;
+use App\Services\LexemeService;
 use Illuminate\View\View;
 use LivewireUI\Modal\ModalComponent;
 
-class DeleteLessonModal extends ModalComponent
+class DeleteLexemeModal extends ModalComponent
 {
     use WithDeletionModal;
 
-    public int $lessonId;
+    public int $lexemeId;
 
-    protected LessonDeletionService $lessonDeletionService;
+    protected LexemeService $lexemeService;
 
-    public function boot(LessonDeletionService $lessonDeletionService): void
+    public function boot(LexemeService $lexemeService): void
     {
-        $this->lessonDeletionService = $lessonDeletionService;
+        $this->lexemeService = $lexemeService;
     }
 
     /**
-     * Calls the deletion service to delete the lesson.
+     * Calls the deletion service to delete the lexeme.
      */
     protected function performDeletion(): void
     {
-        $this->lessonDeletionService->deleteLesson($this->lessonId);
+        $this->lexemeService->deleteLexeme($this->lexemeId);
     }
 
     /**
@@ -34,7 +34,7 @@ class DeleteLessonModal extends ModalComponent
      */
     protected function getDeletedEvent(): string
     {
-        return 'lesson-deleted';
+        return 'lexeme-deleted';
     }
 
     /**
@@ -47,6 +47,6 @@ class DeleteLessonModal extends ModalComponent
 
     public function render(): View
     {
-        return view('livewire.components.delete-lesson-modal');
+        return view('livewire.components.delete-lexeme-modal');
     }
 }

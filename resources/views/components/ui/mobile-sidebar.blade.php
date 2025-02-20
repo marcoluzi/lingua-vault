@@ -44,7 +44,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#"
+                                    <a href="{{ route('lexemes.index') }}"
                                         class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
                                         <svg class="h-6 w-6 shrink-0" xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 512 512" fill="currentColor" aria-hidden="true">

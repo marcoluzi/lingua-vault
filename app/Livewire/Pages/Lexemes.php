@@ -4,7 +4,7 @@ namespace App\Livewire\Pages;
 
 use App\Livewire\Traits\WithLanguageModelQuery;
 use App\Livewire\Traits\WithSortable;
-use App\Models\Lesson;
+use App\Models\Lexeme;
 use App\Services\LanguageService;
 use Illuminate\View\View;
 use Livewire\Attributes\On;
@@ -12,7 +12,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use WireUi\Breadcrumbs\Trail;
 
-class Lessons extends Component
+class Lexemes extends Component
 {
     use WithPagination, WithSortable, WithLanguageModelQuery;
 
@@ -27,8 +27,7 @@ class Lessons extends Component
 
     public function mount(): void
     {
-        $this->pageTitle = __('Lessons');
-
+        $this->pageTitle = __('Words and Expressions');
         $this->initializeSortable();
     }
 
@@ -38,11 +37,11 @@ class Lessons extends Component
     }
 
     /**
-     * Refresh the lessons list by resetting pagination.
-     * Triggered by the 'lesson-deleted' event.
+     * Refresh the lexemes list by resetting pagination.
+     * Triggered by the 'lexeme-deleted' event.
      */
-    #[On('lesson-deleted')]
-    public function refreshLessons(): void
+    #[On('lexeme-deleted')]
+    public function refreshLexemes(): void
     {
         $this->resetPage();
     }
@@ -57,37 +56,31 @@ class Lessons extends Component
                 'direction' => 'desc',
             ],
             [
-                'value' => 'title-asc',
-                'column' => 'title',
+                'value' => 'text-asc',
+                'column' => 'text',
                 'label' => __('Alphabetical (A-Z)'),
-                'action' => '$wire.sortBy("title-asc");',
+                'action' => '$wire.sortBy("text-asc");',
                 'direction' => 'asc',
             ],
             [
-                'value' => 'title-desc',
-                'column' => 'title',
+                'value' => 'text-desc',
+                'column' => 'text',
                 'label' => __('Alphabetical (Z-A)'),
-                'action' => '$wire.sortBy("title-desc");',
+                'action' => '$wire.sortBy("text-desc");',
                 'direction' => 'desc',
-            ],
-            [
-                'value' => 'progress',
-                'label' => __('Progress'),
-                'action' => '$wire.sortBy("progress");',
-                'direction' => 'asc',
             ],
         ];
     }
 
     protected function getModelClass(): string
     {
-        return Lesson::class;
+        return Lexeme::class;
     }
 
     public function render(): View
     {
-        $lessons = $this->getPaginatedModels();
+        $lexemes = $this->getPaginatedModels();
 
-        return view('livewire.pages.lessons', ['lessons' => $lessons])->title($this->pageTitle);
+        return view('livewire.pages.lexemes', ['lexemes' => $lexemes])->title($this->pageTitle);
     }
 }

@@ -83,4 +83,20 @@ class LexemeService
 
         return false;
     }
+
+    /**
+     * Deletes a lexeme by its ID.
+     *
+     * @throws \Exception If the lexeme with the given ID is not found.
+     */
+    public function deleteLexeme(int $lexemeId): void
+    {
+        $lexeme = Lexeme::find($lexemeId);
+
+        if (! $lexeme) {
+            throw new \Exception('Lexeme with ID '.$lexemeId.' not found.');
+        }
+
+        $lexeme->delete();
+    }
 }

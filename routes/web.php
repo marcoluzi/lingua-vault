@@ -22,3 +22,8 @@ Route::group(['prefix' => 'lessons', 'as' => 'lessons.'], function () {
     Route::get('create', Pages\LessonCreate::class)->name('create');
     Route::get('{lessonId}', Pages\LessonRead::class)->name('read');
 });
+
+// Lexemes
+Route::group(['prefix' => 'lexemes', 'as' => 'lexemes.'], function () {
+    Route::get('/', Pages\Lexemes::class)->name('index');
+});
