@@ -24,6 +24,13 @@ class Lessons extends Component
 
     public string $currentSortDirection = 'desc';
 
+    protected LanguageService $languageService;
+
+    public function boot(LanguageService $languageService): void
+    {
+        $this->languageService = $languageService;
+    }
+
     public function mount(): void
     {
         $this->pageTitle = __('Lessons');
@@ -90,7 +97,10 @@ class Lessons extends Component
 
     public function render(): View
     {
-        $lessons = Lesson::orderBy($this->currentSortField, $this->currentSortDirection)->paginate(10);
+        $lessons = Lesson::where('language', $this->languageService
+            ->getCurrentLanguage())
+            ->orderBy($this->currentSortField, $this->currentSortDirection)
+            ->paginate(10);
 
         return view('livewire.pages.lessons', ['lessons' => $lessons])->title($this->pageTitle);
     }
