@@ -8,9 +8,9 @@ use Livewire\Component;
 
 class LanguageSwitcher extends Component
 {
-    public array $languageItems = [];
+    public array $availableLanguages = [];
 
-    public array $selectedLanguageItem = [];
+    public array $currentLanguage = [];
 
     protected LanguageService $languageService;
 
@@ -21,17 +21,17 @@ class LanguageSwitcher extends Component
 
     public function mount(): void
     {
-        $this->languageItems = $this->languageService->getAvailableLanguages();
-        $this->selectedLanguageItem = $this->languageService->getSelectedLanguage();
+        $this->availableLanguages = $this->languageService->getAvailableLanguages();
+        $this->currentLanguage = $this->languageService->getSelectedLanguage();
     }
 
     /**
-     * Set the selected language by updating the selectedLanguage property and redirecting to the lessons.index route.
+     * Update the current language and redirect to the lessons.index route.
      */
-    public function setLanguage(string $selectedLanguage): void
+    public function setLanguage(string $language): void
     {
-        $this->languageService->setLanguage($selectedLanguage);
-        $this->selectedLanguageItem = $this->languageService->getSelectedLanguage();
+        $this->languageService->setLanguage($language);
+        $this->currentLanguage = $this->languageService->getSelectedLanguage();
 
         $this->redirectRoute('lessons.index');
     }
