@@ -27,6 +27,7 @@
         $classes = 'inline-flex items-center ' . $classes;
     }
 
+    // TODO: Utilize blade icons
     $iconSvg = '';
 
     if ($icon) {
