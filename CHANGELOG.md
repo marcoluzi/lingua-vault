@@ -10,6 +10,7 @@
 -   Adjusting updateLexeme dispatch event to only run on necessary items
 -   Improving button component
 -   Adjusting lessons page to only show lessons of the currently selected language
+-   Implementing Flux
 
 ## [v0.2.0-alpha](https://github.com/marcoluzi/lingua-vault/commits/v0.2.0-alpha) - 2025-02-14
 

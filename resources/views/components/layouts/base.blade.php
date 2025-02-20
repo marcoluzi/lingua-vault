@@ -10,11 +10,17 @@
     <link rel="shortcut icon" href="{{ url(asset('favicon.ico')) }}">
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=inter:400,500,600&display=swap" rel="stylesheet" />
 
+    <!-- Vite -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
     @livewireStyles
     @livewireScripts
+
+    <!-- Flux Styles -->
+    @fluxStyles
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -22,7 +28,12 @@
 
 <body class="h-full">
     @yield('body')
+
+    <!-- Livewire Modal -->
     @livewire('wire-elements-modal')
+
+    <!-- Flux Scripts -->
+    @fluxScripts
 </body>
 
 </html>
