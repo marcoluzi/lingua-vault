@@ -1,9 +1,9 @@
 <div>
-    <livewire:components.page-header :$title />
+    <livewire:components.page-header :$pageTitle />
     @if ($lessons->total() > 0)
         <div class="flex md:items-center justify-between flex-col-reverse md:flex-row gap-4 mt-8 md:mt-16">
             <div class="md:max-w-xs w-full">
-                <x-select-menu class="max-w-48" :items="$sortItems" :selectedItem="$selectedSortItem" label="{{ __('Sort by') }}" />
+                <x-select-menu class="max-w-48" :items="$availableSortOptions" :selectedItem="$currentSortOption" label="{{ __('Sort by') }}" />
             </div>
             <x-button href="{{ route('lessons.create') }}" icon="plus">{{ __('Create new lesson') }}</x-button>
         </div>
@@ -44,7 +44,8 @@
                         </div>
                     </div>
                     <div class="flex flex-none items-center gap-x-4">
-                        <x-button href="{{ route('lessons.read', ['lessonId' => $lesson['id']]) }}" size="sm" outline="true">{{ __('Open lesson') }}</x-button>
+                        <x-button href="{{ route('lessons.read', ['lessonId' => $lesson['id']]) }}" size="sm"
+                            outline="true">{{ __('Open lesson') }}</x-button>
                         <div x-data="{ open: false }" class="relative flex-none">
                             <button type="button" class="-m-2.5 block p-2.5 text-gray-500 hover:text-gray-900"
                                 id="lesson-menu-{{ $loop->iteration }}-button" :aria-expanded="open.toString()"
@@ -97,7 +98,8 @@
                 <h3 class="mt-2 text-sm font-semibold text-gray-900">{{ __('No lessons') }}</h3>
                 <p class="mt-1 text-sm text-gray-500">{{ __('Get started by creating a new lesson.') }}</p>
                 <div class="mt-6">
-                    <x-button href="{{ route('lessons.create') }}" icon="plus">{{ __('Create new lesson') }}</x-button>
+                    <x-button href="{{ route('lessons.create') }}"
+                        icon="plus">{{ __('Create new lesson') }}</x-button>
                 </div>
             </div>
         </div>

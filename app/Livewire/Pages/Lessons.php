@@ -3,6 +3,7 @@
 namespace App\Livewire\Pages;
 
 use App\Models\Lesson;
+use App\Services\LanguageService;
 use Illuminate\View\View;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -13,21 +14,21 @@ class Lessons extends Component
 {
     use WithPagination;
 
-    public string $title = '';
+    public string $pageTitle = '';
 
-    public array $sortItems = [];
+    public array $availableSortOptions = [];
 
-    public array $selectedSortItem = [];
+    public array $currentSortOption = [];
 
-    public string $sortField = 'updated_at';
+    public string $currentSortField = 'updated_at';
 
-    public string $sortDirection = 'desc';
+    public string $currentSortDirection = 'desc';
 
     public function mount(): void
     {
-        $this->title = __('Lessons');
+        $this->pageTitle = __('Lessons');
 
-        $this->sortItems = [
+        $this->availableSortOptions = [
             [
                 'value' => 'updated_at',
                 'label' => __('Recently practiced'),
@@ -48,40 +49,38 @@ class Lessons extends Component
             ],
         ];
 
-        $this->selectedSortItem = $this->sortItems[0];
+        $this->currentSortOption = $this->availableSortOptions[0];
     }
 
     public function breadcrumbs(Trail $trail): Trail
     {
-        return $trail->push($this->title);
+        return $trail->push($this->pageTitle);
     }
 
     /**
-     * Set the sort field and direction.
+     * Set the sort field and direction based on the selected sort option.
      *
      * @throws \Exception If the sort value is invalid.
      */
     public function sortBy(string $value): void
     {
-        $sortItem = collect($this->sortItems)->firstWhere('value', $value);
+        $selectedSortOption = collect($this->availableSortOptions)->firstWhere('value', $value);
 
-        if (! $sortItem) {
+        if (!$selectedSortOption) {
             throw new \Exception('Invalid sort value.');
         }
 
-        if ($sortItem) {
-            $this->sortField = $sortItem['value'];
-            $this->sortDirection = $sortItem['direction'];
-            $this->selectedSortItem = $sortItem;
+        $this->currentSortField = $selectedSortOption['value'];
+        $this->currentSortDirection = $selectedSortOption['direction'];
+        $this->currentSortOption = $selectedSortOption;
 
-            $this->resetPage();
-        }
+        $this->resetPage();
     }
 
     /**
-     * Refreshes the lessons list by resetting the pagination.
+     * Refresh the lessons list by resetting pagination.
      *
-     * This method is triggered by the 'lesson-deleted' event.
+     * Triggered by the 'lesson-deleted' event.
      */
     #[On('lesson-deleted')]
     public function refreshLessons(): void
@@ -91,8 +90,9 @@ class Lessons extends Component
 
     public function render(): View
     {
-        $lessons = Lesson::orderBy($this->sortField, $this->sortDirection)->paginate(10);
+        $lessons = Lesson::orderBy($this->currentSortField, $this->currentSortDirection)->paginate(10);
 
-        return view('livewire.pages.lessons', ['lessons' => $lessons])->title($this->title);
+        return view('livewire.pages.lessons', ['lessons' => $lessons])->title($this->pageTitle);
     }
 }
+
