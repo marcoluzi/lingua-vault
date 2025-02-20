@@ -73,7 +73,7 @@ class Lessons extends Component
     {
         $selectedSortOption = collect($this->availableSortOptions)->firstWhere('value', $value);
 
-        if (!$selectedSortOption) {
+        if (! $selectedSortOption) {
             throw new \Exception('Invalid sort value.');
         }
 
