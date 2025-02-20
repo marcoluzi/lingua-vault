@@ -9,20 +9,14 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use WireUi\Breadcrumbs\Trail;
 use Livewire\Attributes\On;
+use App\Livewire\Traits\WithSortable;
+use App\Livewire\Traits\WithLanguageModelQuery;
 
 class Lexemes extends Component
 {
-    use WithPagination;
+    use WithPagination, WithSortable, WithLanguageModelQuery;
 
     public string $pageTitle = '';
-
-    public array $availableSortOptions = [];
-
-    public array $currentSortOption = [];
-
-    public string $currentSortField = 'updated_at';
-
-    public string $currentSortDirection = 'desc';
 
     protected LanguageService $languageService;
 
@@ -34,30 +28,7 @@ class Lexemes extends Component
     public function mount(): void
     {
         $this->pageTitle = __('Words and Expressions');
-
-        // TODO: Prevent duplicate code of sorting function.
-        $this->availableSortOptions = [
-            [
-                'value' => 'updated_at',
-                'label' => __('Recently practiced'),
-                'action' => '$wire.sortBy("updated_at");',
-                'direction' => 'desc',
-            ],
-            [
-                'value' => 'text',
-                'label' => __('Alphabetical (A-Z)'),
-                'action' => '$wire.sortBy("text");',
-                'direction' => 'asc',
-            ],
-            [
-                'value' => 'text',
-                'label' => __('Alphabetical (Z-A)'),
-                'action' => '$wire.sortBy("text");',
-                'direction' => 'desc',
-            ],
-        ];
-
-        $this->currentSortOption = $this->availableSortOptions[0];
+        $this->initializeSortable();
     }
 
     public function breadcrumbs(Trail $trail): Trail
@@ -66,28 +37,7 @@ class Lexemes extends Component
     }
 
     /**
-     * Set the sort field and direction based on the selected sort option.
-     *
-     * @throws \Exception If the sort value is invalid.
-     */
-    public function sortBy(string $value): void
-    {
-        $selectedSortOption = collect($this->availableSortOptions)->firstWhere('value', $value);
-
-        if (! $selectedSortOption) {
-            throw new \Exception('Invalid sort value.');
-        }
-
-        $this->currentSortField = $selectedSortOption['value'];
-        $this->currentSortDirection = $selectedSortOption['direction'];
-        $this->currentSortOption = $selectedSortOption;
-
-        $this->resetPage();
-    }
-
-    /**
      * Refresh the lexemes list by resetting pagination.
-     *
      * Triggered by the 'lexeme-deleted' event.
      */
     #[On('lexeme-deleted')]
@@ -96,13 +46,40 @@ class Lexemes extends Component
         $this->resetPage();
     }
 
+    protected function getSortOptions(): array
+    {
+        return [
+            [
+                'value'     => 'updated_at',
+                'label'     => __('Recently practiced'),
+                'action'    => '$wire.sortBy("updated_at");',
+                'direction' => 'desc',
+            ],
+            [
+                'value'     => 'text-asc',
+                'column'    => 'text',
+                'label'     => __('Alphabetical (A-Z)'),
+                'action'    => '$wire.sortBy("text-asc");',
+                'direction' => 'asc',
+            ],
+            [
+                'value'     => 'text-desc',
+                'column'    => 'text',
+                'label'     => __('Alphabetical (Z-A)'),
+                'action'    => '$wire.sortBy("text-desc");',
+                'direction' => 'desc',
+            ],
+        ];
+    }
+
+    protected function getModelClass(): string
+    {
+        return Lexeme::class;
+    }
+
     public function render(): View
     {
-        $lexemes = Lexeme::where('language', $this->languageService
-            ->getCurrentLanguage())
-            ->orderBy($this->currentSortField, $this->currentSortDirection)
-            ->paginate(10);
-
+        $lexemes = $this->getPaginatedModels();
         return view('livewire.pages.lexemes', ['lexemes' => $lexemes])->title($this->pageTitle);
     }
 }

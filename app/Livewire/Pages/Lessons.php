@@ -9,20 +9,14 @@ use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
 use WireUi\Breadcrumbs\Trail;
+use App\Livewire\Traits\WithSortable;
+use App\Livewire\Traits\WithLanguageModelQuery;
 
 class Lessons extends Component
 {
-    use WithPagination;
+    use WithPagination, WithSortable, WithLanguageModelQuery;
 
     public string $pageTitle = '';
-
-    public array $availableSortOptions = [];
-
-    public array $currentSortOption = [];
-
-    public string $currentSortField = 'updated_at';
-
-    public string $currentSortDirection = 'desc';
 
     protected LanguageService $languageService;
 
@@ -35,28 +29,7 @@ class Lessons extends Component
     {
         $this->pageTitle = __('Lessons');
 
-        $this->availableSortOptions = [
-            [
-                'value' => 'updated_at',
-                'label' => __('Recently practiced'),
-                'action' => '$wire.sortBy("updated_at");',
-                'direction' => 'desc',
-            ],
-            [
-                'value' => 'title',
-                'label' => __('Alphabetical (A-Z)'),
-                'action' => '$wire.sortBy("title");',
-                'direction' => 'asc',
-            ],
-            [
-                'value' => 'progress',
-                'label' => __('Progress'),
-                'action' => '$wire.sortBy("progress");',
-                'direction' => 'asc',
-            ],
-        ];
-
-        $this->currentSortOption = $this->availableSortOptions[0];
+        $this->initializeSortable();
     }
 
     public function breadcrumbs(Trail $trail): Trail
@@ -65,28 +38,7 @@ class Lessons extends Component
     }
 
     /**
-     * Set the sort field and direction based on the selected sort option.
-     *
-     * @throws \Exception If the sort value is invalid.
-     */
-    public function sortBy(string $value): void
-    {
-        $selectedSortOption = collect($this->availableSortOptions)->firstWhere('value', $value);
-
-        if (! $selectedSortOption) {
-            throw new \Exception('Invalid sort value.');
-        }
-
-        $this->currentSortField = $selectedSortOption['value'];
-        $this->currentSortDirection = $selectedSortOption['direction'];
-        $this->currentSortOption = $selectedSortOption;
-
-        $this->resetPage();
-    }
-
-    /**
      * Refresh the lessons list by resetting pagination.
-     *
      * Triggered by the 'lesson-deleted' event.
      */
     #[On('lesson-deleted')]
@@ -95,12 +47,46 @@ class Lessons extends Component
         $this->resetPage();
     }
 
+    protected function getSortOptions(): array
+    {
+        return [
+            [
+                'value' => 'updated_at',
+                'label' => __('Recently practiced'),
+                'action' => '$wire.sortBy("updated_at");',
+                'direction' => 'desc',
+            ],
+            [
+                'value' => 'title-asc',
+                'column' => 'title',
+                'label' => __('Alphabetical (A-Z)'),
+                'action' => '$wire.sortBy("title-asc");',
+                'direction' => 'asc',
+            ],
+            [
+                'value' => 'title-desc',
+                'column' => 'title',
+                'label' => __('Alphabetical (Z-A)'),
+                'action' => '$wire.sortBy("title-desc");',
+                'direction' => 'desc',
+            ],
+            [
+                'value' => 'progress',
+                'label' => __('Progress'),
+                'action' => '$wire.sortBy("progress");',
+                'direction' => 'asc',
+            ],
+        ];
+    }
+
+    protected function getModelClass(): string
+    {
+        return Lesson::class;
+    }
+
     public function render(): View
     {
-        $lessons = Lesson::where('language', $this->languageService
-            ->getCurrentLanguage())
-            ->orderBy($this->currentSortField, $this->currentSortDirection)
-            ->paginate(10);
+        $lessons = $this->getPaginatedModels();
 
         return view('livewire.pages.lessons', ['lessons' => $lessons])->title($this->pageTitle);
     }
