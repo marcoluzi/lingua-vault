@@ -8,6 +8,7 @@
 -   Updating credits
 -   Removing wiwofone/memorize
 -   Adjusting updateLexeme dispatch event to only run on necessary items
+-   Improving button component
 
 ## [v0.2.0-alpha](https://github.com/marcoluzi/lingua-vault/commits/v0.2.0-alpha) - 2025-02-14
 
