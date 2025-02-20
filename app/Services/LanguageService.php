@@ -24,7 +24,7 @@ class LanguageService
                 'label' => $language->getLabel(),
                 'image' => asset('flags/'.$language->value.'.svg'),
                 'alt' => __('Flag for :language', ['language' => $language->getLabel()]),
-                'action' => '$wire.setLanguage(\''.$language->value.'\')',
+                'action' => '$wire.setLanguage(\''.$language->value.'\');',
             ];
         }, Languages::cases());
     }
