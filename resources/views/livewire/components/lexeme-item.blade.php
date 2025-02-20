@@ -5,7 +5,7 @@
             arguments: {
                 lexemeId: {{ $lexemeId ? $lexemeId : 'null' }},
                 word: '{{ $word }}',
-                lessonLanguage: '{{ $lessonLanguage }}',
+                language: '{{ $language }}',
                 lessonId: {{ $lessonId }}
             }
         })">

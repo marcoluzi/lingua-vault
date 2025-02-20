@@ -13,7 +13,7 @@ use WireUi\Breadcrumbs\Trail;
 
 class LessonCreate extends Component
 {
-    public string $title = '';
+    public string $pageTitle = '';
 
     public array $languageItems = [];
 
@@ -28,7 +28,7 @@ class LessonCreate extends Component
 
     public function mount(): void
     {
-        $this->title = __('Create Lesson');
+        $this->pageTitle = __('Create Lesson');
 
         $this->setLanguageItems();
 
@@ -38,7 +38,7 @@ class LessonCreate extends Component
     // TODO: breadcrumbs break after component update
     public function breadcrumbs(Trail $trail): Trail
     {
-        return $trail->push(__('Lessons'), route('lessons.index'))->push($this->title);
+        return $trail->push(__('Lessons'), route('lessons.index'))->push($this->pageTitle);
     }
 
     /**
@@ -139,6 +139,7 @@ class LessonCreate extends Component
 
     public function render(): View
     {
-        return view('livewire.pages.lesson-create')->title($this->title);
+        return view('livewire.pages.lesson-create')->title($this->pageTitle);
     }
 }
+

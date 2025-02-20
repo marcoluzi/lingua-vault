@@ -10,7 +10,7 @@ class LanguageSwitcher extends Component
 {
     public array $availableLanguages = [];
 
-    public array $currentLanguage = [];
+    public array $selectedLanguage = [];
 
     protected LanguageService $languageService;
 
@@ -22,16 +22,16 @@ class LanguageSwitcher extends Component
     public function mount(): void
     {
         $this->availableLanguages = $this->languageService->getAvailableLanguages();
-        $this->currentLanguage = $this->languageService->getSelectedLanguage();
+        $this->selectedLanguage = $this->languageService->getSelectedLanguage();
     }
 
     /**
-     * Update the current language and redirect to the lessons.index route.
+     * Update the selected language and redirect to the lessons.index route.
      */
     public function setLanguage(string $language): void
     {
         $this->languageService->setLanguage($language);
-        $this->currentLanguage = $this->languageService->getSelectedLanguage();
+        $this->selectedLanguage = $this->languageService->getSelectedLanguage();
 
         $this->redirectRoute('lessons.index');
     }

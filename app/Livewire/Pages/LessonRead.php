@@ -12,9 +12,9 @@ class LessonRead extends Component
 {
     public int $lessonId;
 
-    public string $lessonLanguage;
+    public string $language;
 
-    public string $title;
+    public string $pageTitle = '';
 
     public string $text;
 
@@ -30,12 +30,12 @@ class LessonRead extends Component
         $lesson = Lesson::findOrFail($lessonId);
 
         $this->lessonId = $lesson->id;
-        $this->lessonLanguage = $lesson->language->value;
-        $this->title = $lesson->title;
+        $this->language = $lesson->language->value;
+        $this->pageTitle  = $lesson->title;
         $this->text = $lesson->text;
 
-        if ($this->lessonLanguage !== $this->languageService->getCurrentLanguage()) {
-            $this->languageService->setLanguage($this->lessonLanguage);
+        if ($this->language !== $this->languageService->getCurrentLanguage()) {
+            $this->languageService->setLanguage($this->language);
 
             $this->redirectRoute('lessons.read', ['lessonId' => $lesson->id]);
         }
@@ -43,11 +43,11 @@ class LessonRead extends Component
 
     public function breadcrumbs(Trail $trail): Trail
     {
-        return $trail->push(__('Lessons'), route('lessons.index'))->push($this->title);
+        return $trail->push(__('Lessons'), route('lessons.index'))->push($this->pageTitle);
     }
 
     public function render(): View
     {
-        return view('livewire.pages.lesson-read')->title($this->title);
+        return view('livewire.pages.lesson-read')->title($this->pageTitle);
     }
 }

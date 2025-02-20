@@ -9,27 +9,27 @@ use Livewire\Component;
 
 class LexemeItem extends Component
 {
+    public int|null $lexemeId = null;
+
     public string $word;
 
-    public string $lessonLanguage;
+    public string $language;
 
     public int $lessonId;
 
-    public ?int $lexemeId = null;
-
     public string $backgroundColor = 'blue';
 
-    public function mount(LexemeService $lexemeService, string $word, string $lessonLanguage, int $lessonId): void
+    public function mount(LexemeService $lexemeService, string $word, string $language, int $lessonId): void
     {
         $this->word = $word;
-        $this->lessonLanguage = $lessonLanguage;
+        $this->language = $language;
         $this->lessonId = $lessonId;
 
-        $existing = $lexemeService->findByTextAndLanguage($this->word, $this->lessonLanguage);
+        $lexeme = $lexemeService->findByTextAndLanguage($word, $language);
 
-        if ($existing) {
-            $this->lexemeId = $existing->id;
-            $this->backgroundColor = $lexemeService->determineBackgroundColor($existing);
+        if ($lexeme) {
+            $this->lexemeId = $lexeme->id;
+            $this->backgroundColor = $lexemeService->determineBackgroundColor($lexeme);
         }
     }
 
@@ -44,21 +44,17 @@ class LexemeItem extends Component
     #[On('lexeme-updated')]
     public function updateLexeme(array $payload, LexemeService $lexemeService): void
     {
-        if (! isset($payload['lexemeId'])) {
+        $lexemeId = $payload['lexemeId'] ?? null;
+
+        if ($this->lexemeId !== null && $this->lexemeId !== $lexemeId) {
             return;
         }
 
-        $updatedLexemeId = $payload['lexemeId'];
+        $lexeme = $lexemeService->findByTextAndLanguage($this->word, $this->language);
 
-        if ($this->lexemeId !== null && $this->lexemeId !== $updatedLexemeId) {
-            return;
-        }
-
-        $existing = $lexemeService->findByTextAndLanguage($this->word, $this->lessonLanguage);
-
-        if ($existing && $existing->id === $updatedLexemeId) {
-            $this->lexemeId = $existing->id;
-            $this->backgroundColor = $lexemeService->determineBackgroundColor($existing);
+        if ($lexeme && $lexeme->id === $lexemeId) {
+            $this->lexemeId = $lexeme->id;
+            $this->backgroundColor = $lexemeService->determineBackgroundColor($lexeme);
         }
     }
 

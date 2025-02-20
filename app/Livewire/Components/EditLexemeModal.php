@@ -9,40 +9,40 @@ use LivewireUI\Modal\ModalComponent;
 
 class EditLexemeModal extends ModalComponent
 {
-    public ?int $lexemeId = null;
+    public int|null $lexemeId = null;
 
     public string $word;
 
-    public string $lessonLanguage;
+    public string $language;
 
     public int $lessonId;
 
-    public ?string $meaning = '';
+    public string|null $meaning = null;
 
-    public ?string $romanized = '';
+    public string|null $romanization = null;
 
-    public ?Statuses $status = null;
+    public Statuses|null $status = null;
 
     protected array $rules = [
         'word' => 'required|string',
-        'lessonLanguage' => 'required|string',
+        'language' => 'required|string',
         'meaning' => 'nullable|string',
-        'romanized' => 'nullable|string',
+        'romanization' => 'nullable|string',
     ];
 
-    public function mount(LexemeService $lexemeService, ?int $lexemeId, string $word, string $lessonLanguage, int $lessonId): void
+    public function mount(LexemeService $lexemeService, ?int $lexemeId, string $word, string $language, int $lessonId): void
     {
         $this->lexemeId = $lexemeId;
         $this->word = $word;
-        $this->lessonLanguage = $lessonLanguage;
+        $this->language = $language;
         $this->lessonId = $lessonId;
 
-        if ($this->lexemeId) {
-            $lexeme = $lexemeService->findById($this->lexemeId);
+        if ($lexemeId) {
+            $lexeme = $lexemeService->findById($lexemeId);
 
             if ($lexeme) {
                 $this->meaning = $lexeme->meaning;
-                $this->romanized = $lexeme->romanized;
+                $this->romanization = $lexeme->romanization;
                 $this->status = $lexeme->status;
             }
         }
@@ -63,8 +63,8 @@ class EditLexemeModal extends ModalComponent
         $data = [
             'text' => $this->word,
             'meaning' => $this->meaning,
-            'romanized' => $this->romanized,
-            'language' => $this->lessonLanguage,
+            'romanization' => $this->romanization,
+            'language' => $this->language,
             'status' => $this->status,
         ];
 
@@ -74,7 +74,7 @@ class EditLexemeModal extends ModalComponent
             if ($lexeme) {
                 $lexemeService->updateLexeme($lexeme, $data);
 
-                $this->dispatch('lexeme-updated', ['lexemeId' => $lexeme->id])->to(LexemeItem::class);
+                $this->dispatch('lexeme-updated', ['lexemeId' => $lexeme->id]);
             }
         } else {
             if ($this->meaning || $this->status) {
@@ -83,7 +83,7 @@ class EditLexemeModal extends ModalComponent
                 $this->lexemeId = $lexeme->id;
 
                 if ($lexemeService->attachToLesson($lexeme, $this->lessonId)) {
-                    $this->dispatch('lexeme-updated', ['lexemeId' => $lexeme->id])->to(LexemeItem::class);
+                    $this->dispatch('lexeme-updated', ['lexemeId' => $lexeme->id]);
                 }
             }
         }

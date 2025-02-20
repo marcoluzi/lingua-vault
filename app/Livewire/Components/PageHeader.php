@@ -7,10 +7,11 @@ use Livewire\Component;
 
 class PageHeader extends Component
 {
-    public string $title;
+    public string $pageTitle = '';
 
     public function render(): View
     {
         return view('livewire.components.page-header');
     }
 }
+
