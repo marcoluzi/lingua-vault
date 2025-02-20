@@ -37,7 +37,7 @@
 
                         <flux:tooltip.content class="max-w-[20rem] space-y-2">
                             <p>{{ __('Well known items will not be rehearsed.') }}</p>
-                            <p>{{ __('Ignored items will not be rehearsed and do not count towards your learned lexemes.') }}</p>
+                            <p>{{ __('Ignored items will not be rehearsed and do not count towards your learned words and expressions.') }}</p>
                         </flux:tooltip.content>
                     </flux:tooltip>
                 </label>
