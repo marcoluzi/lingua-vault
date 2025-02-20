@@ -1,12 +1,13 @@
 <div>
     <livewire:components.page-header :$pageTitle />
+
     @if ($lessons->total() > 0)
-        <div class="flex md:items-center justify-between flex-col-reverse md:flex-row gap-4 mt-8 md:mt-16">
-            <div class="md:max-w-xs w-full">
-                <x-select-menu class="max-w-48" :items="$availableSortOptions" :selectedItem="$currentSortOption" label="{{ __('Sort by') }}" />
-            </div>
-            <x-button href="{{ route('lessons.create') }}" icon="plus">{{ __('Create new lesson') }}</x-button>
-        </div>
+        @include('components.ui.header-and-sort', [
+            'actionButtonRoute' => route('lessons.create'),
+            'actionButtonText' => __('Create new lesson'),
+            'actionButtonIcon' => 'plus',
+        ])
+
         <ul role="list" class="divide-y divide-gray-100 mt-8 md:mt-16">
             @foreach ($lessons as $lesson)
                 <li class="flex items-center justify-between gap-x-6 py-5">
@@ -31,9 +32,11 @@
                             @endif
                         </div>
                         <div class="mt-1 flex items-center gap-x-2 text-xs leading-5 text-gray-500">
-                            <p class="whitespace-nowrap">{{ __('Last practiced:') }}
-                                <time
-                                    datetime="{{ \Carbon\Carbon::parse($lesson['updated_at'])->format('Y-m-d') }}">{{ \Carbon\Carbon::parse($lesson['updated_at'])->format('j F, Y') }}</time>
+                            <p class="whitespace-nowrap">
+                                {{ __('Last practiced:') }}
+                                <time datetime="{{ \Carbon\Carbon::parse($lesson['updated_at'])->format('Y-m-d') }}">
+                                    {{ \Carbon\Carbon::parse($lesson['updated_at'])->format('j F, Y') }}
+                                </time>
                             </p>
                             <svg viewBox="0 0 2 2" class="h-0.5 w-0.5 fill-current">
                                 <circle cx="1" cy="1" r="1" />
@@ -45,58 +48,30 @@
                     </div>
                     <div class="flex flex-none items-center gap-x-4">
                         <x-button href="{{ route('lessons.read', ['lessonId' => $lesson['id']]) }}" size="sm"
-                            outline="true">{{ __('Open lesson') }}</x-button>
-                        <div x-data="{ open: false }" class="relative flex-none">
-                            <button type="button" class="-m-2.5 block p-2.5 text-gray-500 hover:text-gray-900"
-                                id="lesson-menu-{{ $loop->iteration }}-button" :aria-expanded="open.toString()"
-                                aria-haspopup="true" @click="open = !open">
-                                <span class="sr-only">{{ __('Open options') }}</span>
-                                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
-                                    data-slot="icon">
-                                    <path
-                                        d="M10 3a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM10 8.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM11.5 15.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0Z" />
-                                </svg>
-                            </button>
-                            <div class="absolute right-0 z-10 mt-2 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none"
-                                role="menu" aria-orientation="vertical"
-                                aria-labelledby="lesson-menu-{{ $loop->iteration }}-button" tabindex="-1"
-                                x-show="open" x-transition:enter="transition ease-out duration-10"
-                                x-transition:enter-start="transform opacity-0 scale-95"
-                                x-transition:enter-end="transform opacity-100 scale-100"
-                                x-transition:leave="transition ease-in duration-75"
-                                x-transition:leave-start="transform opacity-100 scale-100"
-                                x-transition:leave-end="transform opacity-0 scale-95" @click.away="open = false">
-                                {{-- TODO: Edit --}}
-                                <a href="#"
-                                    class="block px-3 py-1 text-sm leading-6 text-gray-900 hover:bg-gray-50"
-                                    role="menuitem" tabindex="-1">
-                                    {{ __('Edit') }}
-                                    <span class="sr-only">{{ $lesson['title'] }}</span>
-                                </a>
-                                <button
-                                    class="block px-3 py-1 text-sm leading-6 text-gray-900 hover:bg-gray-50 w-full text-left"
-                                    role="menuitem" tabindex="-1"
-                                    wire:click="$dispatch('openModal', { component: 'components.delete-lesson-modal', arguments: { lessonId: {{ $lesson['id'] }} }})">
-                                    {{ __('Delete') }}
-                                </button>
-                            </div>
-                        </div>
+                            outline="true">
+                            {{ __('Open lesson') }}
+                        </x-button>
+                        @include('components.ui.item-options-dropdown', [
+                            'menuId' => 'lesson-menu-' . $loop->iteration,
+                            'modalComponent' => 'components.delete-lesson-modal',
+                            'idKey' => 'lessonId',
+                            'itemId' => $lesson['id'],
+                            'itemName' => $lesson['title'],
+                        ])
                     </div>
                 </li>
             @endforeach
         </ul>
         {{ $lessons->links('components.pagination') }}
     @else
-        <div class="flex justify-center items-center mt-8 md:mt-16">
-            <div class="text-center">
-                <x-icon-solid.folder-xmark class="mx-auto h-12 w-12" />
-                <h3 class="mt-2 text-sm font-semibold text-gray-900">{{ __('No lessons') }}</h3>
-                <p class="mt-1 text-sm text-gray-500">{{ __('Get started by creating a new lesson.') }}</p>
-                <div class="mt-6">
-                    <x-button href="{{ route('lessons.create') }}"
-                        icon="plus">{{ __('Create new lesson') }}</x-button>
-                </div>
-            </div>
-        </div>
+        @php
+            $emptyTitle = __('No lessons');
+            $emptyMessage = __('Get started by creating a new lesson.');
+            $emptyButtonRoute = route('lessons.create');
+            $emptyButtonText = __('Create new lesson');
+        @endphp
+        @include(
+            'components.ui.empty-state',
+            compact('emptyTitle', 'emptyMessage', 'emptyButtonRoute', 'emptyButtonText'))
     @endif
 </div>

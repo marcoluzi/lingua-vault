@@ -6,9 +6,12 @@ use App\Livewire\Pages\Lessons;
 use App\Services\LessonDeletionService;
 use Illuminate\View\View;
 use LivewireUI\Modal\ModalComponent;
+use App\Livewire\Traits\WithDeletionModal;
 
 class DeleteLessonModal extends ModalComponent
 {
+    use WithDeletionModal;
+
     public int $lessonId;
 
     protected LessonDeletionService $lessonDeletionService;
@@ -19,24 +22,27 @@ class DeleteLessonModal extends ModalComponent
     }
 
     /**
-     * Deletes the current lesson using the lessonDeletionService.
-     *
-     * Dispatches a 'lesson-deleted' event to the Lessons component
-     * and closes the modal upon successful deletion.
-     *
-     * @throws \Exception If an error occurs during deletion.
+     * Calls the deletion service to delete the lesson.
      */
-    public function deleteLesson(): void
+    protected function performDeletion(): void
     {
-        try {
-            $this->lessonDeletionService->deleteLesson($this->lessonId);
+        $this->lessonDeletionService->deleteLesson($this->lessonId);
+    }
 
-            $this->dispatch('lesson-deleted')->to(Lessons::class);
+    /**
+     * Returns the event name to dispatch after deletion.
+     */
+    protected function getDeletedEvent(): string
+    {
+        return 'lesson-deleted';
+    }
 
-            $this->closeModal();
-        } catch (\Exception $e) {
-            throw $e;
-        }
+    /**
+     * Returns the component/class to notify.
+     */
+    protected function getRedirectComponent(): string
+    {
+        return Lessons::class;
     }
 
     public function render(): View

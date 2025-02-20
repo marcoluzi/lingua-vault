@@ -6,9 +6,12 @@ use App\Livewire\Pages\Lessons;
 use App\Services\LexemeService;
 use Illuminate\View\View;
 use LivewireUI\Modal\ModalComponent;
+use App\Livewire\Traits\WithDeletionModal;
 
 class DeleteLexemeModal extends ModalComponent
 {
+    use WithDeletionModal;
+
     public int $lexemeId;
 
     protected LexemeService $lexemeService;
@@ -19,24 +22,27 @@ class DeleteLexemeModal extends ModalComponent
     }
 
     /**
-     * Deletes the current lexeme using the lexemeDeletionService.
-     *
-     * Dispatches a 'lexeme-deleted' event to the Lessons component
-     * and closes the modal upon successful deletion.
-     *
-     * @throws \Exception If an error occurs during deletion.
+     * Calls the deletion service to delete the lexeme.
      */
-    public function deleteLexeme(): void
+    protected function performDeletion(): void
     {
-        try {
-            $this->lexemeService->deleteLexeme($this->lexemeId);
+        $this->lexemeService->deleteLexeme($this->lexemeId);
+    }
 
-            $this->dispatch('lexeme-deleted')->to(Lessons::class);
+    /**
+     * Returns the event name to dispatch after deletion.
+     */
+    protected function getDeletedEvent(): string
+    {
+        return 'lexeme-deleted';
+    }
 
-            $this->closeModal();
-        } catch (\Exception $e) {
-            throw $e;
-        }
+    /**
+     * Returns the component/class to notify.
+     */
+    protected function getRedirectComponent(): string
+    {
+        return Lessons::class;
     }
 
     public function render(): View

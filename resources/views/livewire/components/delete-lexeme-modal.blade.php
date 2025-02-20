@@ -10,18 +10,19 @@
                 </svg>
             </div>
             <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-                <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">{{ __('Delete word or expression') }}
-                </h3>
+                <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">
+                    {{ __('Delete word or expression') }}</h3>
                 <div class="mt-2">
                     <p class="text-sm text-gray-500">
-                        {{ __('Are you sure you want to delete this word or expression? This action cannot be undone.') }}</p>
+                        {{ __('Are you sure you want to delete this word or expression? This action cannot be undone.') }}
+                    </p>
                 </div>
             </div>
         </div>
         <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
             <button type="button"
                 class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
-                wire:click="deleteLexeme()">
+                wire:click="deleteItem()">
                 {{ __('Delete') }}
             </button>
             <button type="button"
