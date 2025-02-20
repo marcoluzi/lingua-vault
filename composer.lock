@@ -6161,16 +6161,16 @@
         },
         {
             "name": "wire-elements/modal",
-            "version": "2.0.12",
+            "version": "2.0.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wire-elements/modal.git",
-                "reference": "cacff22fda2bffe23dfc6194d6f0ea88165aa15f"
+                "reference": "65d9db80a0befaa38ae99a47a26818e784aa7101"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wire-elements/modal/zipball/cacff22fda2bffe23dfc6194d6f0ea88165aa15f",
-                "reference": "cacff22fda2bffe23dfc6194d6f0ea88165aa15f",
+                "url": "https://api.github.com/repos/wire-elements/modal/zipball/65d9db80a0befaa38ae99a47a26818e784aa7101",
+                "reference": "65d9db80a0befaa38ae99a47a26818e784aa7101",
                 "shasum": ""
             },
             "require": {
@@ -6213,7 +6213,7 @@
             ],
             "support": {
                 "issues": "https://github.com/wire-elements/modal/issues",
-                "source": "https://github.com/wire-elements/modal/tree/2.0.12"
+                "source": "https://github.com/wire-elements/modal/tree/2.0.13"
             },
             "funding": [
                 {
@@ -6221,7 +6221,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-10-14T10:54:05+00:00"
+            "time": "2025-02-20T13:07:12+00:00"
         },
         {
             "name": "wireui/breadcrumbs",
