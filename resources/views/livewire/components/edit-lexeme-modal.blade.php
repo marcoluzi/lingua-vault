@@ -47,15 +47,7 @@
             <div wire:loading.delay wire:target="save,saveAndClose" class="text-sm text-gray-500">
                 {{ __('Saving...') }}
             </div>
-
-            <button
-                type="button"
-                wire:click="saveAndClose"
-                wire:loading.attr="disabled"
-                class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-            >
-                {{ __('Save & Close') }}
-            </button>
+            <x-button wire:click="saveAndClose" wire:loading.attr="disabled">{{ __('Save & Close') }}</x-button>
         </div>
     </x-modal-card>
 </div>

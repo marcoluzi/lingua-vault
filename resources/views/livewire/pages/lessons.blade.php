@@ -1,14 +1,11 @@
 <div>
-    <livewire:components.page-header :$title />
+    <livewire:components.page-header :$pageTitle />
     @if ($lessons->total() > 0)
         <div class="flex md:items-center justify-between flex-col-reverse md:flex-row gap-4 mt-8 md:mt-16">
             <div class="md:max-w-xs w-full">
-                <x-select-menu class="max-w-48" :items="$sortItems" :selectedItem="$selectedSortItem" label="{{ __('Sort by') }}" />
+                <x-select-menu class="max-w-48" :items="$availableSortOptions" :selectedItem="$currentSortOption" label="{{ __('Sort by') }}" />
             </div>
-            <a href="{{ route('lessons.create') }}"
-                class="transition rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                {{ __('Create new lesson') }}
-            </a>
+            <x-button href="{{ route('lessons.create') }}" icon="plus">{{ __('Create new lesson') }}</x-button>
         </div>
         <ul role="list" class="divide-y divide-gray-100 mt-8 md:mt-16">
             @foreach ($lessons as $lesson)
@@ -47,10 +44,8 @@
                         </div>
                     </div>
                     <div class="flex flex-none items-center gap-x-4">
-                        <a href="{{ route('lessons.read', ['lessonId' => $lesson['id']]) }}"
-                            class="transition hidden rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:block">
-                            {{ __('Open lesson') }}
-                        </a>
+                        <x-button href="{{ route('lessons.read', ['lessonId' => $lesson['id']]) }}" size="sm"
+                            outline="true">{{ __('Open lesson') }}</x-button>
                         <div x-data="{ open: false }" class="relative flex-none">
                             <button type="button" class="-m-2.5 block p-2.5 text-gray-500 hover:text-gray-900"
                                 id="lesson-menu-{{ $loop->iteration }}-button" :aria-expanded="open.toString()"
@@ -103,15 +98,8 @@
                 <h3 class="mt-2 text-sm font-semibold text-gray-900">{{ __('No lessons') }}</h3>
                 <p class="mt-1 text-sm text-gray-500">{{ __('Get started by creating a new lesson.') }}</p>
                 <div class="mt-6">
-                    {{-- TODO: create --}}
-                    <button type="button"
-                        class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                        <svg class="-ml-0.5 mr-1.5 h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                            <path
-                                d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
-                        </svg>
-                        {{ __('New lesson') }}
-                    </button>
+                    <x-button href="{{ route('lessons.create') }}"
+                        icon="plus">{{ __('Create new lesson') }}</x-button>
                 </div>
             </div>
         </div>

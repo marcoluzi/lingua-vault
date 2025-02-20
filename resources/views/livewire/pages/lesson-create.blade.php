@@ -35,6 +35,6 @@
                 @error('lessonText') <p class="mt-2 text-sm text-red-600">{{ $message }}</p> @enderror
             </div>
         </div>
-        <x-button type="submit" class="mt-8 w-full sm:w-auto">{{ __('Create lesson') }}</x-button>
+        <x-button class="mt-8 w-full sm:w-auto" type="submit" icon="plus">{{ __('Create new lesson') }}</x-button>
     </form>
 </div>
