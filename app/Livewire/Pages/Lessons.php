@@ -105,4 +105,3 @@ class Lessons extends Component
         return view('livewire.pages.lessons', ['lessons' => $lessons])->title($this->pageTitle);
     }
 }
-
