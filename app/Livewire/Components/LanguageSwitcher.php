@@ -26,12 +26,14 @@ class LanguageSwitcher extends Component
     }
 
     /**
-     * Set the selected language by updating the selectedLanguage property.
+     * Set the selected language by updating the selectedLanguage property and redirecting to the lessons.index route.
      */
     public function setLanguage(string $selectedLanguage): void
     {
         $this->languageService->setLanguage($selectedLanguage);
         $this->selectedLanguageItem = $this->languageService->getSelectedLanguage();
+
+        $this->redirectRoute('lessons.index');
     }
 
     public function render(): View
