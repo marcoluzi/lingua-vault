@@ -3,10 +3,10 @@
 namespace App\Livewire\Components;
 
 use App\Livewire\Pages\Lessons;
+use App\Livewire\Traits\WithDeletionModal;
 use App\Services\LexemeService;
 use Illuminate\View\View;
 use LivewireUI\Modal\ModalComponent;
-use App\Livewire\Traits\WithDeletionModal;
 
 class DeleteLexemeModal extends ModalComponent
 {

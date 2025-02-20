@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Pages;
 
+use App\Livewire\Traits\WithLanguageModelQuery;
+use App\Livewire\Traits\WithSortable;
 use App\Models\Lesson;
 use App\Services\LanguageService;
 use Illuminate\View\View;
@@ -9,8 +11,6 @@ use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
 use WireUi\Breadcrumbs\Trail;
-use App\Livewire\Traits\WithSortable;
-use App\Livewire\Traits\WithLanguageModelQuery;
 
 class Lessons extends Component
 {

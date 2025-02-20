@@ -3,10 +3,10 @@
 namespace App\Livewire\Components;
 
 use App\Livewire\Pages\Lessons;
+use App\Livewire\Traits\WithDeletionModal;
 use App\Services\LessonDeletionService;
 use Illuminate\View\View;
 use LivewireUI\Modal\ModalComponent;
-use App\Livewire\Traits\WithDeletionModal;
 
 class DeleteLessonModal extends ModalComponent
 {

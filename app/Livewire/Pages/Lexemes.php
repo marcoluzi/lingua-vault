@@ -2,15 +2,15 @@
 
 namespace App\Livewire\Pages;
 
+use App\Livewire\Traits\WithLanguageModelQuery;
+use App\Livewire\Traits\WithSortable;
 use App\Models\Lexeme;
 use App\Services\LanguageService;
 use Illuminate\View\View;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
 use WireUi\Breadcrumbs\Trail;
-use Livewire\Attributes\On;
-use App\Livewire\Traits\WithSortable;
-use App\Livewire\Traits\WithLanguageModelQuery;
 
 class Lexemes extends Component
 {
@@ -50,23 +50,23 @@ class Lexemes extends Component
     {
         return [
             [
-                'value'     => 'updated_at',
-                'label'     => __('Recently practiced'),
-                'action'    => '$wire.sortBy("updated_at");',
+                'value' => 'updated_at',
+                'label' => __('Recently practiced'),
+                'action' => '$wire.sortBy("updated_at");',
                 'direction' => 'desc',
             ],
             [
-                'value'     => 'text-asc',
-                'column'    => 'text',
-                'label'     => __('Alphabetical (A-Z)'),
-                'action'    => '$wire.sortBy("text-asc");',
+                'value' => 'text-asc',
+                'column' => 'text',
+                'label' => __('Alphabetical (A-Z)'),
+                'action' => '$wire.sortBy("text-asc");',
                 'direction' => 'asc',
             ],
             [
-                'value'     => 'text-desc',
-                'column'    => 'text',
-                'label'     => __('Alphabetical (Z-A)'),
-                'action'    => '$wire.sortBy("text-desc");',
+                'value' => 'text-desc',
+                'column' => 'text',
+                'label' => __('Alphabetical (Z-A)'),
+                'action' => '$wire.sortBy("text-desc");',
                 'direction' => 'desc',
             ],
         ];
@@ -80,6 +80,7 @@ class Lexemes extends Component
     public function render(): View
     {
         $lexemes = $this->getPaginatedModels();
+
         return view('livewire.pages.lexemes', ['lexemes' => $lexemes])->title($this->pageTitle);
     }
 }
