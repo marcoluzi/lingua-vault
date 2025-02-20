@@ -24,6 +24,7 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 The following software libraries are utilized in this repository.
 
+- [Flux](https://fluxui.dev/)
 - [Font Awesome Pro, Version 6.4.0](https://fontawesome.com/)
 - [Laravel](https://github.com/laravel/laravel/)
 - [Livewire](https://github.com/livewire/livewire/)

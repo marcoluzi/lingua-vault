@@ -4,7 +4,7 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+                sans: ['Inter', 'sans-serif'],
             },
         },
     },
@@ -28,6 +28,7 @@ module.exports = {
         './resources/views/**/*.blade.php',
         './vendor/wireui/breadcrumbs/src/Components/**/*.php',
         './vendor/wireui/breadcrumbs/src/views/**/*.blade.php',
+        "./vendor/livewire/flux/stubs/**/*.blade.php",
     ],
     safelist: [
         {
@@ -49,4 +50,5 @@ module.exports = {
         require('@tailwindcss/forms'),
         require('@tailwindcss/typography'),
     ],
+    darkMode: null,
 }
