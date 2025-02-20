@@ -11,6 +11,7 @@
 -   Improving button component
 -   Adjusting lessons page to only show lessons of the currently selected language
 -   Implementing Flux
+-   Adding info tooltip to status label in the lexeme item modal
 
 ## [v0.2.0-alpha](https://github.com/marcoluzi/lingua-vault/commits/v0.2.0-alpha) - 2025-02-14
 

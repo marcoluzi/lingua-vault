@@ -7,7 +7,7 @@
         <h2 class="text-lg font-bold mb-4">{{ $word }}</h2>
 
         <div class="mb-4">
-            <label class="block text-sm font-medium text-gray-700">{{ __('Meaning') }}</label>
+            <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('Meaning') }}</label>
             <input type="text" wire:model.defer="meaning"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
             {{-- TODO: Fixing error messages. Currently only displaying keys --}}
@@ -17,7 +17,7 @@
         </div>
 
         <div class="mb-4">
-            <label class="block text-sm font-medium text-gray-700">{{ __('Romanization') }}</label>
+            <label class="block text-sm font-medium text-gray-700 mb-1">{{ __('Romanization') }}</label>
             <input type="text" wire:model.defer="romanization"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
             {{-- TODO: Fixing error messages. Currently only displaying keys --}}
@@ -27,6 +27,21 @@
         </div>
 
         <div class="mb-4">
+            <div>
+                <label class="inline-flex items-center gap-0.5 text-sm font-medium text-gray-700">
+                    <span class="-translate-y-[0.04rem]">
+                        {{ __('Status') }}
+                    </span>
+                    <flux:tooltip toggleable>
+                        <flux:button class="text-gray-700" icon="information-circle" size="xs" variant="ghost" />
+
+                        <flux:tooltip.content class="max-w-[20rem] space-y-2">
+                            <p>{{ __('Well known items will not be rehearsed.') }}</p>
+                            <p>{{ __('Ignored items will not be rehearsed and do not count towards your learned lexemes.') }}</p>
+                        </flux:tooltip.content>
+                    </flux:tooltip>
+                </label>
+            </div>
             <span class="isolate inline-flex rounded-md shadow-sm">
                 <button type="button"
                     class="relative inline-flex items-center rounded-l-md px-3 py-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 focus:z-10 transition {{ $status === Statuses::WELL_KNOWN ? 'hover:bg-indigo-500 bg-indigo-600 text-white' : 'hover:bg-gray-50 bg-white text-gray-900' }}"
