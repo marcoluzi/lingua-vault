@@ -17,7 +17,7 @@ class LessonRead extends Component
     public string $pageTitle = '';
 
     public string $text;
-    
+
     public array $tokens = [];
 
     protected LanguageService $languageService;
@@ -28,7 +28,7 @@ class LessonRead extends Component
     }
 
     /**
-     * Tokenize text into words and punctuation
+     * Tokenize text into words and punctuation.
      *
      * @return array<array{content: string, type: string}>
      */
@@ -37,29 +37,29 @@ class LessonRead extends Component
         // First, split into paragraphs while preserving double newlines
         $paragraphs = preg_split('/(\R{2,})/u', $text, -1, PREG_SPLIT_DELIM_CAPTURE);
         $tokens = [];
-        
+
         foreach ($paragraphs as $paragraph) {
             if (preg_match('/^\R+$/u', $paragraph)) {
                 // This is a paragraph separator (double newline)
                 $tokens[] = ['content' => '', 'type' => 'paragraph-break'];
                 continue;
             }
-            
+
             // Process words, punctuation and spaces within each paragraph
             $pattern = '/([^\s\p{P}]+)|([^\w\s])|(\s+)/u';
             preg_match_all($pattern, $paragraph, $matches, PREG_SET_ORDER);
-            
+
             foreach ($matches as $match) {
-                if (!empty($match[1])) { // Word
+                if (! empty($match[1])) { // Word
                     $tokens[] = ['content' => $match[1], 'type' => 'word'];
-                } elseif (!empty($match[2])) { // Punctuation
+                } elseif (! empty($match[2])) { // Punctuation
                     $tokens[] = ['content' => $match[2], 'type' => 'punctuation'];
-                } elseif (!empty($match[3])) { // Space
+                } elseif (! empty($match[3])) { // Space
                     $tokens[] = ['content' => ' ', 'type' => 'space'];
                 }
             }
         }
-        
+
         return $tokens;
     }
 
