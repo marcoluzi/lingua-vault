@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('lexemes', function (Blueprint $table) {
             $table->id();
             $table->string('text');
-            $table->string('meaning');
+            $table->string('meaning')->nullable();
             $table->string('romanization')->nullable();
             $table->string('language');
             $table->unsignedInteger('repetitions')->default(1);

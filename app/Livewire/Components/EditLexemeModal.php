@@ -77,7 +77,7 @@ class EditLexemeModal extends ModalComponent
                 $this->dispatch('lexeme-updated', ['lexemeId' => $lexeme->id]);
             }
         } else {
-            if ($this->meaning || $this->status) {
+            if ($this->status || $this->meaning) {
                 $lexeme = $lexemeService->createLexeme($data);
 
                 $this->lexemeId = $lexeme->id;
