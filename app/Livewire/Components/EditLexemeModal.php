@@ -9,7 +9,7 @@ use LivewireUI\Modal\ModalComponent;
 
 class EditLexemeModal extends ModalComponent
 {
-    public int|null $lexemeId = null;
+    public ?int $lexemeId = null;
 
     public string $word;
 
@@ -17,11 +17,11 @@ class EditLexemeModal extends ModalComponent
 
     public int $lessonId;
 
-    public string|null $meaning = null;
+    public ?string $meaning = null;
 
-    public string|null $romanization = null;
+    public ?string $romanization = null;
 
-    public Statuses|null $status = null;
+    public ?Statuses $status = null;
 
     protected array $rules = [
         'word' => 'required|string',

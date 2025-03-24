@@ -9,7 +9,7 @@ use Livewire\Component;
 
 class LexemeItem extends Component
 {
-    public int|null $lexemeId = null;
+    public ?int $lexemeId = null;
 
     public string $word;
 
