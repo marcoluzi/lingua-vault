@@ -70,3 +70,5 @@ allow_licenses:
   - XFree86-1.1
   - Zlib
   - ZPL-2.0
+allow_dependencies_licenses:
+  - 'pkg:npm/caniuse-lite'
