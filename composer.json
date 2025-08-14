@@ -12,7 +12,7 @@
         "livewire/flux": "^1.0",
         "livewire/livewire": "^3.5",
         "rawilk/laravel-settings": "^3.3",
-        "wire-elements/modal": "^2.0",
+        "wire-elements/modal": "^3.0",
         "wireui/breadcrumbs": "^3.1"
     },
     "require-dev": {
