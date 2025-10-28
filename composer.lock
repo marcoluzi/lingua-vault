@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3210391da180d786bfe27652dc13e487",
+    "content-hash": "645136f579f832e860444a07ea9bdb6c",
     "packages": [
         {
             "name": "blade-ui-kit/blade-icons",
@@ -2089,16 +2089,16 @@
         },
         {
             "name": "livewire/flux",
-            "version": "v1.1.6",
+            "version": "v2.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/flux.git",
-                "reference": "aab9937b1248840e88ed3d401e32ffc3dcaff79d"
+                "reference": "227b88db0a02db91666af2303ea6727a3af78c51"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/flux/zipball/aab9937b1248840e88ed3d401e32ffc3dcaff79d",
-                "reference": "aab9937b1248840e88ed3d401e32ffc3dcaff79d",
+                "url": "https://api.github.com/repos/livewire/flux/zipball/227b88db0a02db91666af2303ea6727a3af78c51",
+                "reference": "227b88db0a02db91666af2303ea6727a3af78c51",
                 "shasum": ""
             },
             "require": {
@@ -2106,9 +2106,12 @@
                 "illuminate/support": "^10.0|^11.0|^12.0",
                 "illuminate/view": "^10.0|^11.0|^12.0",
                 "laravel/prompts": "^0.1|^0.2|^0.3",
-                "livewire/livewire": "^3.5.19",
+                "livewire/livewire": "^3.5.19|^4.0",
                 "php": "^8.1",
                 "symfony/console": "^6.0|^7.0"
+            },
+            "conflict": {
+                "livewire/blaze": "<0.1.0"
             },
             "type": "library",
             "extra": {
@@ -2146,9 +2149,9 @@
             ],
             "support": {
                 "issues": "https://github.com/livewire/flux/issues",
-                "source": "https://github.com/livewire/flux/tree/v1.1.6"
+                "source": "https://github.com/livewire/flux/tree/v2.6.1"
             },
-            "time": "2025-02-26T01:01:44+00:00"
+            "time": "2025-10-28T21:12:05+00:00"
         },
         {
             "name": "livewire/livewire",

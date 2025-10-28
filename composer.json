@@ -9,7 +9,7 @@
         "blade-ui-kit/blade-icons": "^1.8",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
-        "livewire/flux": "^1.0",
+        "livewire/flux": "^2.0",
         "livewire/livewire": "^3.5",
         "rawilk/laravel-settings": "^3.3",
         "wire-elements/modal": "^2.0",
