@@ -10,7 +10,8 @@
       "description": "Automatically merge minor and patch-level updates",
       "matchUpdateTypes": ["minor", "patch", "digest"],
       "automerge": true,
-      "automergeType": "pr"
+      "automergeType": "pr",
+      "enabled": false
     },
     {
       "description": "Assigning PRs of non-trivial updates",
@@ -24,7 +25,8 @@
         "replacement"
       ],
       "reviewers": ["marcoluzi"],
-      "automerge": false
+      "automerge": false,
+      "enabled": false
     }
   ],
   "timezone": "Europe/Zurich",
@@ -42,7 +44,7 @@
   "commitMessageAction": "⬆️ Update",
   "commitMessageTopic": "{{depName}}",
   "lockFileMaintenance": {
-    "enabled": true,
+    "enabled": false,
     "commitMessageAction": ":recycle: Lock file maintenance",
     "prBodyDefinitions": {
       "Change": "All locks refreshed"
